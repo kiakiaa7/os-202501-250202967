@@ -105,7 +105,7 @@ Windows : Tidak berlaku(NTFS ACL berbeda)
 
 **Shell script untuk automasi backup**
 Linux : Jalankan dengan cron + bash script
-Windows : Perlu adaptsi di Task scheduler + powersell
+Windows : Perlu adaptasi di Task scheduler + powersell
 
 ---
 
