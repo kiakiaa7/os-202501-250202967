@@ -56,19 +56,43 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+
+System call adalah mekanisme penting dalam sistem operasi yang memungkinkan program aplikasi berkomunikasi dengan kernel untuk mengakses sumber daya seperti file, memori, dan perangkat keras. Karena program tidak bisa mengakses perangkat keras secara langsung, system call menjadi jembatan yang aman dan terkontrol antara aplikasi dan sistem inti komputer.
+Fungsi system call mencakup berbagai aktivitas penting seperti manajemen file, proses, memori, dan komunikasi antar proses. Tanpa system call, program tidak akan mampu melakukan operasi dasar seperti membaca data, menyimpan file, atau menjalankan proses baru.
+Selain sebagai penghubung, system call juga berperan dalam menjaga keamanan dan kestabilan sistem dengan membatasi akses langsung ke kernel. Oleh karena itu, pemahaman tentang system call sangat penting dalam mempelajari sistem operasi dan pengembangan perangkat lunak tingkat rendah.
+
 
 ---
 
 ## Quiz
-1. Apa fungsi System Call dalaam ssitem operasi?
-   **Jawaban:**  
-2. Sebutkan 4 kategori System Call yang umum digunakan.
-   **Jawaban:**  
-3. Mengapa System Call tidak bisaa dipanggil langsung oleh user program?
-   **Jawaban:**  
+1. Apa fungsi utama System Call dalam sistem operasi?
+   **Jawaban:**  Fungsi utama dari system call adalah untuk memfasilitasi berbagai operasi penting, seperti manajemen proses (membuat dan mengelola proses), manajemen file (membaca, menulis, dan menghapus file), manajemen memori (mengalokasikan atau membebaskan memori), serta komunikasi antar proses dan interaksi dengan perangkat input/output. Melalui system call, sistem operasi dapat memberikan layanan ini tanpa mengorbankan keamanan atau kestabilan sistem.
+Selain itu, system call juga memungkinkan sistem operasi untuk mengontrol hak akses, menjaga agar setiap proses hanya bisa menggunakan sumber daya yang diizinkan. Dengan cara ini, system call tidak hanya menjadi alat komunikasi antara user dan kernel, tetapi juga menjadi alat pengaman dan pengatur dalam lingkungan komputasi modern.
 
----
+2. Sebutkan 4 kategori System Call yang umum digunakan.
+   **Jawaban:**
+
+1. **Manajemen Proses (Process Management)**
+   * Mengelola pembuatan, eksekusi, sinkronisasi, dan terminasi proses.
+   * Contoh: `fork()`, `exec()`, `wait()`, `exit()`
+
+2. **Manajemen File (File Management)**
+   * Mengatur operasi pada file dan direktori seperti membuka, membaca, menulis, dan menutup file.
+   * Contoh: `open()`, `read()`, `write()`, `close()`
+
+3. **Manajemen Memori (Memory Management)**
+   * Mengalokasikan dan membebaskan memori untuk program yang berjalan.
+   * Contoh: `mmap()`, `brk()`
+
+4. **Komunikasi Antar-Proses (Interprocess Communication/IPC)**
+   * Memungkinkan proses untuk bertukar data dan berkomunikasi.
+   * Contoh: `pipe()`, `shmget()`, `msgsnd()`
+
+3. Mengapa System Call tidak bisa dipanggil langsung oleh user program?
+   **Jawaban:**
+   System call tidak bisa dipanggil langsung oleh program pengguna untuk melindungi sistem dari risiko keamanan, menjaga stabilitas, dan menyederhanakan interaksi. Desain ini adalah bagian dari prinsip "multitasking dan protected environment" dalam OS modern, seperti Windows, Linux, atau macOS. Jika mencoba memaksa panggilan langsung (misalnya, melalui assembly), OS akan menghentikan program Anda karena melanggar aturan privilage.
+
+   ---
 
 ## Refleksi Diri
 Tuliskan secara singkat:
