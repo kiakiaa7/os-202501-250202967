@@ -105,7 +105,11 @@ Selain itu, system call juga memungkinkan sistem operasi untuk mengontrol hak ak
 
 ## Refleksi Diri
 Tuliskan secara singkat:
+- Apa bagian yang paling menantang minggu ini tentang struktur system call?
+Bagian yang paling menantang adalah memahami bagaimana mekanisme transisi dari user mode ke kernel mode terjadi secara rinci, terutama bagaimana CPU mengatur privilege levels, interrupt descriptor table, dan bagaimana kernel mengelola context switching dengan aman. Selain itu, memahami bagaimana kernel melakukan validasi argumen system call agar tidak terjadi eksploitasi juga cukup kompleks karena melibatkan aspek keamanan dan manajemen memori yang mendalam.
 
+- Bagaimana cara Anda mengatasinya?
+Saya mengatasinya dengan mempelajari dokumentasi resmi arsitektur CPU, seperti manual Intel dan AMD, serta membaca sumber terbuka kernel Linux untuk melihat implementasi nyata dari system call handling. Saya juga menggunakan diagram alur dan pseudocode untuk memvisualisasikan proses transisi dan validasi. Selain itu, berdiskusi dengan rekan dan mencari tutorial yang fokus pada mekanisme keamanan di OS membantu saya memahami konsep yang sulit tersebut secara bertahap dan lebih praktis.
 
 ---
 
