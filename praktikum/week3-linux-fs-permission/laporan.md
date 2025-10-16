@@ -97,6 +97,7 @@ Manajemen file dan permission di Linux merupakan bagian penting dari sistem oper
 ---
 ## Kode / Perintah
 Tuliskan potongan kode atau perintah utama:
+
 pwd
 ls -l
 cd /tmp
@@ -112,8 +113,8 @@ sudo chown root percobaan.txt
 ls -l percobaan.txt
 
 ---
-## D. Tugas & Quiz
-### Tugas## Hasil Eksekusi
+
+## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
 ![Screenshot hasil](screenshots/example.png)
 
@@ -136,10 +137,12 @@ Dari praktikum manajemen file dan permission di Linux dapat disimpulkan bahwa si
 ## Quiz
 1. Apa fungsi dari perintah `chmod`? 
    **Jawaban:**
+   
  Perintah chmod (change mode) berfungsi untuk mengubah hak akses atau permission pada file dan direktori di sistem Linux. Dengan chmod, pengguna dapat menentukan siapa yang boleh membaca (read), menulis (write), atau mengeksekusi (execute) suatu file, baik untuk pemilik (user), grup (group), maupun pengguna lain (others).
 
-2. Apa arti dari kode permission`rwxr-xr--`?
+3. Apa arti dari kode permission`rwxr-xr--`?
    **Jawaban:**
+   
  Kode rwxr-xr-- menunjukkan hak akses file atau direktori:
 - rwx → Pemilik (user) memiliki hak read, write, dan execute.
 - r-x → Grup (group) memiliki hak read dan execute saja.
@@ -147,7 +150,8 @@ Dari praktikum manajemen file dan permission di Linux dapat disimpulkan bahwa si
 Artinya, hanya pemilik file yang dapat mengedit atau menjalankan file, sementara grup hanya bisa menjalankan dan membaca, dan pengguna lain hanya dapat membaca tanpa mengubah isi.
 
 3. Jelaskan perbedaan antara `chown` dan `chmod`.
-   **Jawaban:**  
+   **Jawaban:**
+   
 Perintah chown digunakan untuk mengubah kepemilikan file atau direktori, baik pemilik (user) maupun grup-nya, sedangkan chmod digunakan untuk mengubah hak akses atau permission terhadap file atau direktori tersebut. Dengan kata lain, chown mengatur siapa yang memiliki file, sedangkan chmod mengatur apa yang boleh dilakukan terhadap file itu.
 ---
 
