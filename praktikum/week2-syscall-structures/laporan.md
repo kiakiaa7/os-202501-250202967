@@ -71,20 +71,16 @@ Selain itu, system call juga memungkinkan sistem operasi untuk mengontrol hak ak
 
 2. Sebutkan 4 kategori System Call yang umum digunakan.
    **Jawaban:**
-
-1. **Manajemen Proses (Process Management)**
+ **Manajemen Proses (Process Management)**
    * Mengelola pembuatan, eksekusi, sinkronisasi, dan terminasi proses.
    * Contoh: `fork()`, `exec()`, `wait()`, `exit()`
-
-2. **Manajemen File (File Management)**
+**Manajemen File (File Management)**
    * Mengatur operasi pada file dan direktori seperti membuka, membaca, menulis, dan menutup file.
    * Contoh: `open()`, `read()`, `write()`, `close()`
-
-3. **Manajemen Memori (Memory Management)**
+**Manajemen Memori (Memory Management)**
    * Mengalokasikan dan membebaskan memori untuk program yang berjalan.
    * Contoh: `mmap()`, `brk()`
-
-4. **Komunikasi Antar-Proses (Interprocess Communication/IPC)**
+ **Komunikasi Antar-Proses (Interprocess Communication/IPC)**
    * Memungkinkan proses untuk bertukar data dan berkomunikasi.
    * Contoh: `pipe()`, `shmget()`, `msgsnd()`
 
