@@ -16,9 +16,13 @@ Topik: Manajemen File dan Permission di Linux
 Setelah menyelesaikan tugas ini, mahasiswa mampu:
 
 1.Menggunakan perintah ls, pwd, cd, cat untuk navigasi file dan direktori.
+
 2.Menggunakan chmod dan chown untuk manajemen hak akses file.
+
 3.Menjelaskan hasil output dari perintah Linux dasar.
+
 4.Menyusun laporan praktikum dengan struktur yang benar.
+
 5.Mengunggah dokumentasi hasil ke Git Repository tepat waktu.
 
 ---
@@ -34,7 +38,7 @@ Manajemen file dan permission di Linux merupakan bagian penting dari sistem oper
 
 ---
 
-## C. Langkah Pengerjaan
+## Langkah Pengerjaan
 1. **Setup Environment**
    - Gunakan Linux (Ubuntu/WSL).
    - Pastikan folder kerja berada di dalam direktori repositori Git praktikum:
