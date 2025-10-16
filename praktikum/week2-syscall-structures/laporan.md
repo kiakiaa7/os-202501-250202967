@@ -21,23 +21,71 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 
 
 ## Dasar Teori
-System call didasarkan pada konsep pemisahan user mode dan kernel mode. Sistem operasi melindungi sumber daya sistem dengan membatasi akses langsung dari aplikasi ke perangkat keras. Ketika sebuah aplikasi membutuhkan layanan sistem, ia melakukan system call, yang memicu trap (sejenis interupsi perangkat lunak) untuk beralih ke mode kernel, menjalankan fungsi yang diminta, lalu kembali ke user mode.
+System call didasarkan pada konsep pemisahan user mode dan kernel mode. Sistem operasi melindungi sumber daya sistem dengan membatasi akses langsung dari aplikasi ke perangkat keras. Ketika sebuah aplikasi membutuhkan layanan sistem, ia melakukan system call, yang memicu trap (sejenis interupsi perangkat lunak) untuk beralih ke mode kernel, menjalankan fungsi yang diminta, lalu kembali ke user mode.Proses ini melibatkan perpindahan dari user mode ke kernel mode menggunakan trap (interupsi perangkat lunak), di mana kernel mengeksekusi perintah tersebut, kemudian mengembalikan kontrol ke user mode setelah selesai.
 
+Kernel sendiri merupakan inti dari sistem operasi yang memiliki kendali penuh atas seluruh sumber daya komputer. Kernel bertugas mengelola berbagai aspek penting sistem seperti manajemen proses, memori, sistem berkas, perangkat keras, serta keamanan sistem. Dalam konteks system call, kernel berperan sebagai eksekutor yang menjalankan perintah dari program pengguna dengan hak akses penuh, namun tetap menjaga keamanan agar satu proses tidak dapat mengganggu proses lainnya. Dengan adanya system call dan kernel, sistem operasi mampu menyediakan lingkungan yang aman, efisien, dan terkontrol untuk menjalankan berbagai aplikasi secara bersamaan tanpa mengganggu kestabilan sistem.
+---
 
-## Langkah Praktikum
-1. Langkah-langkah yang dilakukan.  
-2. Perintah yang dijalankan.  
-3. File dan kode yang dibuat.  
-4. Commit message yang digunakan.
+## B. Tujuan
+Setelah menyelesaikan tugas ini, mahasiswa mampu:
+1. Menjelaskan konsep dan fungsi system call dalam sistem operasi.
+2. Mengidentifikasi jenis-jenis system call dan fungsinya.
+3. Mengamati alur perpindahan mode user ke kernel saat system call terjadi.
+4. Menggunakan perintah Linux untuk menampilkan dan menganalisis system call.
+
+---
+
+## C. Langkah Praktikum
+1. **Setup Environment**
+   - Gunakan Linux (Ubuntu/WSL).
+   - Pastikan perintah `strace` dan `man` sudah terinstal.
+   - Konfigurasikan Git (jika belum dilakukan di minggu sebelumnya).
+
+2. **Eksperimen 1 – Analisis System Call**
+   Jalankan perintah berikut:
+   ```bash
+   strace ls
+   ```
+   > Catat 5–10 system call pertama yang muncul dan jelaskan fungsinya.  
+   Simpan hasil analisis ke `results/syscall_ls.txt`.
+
+3. **Eksperimen 2 – Menelusuri System Call File I/O**
+   Jalankan:
+   ```bash
+   strace -e trace=open,read,write,close cat /etc/passwd
+   ```
+   > Analisis bagaimana file dibuka, dibaca, dan ditutup oleh kernel.
+
+4. **Eksperimen 3 – Mode User vs Kernel**
+   Jalankan:
+   ```bash
+   dmesg | tail -n 10
+   ```
+   > Amati log kernel yang muncul. Apa bedanya output ini dengan output dari program biasa?
+
+5. **Diagram Alur System Call**
+   - Buat diagram yang menggambarkan alur eksekusi system call dari program user hingga kernel dan kembali lagi ke user mode.
+   - Gunakan draw.io / mermaid.
+   - Simpan di:
+     ```
+     praktikum/week2-syscall-structure/screenshots/syscall-diagram.png
+     ```
+
+6. **Commit & Push**
+   ```bash
+   git add .
+   git commit -m "Minggu 2 - Struktur System Call dan Kernel Interaction"
+   git push origin main
+   ```
 
 ---
 
 ## Kode / Perintah
 Tuliskan potongan kode atau perintah utama:
 ```bash
-uname -a
-lsmod | head
-dmesg | head
+strace ls
+dmesg | tail -n 10
+strace -e trace=open,read,write,close cat/etc/passwd
 ```
 
 ---
@@ -49,15 +97,12 @@ Sertakan screenshot hasil percobaan atau diagram:
 ![Screenshot hasil](screenshots/Screenshotsystemcall3.png) 
 ![Screenshot hasil](screenshots/ScreenshotsyscallDiagram.png)
 
-
-
 ---
 
 ## Analisis
-Tugas
-Tulis analisis 400–500 kata tentang:
+
 -Mengapa system call penting untuk keamanan OS?
-**jawaban** : System call adalah mekanisme yang memungkinkan program user berinteraksi dengan kernel sistem operasi (OS). Karena kernel memiliki akses penuh terhadap perangkat keras dan sumber daya sistem, system call berperan sebagai gerbang pengontrol antara aplikasi yang berjalan di user mode dengan operasi yang dijalankan di kernel mode. Oleh karena itu, system call sangat penting untuk keamanan OS karena mereka menetapkan batasan dan kontrol yang mencegah program user melakukan tindakan berbahaya secara langsung. Tanpa system call, aplikasi user dapat mengakses perangkat keras atau memodifikasi memori secara bebas, yang akan mengancam stabilitas dan keamanan sistem.
+**jawaban** : System call adalah mekanisme yang memungkinkan program user berinteraksi dengan kernel sistem operasi (OS). Karena kernel memiliki akses penuh terhadap perangkat keras dan sumber daya sistem, system call berperan sebagai gerbang pengontrol antara aplikasi yang berjalan di user mode dengan operasi yang dijalankan di kernel mode. Oleh karena itu, system call sangat penting untuk keamanan OS karena mereka menetapkan batasan dan kontrol yang mencegah program user melakukan tindakan berbahaya secara langsung. Tanpa system call, aplikasi user dapat mengakses perangkat keras atau memodifikasi memori secara bebas, yang akan mengancam stabilitas dan keamanan sistem. Selain itu, system call memastikan bahwa setiap proses memiliki hak akses terbatas sesuai dengan kebijakan sistem operasi. Kernel dapat membatasi akses terhadap file, memori, atau perangkat tertentu berdasarkan identitas pengguna dan izin yang dimiliki. Hal ini mencegah satu proses mengganggu proses lain atau melakukan tindakan berbahaya terhadap sistem. Dengan kata lain, system call berperan sebagai gerbang keamanan utama yang menjaga kestabilan, integritas, dan privasi sistem operasi dari potensi serangan atau kesalahan program pengguna.
 
 -Bagaimana OS memastikan transisi user–kernel berjalan aman?
 **jawaban** : 
@@ -65,6 +110,39 @@ Sistem operasi memastikan transisi antara user mode dan kernel mode berjalan ama
 
 -Sebutkan contoh system call yang sering digunakan di Linux.
 **jawaban** : read() , write() , open() , close() , fork() , execve() , exit() , waitpid() , mmap() ,ioctl()
+
+---
+
+##Hasil Observasi
+**Tabel observasi hasil eksperimen strace**
+
+| No | Perintah yang Dijalankan | System Call yang Terlihat | Fungsi System Call                 | Keterangan / Hasil Pengamatan                              |
+| -- | ------------------------ | ------------------------- | ---------------------------------- | ---------------------------------------------------------- |
+| 1  | `strace ls`              | `execve()`                | Menjalankan program baru (`ls`)    | Digunakan untuk memanggil program `ls` dari shell.         |
+| 2  | `strace ls`              | `openat()`                | Membuka file atau direktori        | Digunakan untuk membaca isi direktori sebelum ditampilkan. |
+| 3  | `strace ls`              | `read()`                  | Membaca data dari file atau buffer | Membaca isi direktori yang telah dibuka.                   |
+| 4  | `strace ls`              | `write()`                 | Menulis data ke terminal (stdout)  | Menampilkan hasil daftar file ke layar.                    |
+| 5  | `strace ls`              | `close()`                 | Menutup file descriptor            | Menutup file/direktori yang sudah dibaca.                  |
+| 6  | `strace echo "Halo"`     | `write()`                 | Menulis string ke output           | Menampilkan teks “Halo” ke terminal.                       |
+| 7  | `strace cat file.txt`    | `openat()`                | Membuka file `file.txt`            | File dibuka untuk dibaca oleh `cat`.                       |
+| 8  | `strace cat file.txt`    | `read()`                  | Membaca isi file                   | Membaca isi `file.txt` ke buffer.                          |
+| 9  | `strace cat file.txt`    | `write()`                 | Menulis isi file ke layar          | Menampilkan isi file di terminal.                          |
+| 10 | `strace uname -a`        | `uname()`                 | Mengambil informasi sistem         | Menampilkan detail kernel dan sistem operasi.              |
+
+**Tabel observasi hasil eksperimen dmesg**
+
+| No | Perintah yang Dijalankan | Pesan / Output `dmesg` | Makna / Fungsi Pesan                                     | Keterangan / Pengamatan         |                                                            |
+| -- | ------------------------ | ---------------------- | -------------------------------------------------------- | ------------------------------- | ---------------------------------------------------------- |
+| 1  | `dmesg                   | head`                  | `[    0.000000] Linux version 6.8.0 ...`                 | Informasi versi kernel Linux    | Menunjukkan kernel yang sedang dijalankan sistem.          |
+| 2  | `dmesg                   | grep CPU`              | `[    0.123456] CPU0: Intel(R) Core(TM)...`              | Deteksi dan inisialisasi CPU    | Kernel mendeteksi dan menginisialisasi prosesor saat boot. |
+| 3  | `dmesg                   | grep memory`           | `[    0.654321] Memory: 4096MB available...`             | Informasi alokasi memori        | Kernel melaporkan jumlah memori fisik yang tersedia.       |
+| 4  | `dmesg                   | grep usb`              | `[    2.345678] usb 1-1: new high-speed USB device...`   | Deteksi perangkat USB           | Kernel mendeteksi perangkat USB baru yang terhubung.       |
+| 5  | `dmesg                   | grep eth`              | `[    3.456789] eth0: link is up...`                     | Inisialisasi antarmuka jaringan | Kernel melaporkan status koneksi jaringan aktif.           |
+| 6  | `dmesg                   | grep sda`              | `[    1.234567] sda: sda1 sda2`                          | Deteksi dan partisi disk        | Kernel mengenali drive penyimpanan utama.                  |
+| 7  | `dmesg                   | tail`                  | `[  123.456789] usb 1-1: USB disconnect...`              | Perangkat USB dilepas           | Kernel memberi tahu bahwa perangkat USB telah dicabut.     |
+| 8  | `dmesg                   | grep error`            | `[  45.678901] ata1: COMRESET failed`                    | Peringatan atau error perangkat | Kernel melaporkan adanya kesalahan perangkat keras.        |
+| 9  | `dmesg                   | grep driver`           | `[   4.567890] Loaded driver e1000e`                     | Pemanggilan driver perangkat    | Kernel memuat driver untuk perangkat tertentu.             |
+| 10 | `dmesg -T                | tail`                  | `[Thu Oct 16 23:14:02 2025] audit: type=1400 audit(...)` | Log keamanan sistem (audit)     | Menampilkan aktivitas keamanan sistem oleh kernel.         |
 
 ---
 
