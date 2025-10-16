@@ -60,7 +60,7 @@ Monolitik (semua fungsi dalam satu modul besar, seperti Linux). Microkernel (fun
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan diagram
 ![Screenshot hasil](screenshots/ScreenshotWSL.png)
-![Screenshot hasil](screenshots/Screenshot.jpeg)
+![Screenshot hasil](screenshots/screenshot.jpeg)
 
 
 
