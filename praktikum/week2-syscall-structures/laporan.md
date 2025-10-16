@@ -53,9 +53,13 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
+Tugas
+1.Dokumentasikan hasil eksperimen strace dan dmesg dalam bentuk tabel observasi.
+2.Buat diagram alur system call dari aplikasi → kernel → hardware → kembali ke aplikasi.
+3.Tulis analisis 400–500 kata tentang:
+-Mengapa system call penting untuk keamanan OS?
+-Bagaimana OS memastikan transisi user–kernel berjalan aman?
+-Sebutkan contoh system call yang sering digunakan di Linux.
 
 ---
 
