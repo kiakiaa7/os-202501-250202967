@@ -117,55 +117,7 @@ ls -l percobaan.txt
 chmod 600 percobaan.txt
 ls -l percobaan.txt```
 ```sudo chown root percobaan.txt
-ls -l percobaan.txt```
+ls -l percobaan.txt
 
 
----
 
-## Hasil Eksekusi
-Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
-
----
-
-## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
-
----
-
-## Kesimpulan
-
-Dari praktikum manajemen file dan permission di Linux dapat disimpulkan bahwa sistem operasi Linux memiliki mekanisme yang terstruktur dalam mengelola file dan hak akses pengguna. Melalui perintah seperti `ls -l`, `chmod`, `chown`, dan `chgrp`, pengguna dapat mengatur izin serta kepemilikan file untuk menjaga keamanan dan keteraturan sistem. Pemahaman terhadap konsep *read*, *write*, dan *execute* pada level *user*, *group*, dan *others* sangat penting agar setiap file hanya dapat diakses oleh pihak yang berhak. Dengan demikian, manajemen file dan permission di Linux berperan besar dalam menjaga integritas data, keamanan sistem, serta efisiensi penggunaan sumber daya komputer.
-
-
----
-
-## Quiz
-1. Apa fungsi dari perintah `chmod`? 
-   **Jawaban:**
- Perintah chmod (change mode) berfungsi untuk mengubah hak akses atau permission pada file dan direktori di sistem Linux. Dengan chmod, pengguna dapat menentukan siapa yang boleh membaca (read), menulis (write), atau mengeksekusi (execute) suatu file, baik untuk pemilik (user), grup (group), maupun pengguna lain (others).
-
-2. Apa arti dari kode permission`rwxr-xr--`?
-   **Jawaban:**
- Kode rwxr-xr-- menunjukkan hak akses file atau direktori:
-- rwx → Pemilik (user) memiliki hak read, write, dan execute.
-- r-x → Grup (group) memiliki hak read dan execute saja.
-- r-- → Pengguna lain (others) hanya memiliki hak read saja.
-Artinya, hanya pemilik file yang dapat mengedit atau menjalankan file, sementara grup hanya bisa menjalankan dan membaca, dan pengguna lain hanya dapat membaca tanpa mengubah isi.
-
-3. Jelaskan perbedaan antara `chown` dan `chmod`.
-   **Jawaban:**  
-Perintah chown digunakan untuk mengubah kepemilikan file atau direktori, baik pemilik (user) maupun grup-nya, sedangkan chmod digunakan untuk mengubah hak akses atau permission terhadap file atau direktori tersebut. Dengan kata lain, chown mengatur siapa yang memiliki file, sedangkan chmod mengatur apa yang boleh dilakukan terhadap file itu.
----
-
-## Refleksi Diri
-Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
-
----
-
-**Credit:**  
-_Template laporan praktikum Sistem Operasi (SO-202501) – Universitas Putra Bangsa_
