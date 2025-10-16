@@ -115,6 +115,7 @@ Sistem operasi memastikan transisi antara user mode dan kernel mode berjalan ama
 ---
 
 ##Hasil Observasi
+
 **Tabel observasi hasil eksperimen strace**
 
 | No | Perintah yang Dijalankan | System Call yang Terlihat | Fungsi System Call                 | Keterangan / Hasil Pengamatan                              |
