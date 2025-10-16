@@ -22,6 +22,7 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 
 ## Dasar Teori
 System call didasarkan pada konsep pemisahan user mode dan kernel mode. Sistem operasi melindungi sumber daya sistem dengan membatasi akses langsung dari aplikasi ke perangkat keras. Ketika sebuah aplikasi membutuhkan layanan sistem, ia melakukan system call, yang memicu trap (sejenis interupsi perangkat lunak) untuk beralih ke mode kernel, menjalankan fungsi yang diminta, lalu kembali ke user mode.Proses ini melibatkan perpindahan dari user mode ke kernel mode menggunakan trap (interupsi perangkat lunak), di mana kernel mengeksekusi perintah tersebut, kemudian mengembalikan kontrol ke user mode setelah selesai.
+
 Kernel sendiri merupakan inti dari sistem operasi yang memiliki kendali penuh atas seluruh sumber daya komputer. Kernel bertugas mengelola berbagai aspek penting sistem seperti manajemen proses, memori, sistem berkas, perangkat keras, serta keamanan sistem. Dalam konteks system call, kernel berperan sebagai eksekutor yang menjalankan perintah dari program pengguna dengan hak akses penuh, namun tetap menjaga keamanan agar satu proses tidak dapat mengganggu proses lainnya. Dengan adanya system call dan kernel, sistem operasi mampu menyediakan lingkungan yang aman, efisien, dan terkontrol untuk menjalankan berbagai aplikasi secara bersamaan tanpa mengganggu kestabilan sistem.
 
 ---
