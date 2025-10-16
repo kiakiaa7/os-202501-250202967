@@ -55,12 +55,16 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ## Analisis
 Tugas
-1.Dokumentasikan hasil eksperimen strace dan dmesg dalam bentuk tabel observasi.
-2.Buat diagram alur system call dari aplikasi → kernel → hardware → kembali ke aplikasi.
-3.Tulis analisis 400–500 kata tentang:
+Tulis analisis 400–500 kata tentang:
 -Mengapa system call penting untuk keamanan OS?
+**jawaban** : System call adalah mekanisme yang memungkinkan program user berinteraksi dengan kernel sistem operasi (OS). Karena kernel memiliki akses penuh terhadap perangkat keras dan sumber daya sistem, system call berperan sebagai gerbang pengontrol antara aplikasi yang berjalan di user mode dengan operasi yang dijalankan di kernel mode. Oleh karena itu, system call sangat penting untuk keamanan OS karena mereka menetapkan batasan dan kontrol yang mencegah program user melakukan tindakan berbahaya secara langsung. Tanpa system call, aplikasi user dapat mengakses perangkat keras atau memodifikasi memori secara bebas, yang akan mengancam stabilitas dan keamanan sistem.
+
 -Bagaimana OS memastikan transisi user–kernel berjalan aman?
+**jawaban** : 
+Sistem operasi memastikan transisi antara user mode dan kernel mode berjalan aman dengan memanfaatkan mekanisme hardware dan software yang ketat. CPU modern menggunakan privilege levels di mana user mode beroperasi pada level rendah dan kernel mode pada level tinggi, sehingga instruksi system call memicu perpindahan mode secara otomatis melalui interrupt atau trap gates yang hanya dapat diakses oleh kode yang sah. Saat transisi, OS menyimpan konteks proses user untuk menjaga integritas eksekusi, kemudian memvalidasi semua parameter system call agar tidak ada data berbahaya yang masuk ke kernel. Selain itu, manajemen memori yang ketat memisahkan ruang alamat kernel dan user, sehingga aplikasi user tidak dapat mengakses memori kernel secara langsung. Dengan pengelolaan hak akses yang tepat, OS juga memastikan bahwa hanya permintaan yang memiliki izin yang valid yang dijalankan di kernel. Kombinasi mekanisme ini menjaga keamanan dan stabilitas sistem selama perpindahan dari user mode ke kernel mode dan kembali lagi.
+
 -Sebutkan contoh system call yang sering digunakan di Linux.
+**jawaban** : read() , write() , open() , close() , fork() , execve() , exit() , waitpid() , mmap() ,ioctl()
 
 ---
 
@@ -101,8 +105,7 @@ Selain itu, system call juga memungkinkan sistem operasi untuk mengontrol hak ak
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
+
 
 ---
 
