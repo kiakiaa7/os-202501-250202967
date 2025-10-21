@@ -123,9 +123,49 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
+
+Perintah-perintah yang dijalankan di terminal ini bertujuan untuk mengecek lokasi saat ini, melihat isi folder, dan berpindah direktori. Perintah `pwd` digunakan untuk menampilkan direktori aktif, yang menunjukkan di mana posisi kamu sedang berada di sistem file — misalnya, di `/home/kiaarawrr`. Selanjutnya, perintah `ls -l` digunakan untuk melihat isi folder secara detail, termasuk nama file, ukuran, waktu dibuat, serta hak akses (izin baca, tulis, eksekusi). Lalu, perintah `cd /tmp` digunakan untuk berpindah ke direktori sementara sistem, yaitu `/tmp`, tempat umum untuk menyimpan file sementara. Setelah berhasil berpindah, direktori aktif berubah menjadi `/tmp`.
+
+Perintah `ls -a` kemudian digunakan untuk menampilkan seluruh isi direktori `/tmp`, termasuk file atau folder tersembunyi yang biasanya tidak terlihat jika hanya memakai `ls` biasa. Dalam hasilnya terlihat beberapa file dan folder sistem seperti `.X11-unix`, `systemd-private-*`, serta file buatan pengguna seperti `percobaan.txt`. Tanda titik di awal nama (`.`) menunjukkan bahwa item tersebut tersembunyi. Dengan memahami perintah-perintah ini, kamu bisa menavigasi sistem file Linux, melihat isi folder, dan mengetahui lokasi kerja kamu saat ini dengan lebih mudah dan terstruktur.
+
+
+#Penjelasan Struktur Baris /etc/passwd
+| Kolom          | Nilai               | Penjelasan                           |
+| -------------- | ------------------- | ------------------------------------ |
+| Username       | `daemon`            | Nama user                            |
+| Password field | `x`                 | Kata sandi disimpan di `/etc/shadow` |
+| UID            | `1`                 | User ID                              |
+| GID            | `1`                 | Group ID                             |
+| Deskripsi      | `daemon`            | Deskripsi (kadang nama lengkap)      |
+| Home           | `/usr/sbin`         | Direktori "rumah" user               |
+| Shell          | `/usr/sbin/nologin` | Shell default, tidak bisa login      |
+
+
+#sebelum chmod
+| Bagian         | Nilai        | Arti                                           |
+| -------------- | ------------ | ---------------------------------------------- |
+| `-rw-r--r--`   | Izin akses   | Pemilik: read+write, Grup: read, Lainnya: read |
+| `kiaarawrr`    | Pemilik file | User yang membuat file                         |
+| `36`           | Ukuran byte  | Ukuran file (36 karakter)                      |
+| `Oct 21 23:03` | Waktu dibuat | Tanggal dan jam                                |
+
+
+| Sebelum (`-rw-r--r--`) | Sesudah (`-rw-------`) |
+| ---------------------- | ---------------------- |
+| Owner bisa read+write  | Sama                   |
+| Group bisa read        | ❌ Tidak bisa akses     |
+| Other bisa read        | ❌ Tidak bisa akses     |
+
+
+##ANALISIS PERBEDAAN SEBELUM & SESUDAH chmod
+| Atribut       | Sebelum (`644`)           | Sesudah (`600`) | Dampak                       |
+| ------------- | ------------------------- | --------------- | ---------------------------- |
+| Akses Pemilik | `rw-`                     | `rw-`           | Tetap bisa baca & tulis      |
+| Akses Grup    | `r--`                     | `---`           | Tidak bisa baca file lagi    |
+| Akses Lainnya | `r--`                     | `---`           | Tidak bisa akses sama sekali |
+| Privasi       | 🔓 Bisa diakses user lain | 🔒 Lebih aman   | Cocok untuk file sensitif    |
+
+
 
 ---
 
