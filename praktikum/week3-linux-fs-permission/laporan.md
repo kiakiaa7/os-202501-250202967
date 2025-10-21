@@ -122,9 +122,11 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ## Analisis
 
-Perintah-perintah yang dijalankan di terminal ini bertujuan untuk mengecek lokasi saat ini, melihat isi folder, dan berpindah direktori. Perintah `pwd` digunakan untuk menampilkan direktori aktif, yang menunjukkan di mana posisi kamu sedang berada di sistem file — misalnya, di `/home/kiaarawrr`. Selanjutnya, perintah `ls -l` digunakan untuk melihat isi folder secara detail, termasuk nama file, ukuran, waktu dibuat, serta hak akses (izin baca, tulis, eksekusi). Lalu, perintah `cd /tmp` digunakan untuk berpindah ke direktori sementara sistem, yaitu `/tmp`, tempat umum untuk menyimpan file sementara. Setelah berhasil berpindah, direktori aktif berubah menjadi `/tmp`.
+Perintah pertama yaitu `pwd` digunakan untuk mengetahui direktori aktif atau lokasi kamu berada saat ini di sistem file. Misalnya, hasilnya menunjukkan `/home/kiaarawrr`, yang berarti kamu sedang berada di dalam folder rumah pengguna dengan nama kiaarawrr. Mengetahui direktori aktif penting supaya kamu tidak bingung saat menjalankan perintah lain yang bergantung pada lokasi tersebut.
 
-Perintah `ls -a` kemudian digunakan untuk menampilkan seluruh isi direktori `/tmp`, termasuk file atau folder tersembunyi yang biasanya tidak terlihat jika hanya memakai `ls` biasa. Dalam hasilnya terlihat beberapa file dan folder sistem seperti `.X11-unix`, `systemd-private-*`, serta file buatan pengguna seperti `percobaan.txt`. Tanda titik di awal nama (`.`) menunjukkan bahwa item tersebut tersembunyi. Dengan memahami perintah-perintah ini, kamu bisa menavigasi sistem file Linux, melihat isi folder, dan mengetahui lokasi kerja kamu saat ini dengan lebih mudah dan terstruktur.
+Kemudian, perintah `ls -l` digunakan untuk melihat daftar isi folder secara rinci. Perintah ini menampilkan nama file atau folder beserta informasi tambahan seperti ukuran file, tanggal pembuatan atau modifikasi, dan hak akses (permissions) yang dimiliki file tersebut. Dengan cara ini, kamu bisa mengetahui lebih banyak detail tentang isi direktori saat ini, misalnya apakah sebuah file bisa dibaca atau ditulis oleh pengguna.
+
+Setelah itu, kamu menjalankan perintah `cd /tmp` untuk berpindah ke direktori `/tmp`, yaitu folder khusus yang biasanya dipakai oleh sistem untuk menyimpan file sementara. Setelah berpindah, perintah `ls -a` digunakan untuk menampilkan semua isi folder, termasuk file atau folder tersembunyi yang namanya diawali dengan titik (.). Contohnya, di `/tmp` terdapat folder tersembunyi `.X11-unix` dan beberapa file sistem yang penting. Dengan perintah-perintah ini, kamu dapat dengan mudah berpindah tempat dan melihat isi folder baik yang terlihat maupun tersembunyi.
 
 
 #Penjelasan Struktur Baris /etc/passwd
@@ -180,7 +182,7 @@ Dari praktikum manajemen file dan permission di Linux dapat disimpulkan bahwa si
    
  Perintah chmod (change mode) berfungsi untuk mengubah hak akses atau permission pada file dan direktori di sistem Linux. Dengan chmod, pengguna dapat menentukan siapa yang boleh membaca (read), menulis (write), atau mengeksekusi (execute) suatu file, baik untuk pemilik (user), grup (group), maupun pengguna lain (others).
 
-3. Apa arti dari kode permission`rwxr-xr--`?
+2. Apa arti dari kode permission`rwxr-xr--`?
    **Jawaban:**
    
  Kode rwxr-xr-- menunjukkan hak akses file atau direktori:
@@ -197,9 +199,10 @@ Perintah chown digunakan untuk mengubah kepemilikan file atau direktori, baik pe
 
 ## Refleksi Diri
 Tuliskan secara singkat:
-- Apa bagian yang paling menantang minggu ini?  
-- Bagaimana cara Anda mengatasinya?  
-
+- Apa bagian yang paling menantang minggu ini?
+  Bagian yang paling menantang minggu ini dalam pembelajaran Linux file system permissions adalah memahami bagaimana sistem hak akses bekerja, terutama saat menggunakan perintah chmod dengan angka seperti 644, 600, atau 755. Angka-angka ini pada awalnya cukup membingungkan karena harus dikonversi dari kombinasi izin baca (read = 4), tulis (write = 2), dan eksekusi (execute = 1) untuk tiga jenis pengguna: pemilik, grup, dan pengguna lain. Tantangan lainnya adalah mengenali dampak perubahan izin tersebut terhadap keamanan dan aksesibilitas file.
+- Bagaimana cara Anda mengatasinya?
+  Untuk mengatasinya, saya mulai dengan membuat catatan tentang arti dari masing-masing angka dan mencoba menerapkannya secara langsung pada file yang saya buat sendiri. Saya menggunakan perintah chmod untuk mengubah izin, lalu mengeceknya kembali dengan ls -l agar bisa melihat perubahan secara langsung. Dengan praktik berulang dan mengamati hasilnya, saya menjadi lebih memahami bagaimana izin file bekerja dan bagaimana cara mengaturnya sesuai kebutuhan.
 ---
 
 **Credit:**  
