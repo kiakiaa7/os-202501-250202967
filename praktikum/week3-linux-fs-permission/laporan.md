@@ -193,8 +193,9 @@ Artinya, hanya pemilik file yang dapat mengedit atau menjalankan file, sementara
 
 3. Jelaskan perbedaan antara `chown` dan `chmod`.
    **Jawaban:**
-   
+
 Perintah chown digunakan untuk mengubah kepemilikan file atau direktori, baik pemilik (user) maupun grup-nya, sedangkan chmod digunakan untuk mengubah hak akses atau permission terhadap file atau direktori tersebut. Dengan kata lain, chown mengatur siapa yang memiliki file, sedangkan chmod mengatur apa yang boleh dilakukan terhadap file itu.
+
 ---
 
 ## Refleksi Diri
