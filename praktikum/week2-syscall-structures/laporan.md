@@ -1,5 +1,5 @@
 
-# Laporan Praktikum Minggu II
+# Laporan Praktikum Minggu 2
 Topik: Struktur System Call dan Fungsi Kernel
 
 ---
@@ -118,33 +118,39 @@ Sistem operasi memastikan transisi antara user mode dan kernel mode berjalan ama
 
 **Tabel observasi hasil eksperimen strace**
 
-| No | Perintah yang Dijalankan | System Call yang Terlihat | Fungsi System Call                 | Keterangan / Hasil Pengamatan                              |
-| -- | ------------------------ | ------------------------- | ---------------------------------- | ---------------------------------------------------------- |
-| 1  | `strace ls`              | `execve()`                | Menjalankan program baru (`ls`)    | Digunakan untuk memanggil program `ls` dari shell.         |
-| 2  | `strace ls`              | `openat()`                | Membuka file atau direktori        | Digunakan untuk membaca isi direktori sebelum ditampilkan. |
-| 3  | `strace ls`              | `read()`                  | Membaca data dari file atau buffer | Membaca isi direktori yang telah dibuka.                   |
-| 4  | `strace ls`              | `write()`                 | Menulis data ke terminal (stdout)  | Menampilkan hasil daftar file ke layar.                    |
-| 5  | `strace ls`              | `close()`                 | Menutup file descriptor            | Menutup file/direktori yang sudah dibaca.                  |
-| 6  | `strace echo "Halo"`     | `write()`                 | Menulis string ke output           | Menampilkan teks “Halo” ke terminal.                       |
-| 7  | `strace cat file.txt`    | `openat()`                | Membuka file `file.txt`            | File dibuka untuk dibaca oleh `cat`.                       |
-| 8  | `strace cat file.txt`    | `read()`                  | Membaca isi file                   | Membaca isi `file.txt` ke buffer.                          |
-| 9  | `strace cat file.txt`    | `write()`                 | Menulis isi file ke layar          | Menampilkan isi file di terminal.                          |
-| 10 | `strace uname -a`        | `uname()`                 | Mengambil informasi sistem         | Menampilkan detail kernel dan sistem operasi.              |
+| No | System Call                                                         | Parameter Utama                    | Hasil / Return Value                      | Keterangan / Fungsi                                     |                                      |                                    |
+| -- | ------------------------------------------------------------------- | ---------------------------------- | ----------------------------------------- | ------------------------------------------------------- | ------------------------------------ | ---------------------------------- |
+| 1  | `execve("/usr/bin/ls", ["ls"], ...)`                                | Menjalankan program `/usr/bin/ls`  | `= 0`                                     | Memulai eksekusi program `ls`                           |                                      |                                    |
+| 2  | `brk(NULL)`                                                         | -                                  | `= 0x59656cad7000`                        | Mengatur atau mengambil posisi akhir segmen data (heap) |                                      |                                    |
+| 3  | `mmap(NULL, 8192, PROT_READ                                         | PROT_WRITE, MAP_PRIVATE            | MAP_ANONYMOUS, -1, 0)`                    | Alokasi memori anonim                                   | `= 0x7ba119567000`                   | Memetakan area memori untuk proses |
+| 4  | `access("/etc/ld.so.preload", R_OK)`                                | Mengecek file preload              | `= -1 ENOENT (No such file or directory)` | File preload tidak ditemukan                            |                                      |                                    |
+| 5  | `openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY                      | O_CLOEXEC)`                        | Membuka file cache linker dinamis         | `= 3`                                                   | Berhasil membuka file cache          |                                    |
+| 6  | `fstat(3, {...})`                                                   | Mengambil status file descriptor 3 | `= 0`                                     | Berhasil membaca informasi file                         |                                      |                                    |
+| 7  | `mmap(NULL, 17575, PROT_READ, MAP_PRIVATE, 3, 0)`                   | Memetakan file ke memori           | `= 0x7ba119562000`                        | Digunakan oleh dynamic linker                           |                                      |                                    |
+| 8  | `openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libselinux.so.1", O_RDONLY | O_CLOEXEC)`                        | Membuka library selinux                   | `= 3`                                                   | Library sistem berhasil dibuka       |                                    |
+| 9  | `read(3, "177ELF...", 832)`                                         | Membaca isi file library           | `= 832`                                   | Membaca header ELF dari library                         |                                      |                                    |
+| 10 | `mmap(NULL, 181960, PROT_READ, MAP_PRIVATE, 3, 0)`                  | Memetakan library ke memori        | `= 0x7ba119535000`                        | Memuat library `libselinux.so.1`                        |                                      |                                    |
+| 11 | `openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY       | O_CLOEXEC)`                        | Membuka library utama libc                | `= 3`                                                   | Library C standar berhasil dibuka    |                                    |
+| 12 | `mmap(NULL, 2170256, PROT_READ, MAP_PRIVATE, 3, 0)`                 | Memetakan `libc.so.6` ke memori    | `= 0x7ba119228000`                        | Memuat fungsi-fungsi dasar C ke memori                  |                                      |                                    |
+| 13 | `openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libcpre2-8.so.0", O_RDONLY | O_CLOEXEC)`                        | Membuka library tambahan                  | `= 3`                                                   | Library regex atau C tambahan dimuat |                                    |
+
 
 **Tabel observasi hasil eksperimen dmesg**
+| No | Waktu (detik) | Komponen / Proses      | Pesan Log / Keterangan                                                    | Keterangan Tambahan                                          |
+| -- | ------------- | ---------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| 1  | 5.137236      | `kvm_intel`            | Using Hyper-V Enlightened VMCS                                            | Sistem virtualisasi Intel KVM menggunakan fitur Hyper-V      |
+| 2  | 5.276021      | `intel_rapl_msr`       | PL4 support detected                                                      | Dukungan power limit (PL4) Intel terdeteksi                  |
+| 3  | 6.438310      | `WSL (217)`            | ERROR: CheckConnection: getaddrinfo() failed: -5                          | Terjadi error koneksi pada subsystem WSL                     |
+| 4  | 7.206783      | `systemd-journald[43]` | Journal file uses a different sequence number ID, rotating                | File log jurnal berbeda ID, dilakukan rotasi log             |
+| 5  | 24.441361     | `systemd-journald[43]` | Time jumped backwards, rotating                                           | Waktu sistem mundur, dilakukan rotasi log                    |
+| 6  | 48.352914     | `hv_balloon`           | Max. dynamic memory size: 3942 MB                                         | Memori dinamis maksimum pada Hyper-V sebesar 3942 MB         |
+| 7  | 48.512153     | `systemd-journald[43]` | Time jumped backwards, rotating                                           | Waktu sistem mundur kembali, rotasi log ulang                |
+| 8  | 72.589832     | `systemd-journald[43]` | Time jumped backwards, rotating                                           | Waktu mundur lagi, rotasi log berulang                       |
+| 9  | 189.867356    | `TCP: eth0`            | Driver has suspect GRO implementation, TCP performance may be compromised | Implementasi GRO mencurigakan, kinerja TCP mungkin terganggu |
+| 10 | 646.493119    | `mini_init (201)`      | drop_caches: 1                                                            | Cache memori dibersihkan oleh sistem                         |
 
-| No | Perintah yang Dijalankan | Pesan / Output `dmesg` | Makna / Fungsi Pesan                                     | Keterangan / Pengamatan         |                                                            |
-| -- | ------------------------ | ---------------------- | -------------------------------------------------------- | ------------------------------- | ---------------------------------------------------------- |
-| 1  | `dmesg                   | head`                  | `[    0.000000] Linux version 6.8.0 ...`                 | Informasi versi kernel Linux    | Menunjukkan kernel yang sedang dijalankan sistem.          |
-| 2  | `dmesg                   | grep CPU`              | `[    0.123456] CPU0: Intel(R) Core(TM)...`              | Deteksi dan inisialisasi CPU    | Kernel mendeteksi dan menginisialisasi prosesor saat boot. |
-| 3  | `dmesg                   | grep memory`           | `[    0.654321] Memory: 4096MB available...`             | Informasi alokasi memori        | Kernel melaporkan jumlah memori fisik yang tersedia.       |
-| 4  | `dmesg                   | grep usb`              | `[    2.345678] usb 1-1: new high-speed USB device...`   | Deteksi perangkat USB           | Kernel mendeteksi perangkat USB baru yang terhubung.       |
-| 5  | `dmesg                   | grep eth`              | `[    3.456789] eth0: link is up...`                     | Inisialisasi antarmuka jaringan | Kernel melaporkan status koneksi jaringan aktif.           |
-| 6  | `dmesg                   | grep sda`              | `[    1.234567] sda: sda1 sda2`                          | Deteksi dan partisi disk        | Kernel mengenali drive penyimpanan utama.                  |
-| 7  | `dmesg                   | tail`                  | `[  123.456789] usb 1-1: USB disconnect...`              | Perangkat USB dilepas           | Kernel memberi tahu bahwa perangkat USB telah dicabut.     |
-| 8  | `dmesg                   | grep error`            | `[  45.678901] ata1: COMRESET failed`                    | Peringatan atau error perangkat | Kernel melaporkan adanya kesalahan perangkat keras.        |
-| 9  | `dmesg                   | grep driver`           | `[   4.567890] Loaded driver e1000e`                     | Pemanggilan driver perangkat    | Kernel memuat driver untuk perangkat tertentu.             |
-| 10 | `dmesg -T                | tail`                  | `[Thu Oct 16 23:14:02 2025] audit: type=1400 audit(...)` | Log keamanan sistem (audit)     | Menampilkan aktivitas keamanan sistem oleh kernel.         |
+
+         |
 
 ---
 
