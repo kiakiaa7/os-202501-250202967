@@ -150,7 +150,7 @@ Sistem operasi memastikan transisi antara user mode dan kernel mode berjalan ama
 | 10 | 646.493119    | `mini_init (201)`      | drop_caches: 1                                                            | Cache memori dibersihkan oleh sistem                         |
 
 
-         |
+      
 
 ---
 
