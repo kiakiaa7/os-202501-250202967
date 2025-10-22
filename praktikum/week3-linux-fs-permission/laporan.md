@@ -97,6 +97,8 @@ Manajemen file dan permission di Linux merupakan bagian penting dari sistem oper
 ---
 ## Kode / Perintah
 Tuliskan potongan kode atau perintah utama:
+
+
 pwd
 ls -l
 cd /tmp
