@@ -94,6 +94,7 @@ strace -e trace=open,read,write,close cat/etc/passwd
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
 ![Screenshot hasil](screenshots/Screenshotstracels.png)
+![Screenshot hasil](screenshots/Screenshotstracels2.png)
 ![Screenshot hasil](screenshots/Screenshotsyscall2.png) 
 ![Screenshot hasil](screenshots/Screenshotsystemcall3.png) 
 ![Screenshot hasil](screenshots/ScreenshotsyscallDiagram.png)
