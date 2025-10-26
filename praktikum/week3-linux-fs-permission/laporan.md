@@ -122,11 +122,9 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ## Analisis
 
-Baik! Berdasarkan **screenshot terminal Linux (WSL)** yang kamu lampirkan, berikut penjelasan lengkapnya untuk **hasil eksperimen 1, 2, dan 3**, isi file `/etc/passwd`, serta **analisis chmod**.
-
 ---
 
-### ⚙️ **Eksperimen 1**
+### **Eksperimen 1**
 
 **Perintah yang dijalankan:**
 
@@ -137,7 +135,7 @@ cd /tmp
 ls -a
 ```
 
-**Penjelasan:**
+**penjelasan** : 
 
 * `pwd` → Menampilkan *working directory* saat ini (`/home/kiaarwrr`).
 * `ls -l` → Menampilkan daftar file dengan format *long listing*, termasuk permission, owner, grup, dan waktu modifikasi.
@@ -157,7 +155,7 @@ Itu adalah direktori sementara milik berbagai *service systemd*.
 
 ---
 
-### ⚙️ **Eksperimen 2**
+### **Eksperimen 2**
 
 **Perintah yang dijalankan:**
 
@@ -199,7 +197,7 @@ username:password:UID:GID:comment/home directory:shell
 
 ---
 
-### ⚙️ **Eksperimen 3**
+### **Eksperimen 3**
 
 **Perintah yang dijalankan:**
 
