@@ -122,12 +122,153 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ## Analisis
 
-Perintah pertama yaitu `pwd` digunakan untuk mengetahui direktori aktif atau lokasi kamu berada saat ini di sistem file. Misalnya, hasilnya menunjukkan `/home/kiaarawrr`, yang berarti kamu sedang berada di dalam folder rumah pengguna dengan nama kiaarawrr. Mengetahui direktori aktif penting supaya kamu tidak bingung saat menjalankan perintah lain yang bergantung pada lokasi tersebut.
+Baik! Berdasarkan **screenshot terminal Linux (WSL)** yang kamu lampirkan, berikut penjelasan lengkapnya untuk **hasil eksperimen 1, 2, dan 3**, isi file `/etc/passwd`, serta **analisis chmod**.
 
-Kemudian, perintah `ls -l` digunakan untuk melihat daftar isi folder secara rinci. Perintah ini menampilkan nama file atau folder beserta informasi tambahan seperti ukuran file, tanggal pembuatan atau modifikasi, dan hak akses (permissions) yang dimiliki file tersebut. Dengan cara ini, kamu bisa mengetahui lebih banyak detail tentang isi direktori saat ini, misalnya apakah sebuah file bisa dibaca atau ditulis oleh pengguna.
+---
 
-Setelah itu, kamu menjalankan perintah `cd /tmp` untuk berpindah ke direktori `/tmp`, yaitu folder khusus yang biasanya dipakai oleh sistem untuk menyimpan file sementara. Setelah berpindah, perintah `ls -a` digunakan untuk menampilkan semua isi folder, termasuk file atau folder tersembunyi yang namanya diawali dengan titik (.). Contohnya, di `/tmp` terdapat folder tersembunyi `.X11-unix` dan beberapa file sistem yang penting. Dengan perintah-perintah ini, kamu dapat dengan mudah berpindah tempat dan melihat isi folder baik yang terlihat maupun tersembunyi.
+### ⚙️ **Eksperimen 1**
 
+**Perintah yang dijalankan:**
+
+```bash
+pwd
+ls -l
+cd /tmp
+ls -a
+```
+
+**Penjelasan:**
+
+* `pwd` → Menampilkan *working directory* saat ini (`/home/kiaarwrr`).
+* `ls -l` → Menampilkan daftar file dengan format *long listing*, termasuk permission, owner, grup, dan waktu modifikasi.
+* `cd /tmp` → Pindah ke direktori `/tmp` (direktori sementara di Linux).
+* `ls -a` → Menampilkan semua file termasuk yang tersembunyi (`.` dan `..`).
+
+**Hasil:**
+Kamu berada di `/tmp`, dan terlihat beberapa direktori sistem seperti:
+
+```
+.X11-unix
+snap-private-tmp
+systemd-private-...
+```
+
+Itu adalah direktori sementara milik berbagai *service systemd*.
+
+---
+
+### ⚙️ **Eksperimen 2**
+
+**Perintah yang dijalankan:**
+
+```bash
+cat /etc/passwd | head -n 5
+```
+
+**Penjelasan:**
+
+* `cat /etc/passwd` → Menampilkan isi file `/etc/passwd`, yaitu daftar seluruh user di sistem Linux.
+* `| head -n 5` → Menampilkan hanya 5 baris pertama.
+
+**Hasil (5 baris pertama):**
+
+```
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin/nologin
+bin:x:2:2:bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+```
+
+**Struktur /etc/passwd:**
+Format setiap baris:
+
+```
+username:password:UID:GID:comment/home directory:shell
+```
+
+**Penjelasan tiap kolom:**
+
+1. **username** → Nama user, misalnya `root`
+2. **password** → Biasanya `x`, artinya password disimpan di `/etc/shadow`
+3. **UID (User ID)** → Nomor identitas unik user (root = 0)
+4. **GID (Group ID)** → Nomor grup utama user
+5. **comment** → Deskripsi (biasanya kosong atau nama user)
+6. **home directory** → Lokasi folder home user
+7. **shell** → Shell default user (`/bin/bash`, `/usr/sbin/nologin`, dll)
+
+---
+
+### ⚙️ **Eksperimen 3**
+
+**Perintah yang dijalankan:**
+
+```bash
+echo "Hello <NAME><NIM>" > percobaan.txt
+ls -l percobaan.txt
+chmod 600 percobaan.txt
+ls -l percobaan.txt
+sudo chown root percobaan.txt
+ls -l percobaan.txt
+```
+
+**Penjelasan langkah demi langkah:**
+
+1. `echo "Hello <NAME><NIM>" > percobaan.txt`
+   → Membuat file bernama `percobaan.txt` berisi teks “Hello <NAME><NIM>”.
+
+2. `ls -l percobaan.txt`
+   → Menampilkan detail file, contoh awalnya:
+
+   ```
+   -rw-r--r-- 1 kiaarwrr kiaarwrr ...
+   ```
+
+   Artinya:
+
+   * Owner = `kiaarwrr`
+   * Group = `kiaarwrr`
+   * Permission = `rw-r--r--` (owner boleh baca/tulis, group dan others hanya baca)
+
+3. `chmod 600 percobaan.txt`
+   → Mengubah permission menjadi:
+
+   ```
+   -rw------- 
+   ```
+
+   Hanya **pemilik** yang boleh membaca dan menulis, **tidak ada akses** untuk group dan others.
+
+4. `sudo chown root percobaan.txt`
+   → Mengubah pemilik file dari `kiaarwrr` menjadi `root`.
+
+   Setelah perintah ini:
+
+   ```
+   -rw------- 1 root kiaarwrr ...
+   ```
+
+   Jadi **root** menjadi pemilik file, sedangkan group tetap `kiaarwrr`.
+
+---
+
+### 🔍 **Analisis Perbedaan Sebelum dan Sesudah chmod**
+
+| Kondisi                 | Permission  | Makna                                           | Akses                                     |
+| ----------------------- | ----------- | ----------------------------------------------- | ----------------------------------------- |
+| **Sebelum** `chmod 600` | `rw-r--r--` | Owner bisa baca/tulis, group & others bisa baca | Dapat dibaca oleh semua user              |
+| **Sesudah** `chmod 600` | `rw-------` | Hanya owner bisa baca/tulis                     | Lebih aman, hanya pemilik yang bisa akses |
+
+---
+
+###  **Kesimpulan**
+
+* Eksperimen 1 mempelajari navigasi direktori dan melihat isi direktori sistem.
+* Eksperimen 2 memperlihatkan struktur data user di sistem Linux melalui file `/etc/passwd`.
+* Eksperimen 3 mempraktikkan pembuatan file, pengaturan izin akses (`chmod`), dan perubahan kepemilikan (`chown`).
+* `chmod 600` memperkuat keamanan file dengan membatasi akses hanya untuk pemilik.
+
+---
 
 #Penjelasan Struktur Baris /etc/passwd
 | Kolom          | Nilai               | Penjelasan                           |
@@ -166,9 +307,17 @@ Setelah itu, kamu menjalankan perintah `cd /tmp` untuk berpindah ke direktori `/
 | Privasi       | 🔓 Bisa diakses user lain | 🔒 Lebih aman   | Cocok untuk file sensitif    |
 
 
-
 ---
 
+## Peran chmod dan chown dalam keamanan sistem linux
+
+* **`chmod` (change mode)** digunakan untuk **mengatur hak akses** file atau direktori bagi **owner, group, dan others**. Dengan `chmod`, administrator atau pemilik file bisa menentukan siapa yang boleh membaca, menulis, atau mengeksekusi file, sehingga mencegah pengguna yang tidak berwenang melakukan perubahan atau menjalankan file sensitif.
+
+* **`chown` (change owner)** digunakan untuk **mengubah kepemilikan file atau direktori**, baik pada **user** maupun **group**. Dengan pengaturan kepemilikan yang tepat, hanya user atau group tertentu yang memiliki kontrol penuh terhadap file, sehingga keamanan data lebih terjaga dan risiko akses ilegal dapat dikurangi.
+
+kesimpulannya, **`chmod` dan `chown` bekerja sama** untuk memastikan bahwa hanya pengguna yang berhak yang dapat mengakses atau memodifikasi file, sehingga **menjaga keamanan dan integritas sistem Linux**.
+
+---
 ## Kesimpulan
 
 Dari praktikum manajemen file dan permission di Linux dapat disimpulkan bahwa sistem operasi Linux memiliki mekanisme yang terstruktur dalam mengelola file dan hak akses pengguna. Melalui perintah seperti `ls -l`, `chmod`, `chown`, dan `chgrp`, pengguna dapat mengatur izin serta kepemilikan file untuk menjaga keamanan dan keteraturan sistem. Pemahaman terhadap konsep *read*, *write*, dan *execute* pada level *user*, *group*, dan *others* sangat penting agar setiap file hanya dapat diakses oleh pihak yang berhak. Dengan demikian, manajemen file dan permission di Linux berperan besar dalam menjaga integritas data, keamanan sistem, serta efisiensi penggunaan sumber daya komputer.
