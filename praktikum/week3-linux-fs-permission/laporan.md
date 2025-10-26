@@ -266,43 +266,12 @@ ls -l percobaan.txt
 * Eksperimen 3 mempraktikkan pembuatan file, pengaturan izin akses (`chmod`), dan perubahan kepemilikan (`chown`).
 * `chmod 600` memperkuat keamanan file dengan membatasi akses hanya untuk pemilik.
 
----
-
-#Penjelasan Struktur Baris /etc/passwd
-| Kolom          | Nilai               | Penjelasan                           |
-| -------------- | ------------------- | ------------------------------------ |
-| Username       | `daemon`            | Nama user                            |
-| Password field | `x`                 | Kata sandi disimpan di `/etc/shadow` |
-| UID            | `1`                 | User ID                              |
-| GID            | `1`                 | Group ID                             |
-| Deskripsi      | `daemon`            | Deskripsi (kadang nama lengkap)      |
-| Home           | `/usr/sbin`         | Direktori "rumah" user               |
-| Shell          | `/usr/sbin/nologin` | Shell default, tidak bisa login      |
-
-
-#sebelum chmod
-| Bagian         | Nilai        | Arti                                           |
-| -------------- | ------------ | ---------------------------------------------- |
-| `-rw-r--r--`   | Izin akses   | Pemilik: read+write, Grup: read, Lainnya: read |
-| `kiaarawrr`    | Pemilik file | User yang membuat file                         |
-| `36`           | Ukuran byte  | Ukuran file (36 karakter)                      |
-| `Oct 21 23:03` | Waktu dibuat | Tanggal dan jam                                |
-
 
 | Sebelum (`-rw-r--r--`) | Sesudah (`-rw-------`) |
 | ---------------------- | ---------------------- |
 | Owner bisa read+write  | Sama                   |
 | Group bisa read        | ❌ Tidak bisa akses     |
 | Other bisa read        | ❌ Tidak bisa akses     |
-
-
-##ANALISIS PERBEDAAN SEBELUM & SESUDAH chmod
-| Atribut       | Sebelum (`644`)           | Sesudah (`600`) | Dampak                       |
-| ------------- | ------------------------- | --------------- | ---------------------------- |
-| Akses Pemilik | `rw-`                     | `rw-`           | Tetap bisa baca & tulis      |
-| Akses Grup    | `r--`                     | `---`           | Tidak bisa baca file lagi    |
-| Akses Lainnya | `r--`                     | `---`           | Tidak bisa akses sama sekali |
-| Privasi       | 🔓 Bisa diakses user lain | 🔒 Lebih aman   | Cocok untuk file sensitif    |
 
 
 ---
