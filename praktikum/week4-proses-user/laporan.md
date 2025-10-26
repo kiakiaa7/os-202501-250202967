@@ -1,20 +1,24 @@
 
-# Laporan Praktikum Minggu [X]
-Topik: [Tuliskan judul topik, misalnya "Arsitektur Sistem Operasi dan Kernel"]
+# Laporan Praktikum Minggu 4
+Topik: Manajemen Proses dan User di Linux
 
 ---
 
 ## Identitas
-- **Nama**  : [Nama Mahasiswa]  
-- **NIM**   : [NIM Mahasiswa]  
-- **Kelas** : [Kelas]
+- **Nama**  : SASKIA ISTIQOMAH
+- **NIM**   : 250202967 
+- **Kelas** : 1IKRA
 
 ---
 
 ## Tujuan
-Tuliskan tujuan praktikum minggu ini.  
-Contoh:  
-> Mahasiswa mampu menjelaskan fungsi utama sistem operasi dan peran kernel serta system call.
+Setelah menyelesaikan tugas ini, mahasiswa mampu:
+
+1. Menjelaskan konsep proses dan user dalam sistem operasi Linux.
+2. Menampilkan daftar proses yang sedang berjalan dan statusnya.
+3. Menggunakan perintah untuk membuat dan mengelola user.
+4. Menghentikan atau mengontrol proses tertentu menggunakan PID.
+5. Menjelaskan kaitan antara manajemen user dan keamanan sistem
 
 ---
 
@@ -34,9 +38,17 @@ Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
 ## Kode / Perintah
 Tuliskan potongan kode atau perintah utama:
 ```bash
-uname -a
-lsmod | head
-dmesg | head
+whoami
+id
+groups
+sudo adduser praktikan
+sudo passwd praktikan
+ps aux | head -10
+top -n 1
+sleep 1000 &
+ps aux | grep sleep
+kill <PID>
+pstree -p | head -20
 ```
 
 ---
@@ -60,11 +72,11 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 ---
 
 ## Quiz
-1. [Pertanyaan 1]  
+1. Apa fungsi dari proses init atau systemd dalam sistem Linux?
    **Jawaban:**  
-2. [Pertanyaan 2]  
+2. Apa perbedaan antara kill dan killall? 
    **Jawaban:**  
-3. [Pertanyaan 3]  
+3. Mengapa user root memiliki hak istimewa di sistem Linux? 
    **Jawaban:**  
 
 ---
