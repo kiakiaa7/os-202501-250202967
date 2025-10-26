@@ -41,13 +41,18 @@ Tuliskan potongan kode atau perintah utama:
 whoami
 id
 groups
+
 sudo adduser praktikan
 sudo passwd praktikan
+
 ps aux | head -10
 top -n 1
+
 sleep 1000 &
 ps aux | grep sleep
+
 kill <PID>
+
 pstree -p | head -20
 ```
 
