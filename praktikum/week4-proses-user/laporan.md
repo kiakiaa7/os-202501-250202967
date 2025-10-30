@@ -248,8 +248,6 @@ kiararwrr   518  0.0  0.0 2144 1164 pts/2 S 14:39 0:00 sleep 1000
 
 ---
 
----
-
 ## **Eksperimen 4**
 
  Fungsi:
@@ -272,9 +270,8 @@ systemd(1)─┬─agetty(193)
 * *`systemd(1)`* → proses dengan *PID 1*, merupakan *proses induk (parent process)* untuk semua proses lain di sistem.
 * Setiap proses lain (seperti `cron`, `dbus-daemon`, `bash`, dll) adalah *anak (child process)* dari `systemd`.
 
-
-
 ---
+ANALISIS
 - Dokumentasikan hasil semua perintah dan jelaskan fungsi tiap perintah.
 - Gambarkan hierarki proses dalam bentuk diagram pohon (pstree) di laporan.
 - Jelaskan hubungan antara user management dan keamanan sistem Linux.
