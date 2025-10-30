@@ -135,7 +135,7 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ## **Eksperimen 1**
 
-### 1. `whoami`
+ `whoami`
 
 Output:
 
@@ -148,7 +148,7 @@ Hasilnya menunjukkan bahwa user aktif saat ini adalah `kiararwrr`.
 
 ---
 
-### 2. `id`
+ `id`
 
 Output :
 
@@ -165,10 +165,8 @@ Menampilkan *identitas lengkap user*:
 
 Artinya, user `kiararwrr` adalah bagian dari grup `sudo`, sehingga bisa menjalankan perintah dengan hak administrator.
 
----
-
-###  3. `groups`
-
+ `groups`
+ 
 Output:
 
 ```
@@ -183,8 +181,7 @@ Grup menentukan hak akses terhadap file dan perintah tertentu.
 
 ##  **Eksperimen 2**
 
-###  `ps aux | head -10`
-
+`ps aux | head -10`
 Fungsi:
 Menampilkan *daftar proses yang sedang berjalan*, tapi hanya 10 baris pertama.
 
@@ -213,7 +210,7 @@ Artinya proses dengan `PID=1` dijalankan oleh `root`, statusnya `Ss`, dan merupa
 
 ---
 
-###  `top -n 1`
+`top -n 1`
 Fungsi:
 Menampilkan **ringkasan aktivitas sistem dan daftar proses secara real-time**, tapi hanya **sekali tampilan** (`-n 1`).
 
@@ -229,7 +226,7 @@ Bagian penting dari output:
 
 ##  **Eksperimen 3**
 
-###  **Penjelasan:**
+**Penjelasan:**
 
 1. `sleep 1000 &`
    Menjalankan proses `sleep` selama 1000 detik **di background**.
@@ -255,8 +252,7 @@ kiararwrr   518  0.0  0.0 2144 1164 pts/2 S 14:39 0:00 sleep 1000
 
 ## **Eksperimen 4**
 
-###  Fungsi:
-
+ Fungsi:
 Menampilkan *struktur pohon (tree)* dari semua proses di sistem beserta PID-nya.
 
 Contoh hasil (potongan):
@@ -269,7 +265,6 @@ systemd(1)─┬─agetty(193)
             ├─login(286)───bash(357)
             └─...
 ```
-
 ---
 
 ###  Penjelasan:
