@@ -226,8 +226,6 @@ Bagian penting dari output:
 
 ##  **Eksperimen 3**
 
-**Penjelasan:**
-
 1. `sleep 1000 &`
    Menjalankan proses `sleep` selama 1000 detik **di background**.
    Simbol `&` artinya proses dijalankan di latar belakang.
@@ -263,10 +261,6 @@ systemd(1)─┬─agetty(193)
             ├─login(286)───bash(357)
             └─...
 ```
----
-
-###  Penjelasan:
-
 * *`systemd(1)`* → proses dengan *PID 1*, merupakan *proses induk (parent process)* untuk semua proses lain di sistem.
 * Setiap proses lain (seperti `cron`, `dbus-daemon`, `bash`, dll) adalah *anak (child process)* dari `systemd`.
 
