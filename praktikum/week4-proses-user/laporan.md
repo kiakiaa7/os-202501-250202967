@@ -131,7 +131,8 @@ pstree -p | head -20
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/ScreenshotWeek4_1.png)
+![Screenshot hasil](screenshots/ScreenshotWeek4_2.png)
 
 ---
 
