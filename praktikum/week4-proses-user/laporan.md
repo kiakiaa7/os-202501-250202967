@@ -94,11 +94,6 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
    git commit -m "Minggu 4 - Manajemen Proses & User"
    git push origin main
    ```
-
----
-
-
-
 ---
 
 ## Kode / Perintah
