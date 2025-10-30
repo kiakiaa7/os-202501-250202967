@@ -139,13 +139,6 @@ Sertakan screenshot hasil percobaan atau diagram:
 ## Analisis 
 
 ## **Eksperimen 1**
-
-### Perintah yang digunakan:
-
-1. `whoami`
-2. `id`
-3. `groups`
-
 ---
 
 ### 1. `whoami`
