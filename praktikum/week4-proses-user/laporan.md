@@ -137,6 +137,224 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis 
+
+## **Eksperimen 1**
+
+### Perintah yang digunakan:
+
+1. `whoami`
+2. `id`
+3. `groups`
+
+---
+
+### *1. `whoami`*
+
+Output:
+
+```
+kiararwrr
+```
+
+*Fungsi:*
+Menampilkan *nama user yang sedang aktif/login ke sistem.
+Hasilnya menunjukkan bahwa user aktif saat ini adalah `kiararwrr`.
+
+---
+
+### *2. `id`*
+
+Output :
+
+```
+uid=1000(kiararwrr) gid=1000(kiararwrr) groups=1000(kiararwrr),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)
+```
+
+*Fungsi:*
+Menampilkan **identitas lengkap user**:
+
+* `uid` → User ID (1000)
+* `gid` → Group ID utama (1000)
+* `groups` → Daftar grup yang diikuti user
+
+Artinya, user `kiararwrr` adalah bagian dari grup `sudo`, sehingga bisa menjalankan perintah dengan hak administrator.
+
+---
+
+###  **3. `groups`**
+
+**Output:**
+
+```
+kiararwrr adm cdrom sudo dip plugdev users
+```
+
+**Fungsi:**
+Menampilkan **semua grup** yang diikuti oleh user `kiararwrr`.
+Grup menentukan hak akses terhadap file dan perintah tertentu.
+
+---
+
+**Kesimpulan Eksperimen 1:**
+Kita berhasil memverifikasi identitas user, ID, dan grup yang dimiliki. User `kiararwrr` memiliki hak `sudo` yang memungkinkan penggunaan perintah administratif.
+
+---
+
+##  **Eksperimen 2: Melihat Proses Aktif di Sistem**
+
+###  Perintah yang digunakan:
+
+```
+ps aux | head -10
+top -n 1
+```
+
+---
+
+###  **`ps aux | head -10`**
+
+**Fungsi:**
+Menampilkan **daftar proses yang sedang berjalan**, tapi hanya 10 baris pertama.
+
+**Kolom penting:**
+
+| Kolom     | Arti                                                    |
+| --------- | ------------------------------------------------------- |
+| `USER`    | Nama user pemilik proses                                |
+| `PID`     | Process ID (nomor unik proses)                          |
+| `%CPU`    | Persentase penggunaan CPU oleh proses                   |
+| `%MEM`    | Persentase penggunaan memori                            |
+| `VSZ`     | Ukuran virtual memory yang digunakan (dalam KB)         |
+| `RSS`     | Memori fisik yang digunakan proses                      |
+| `TTY`     | Terminal tempat proses berjalan                         |
+| `STAT`    | Status proses (S = Sleep, R = Running, Z = Zombie, dsb) |
+| `TIME`    | Total waktu CPU yang digunakan                          |
+| `COMMAND` | Nama atau path program yang dijalankan                  |
+
+Contoh:
+
+```
+root         1  0.0  0.3  21656 12164 ? Ss 14:25 0:00 /sbin/init
+```
+
+Artinya proses dengan `PID=1` dijalankan oleh `root`, statusnya `Ss`, dan merupakan proses **init/systemd** (proses induk dari semua proses lain di Linux).
+
+---
+
+###  **`top -n 1`**
+
+**Fungsi:**
+Menampilkan **ringkasan aktivitas sistem dan daftar proses secara real-time**, tapi hanya **sekali tampilan** (`-n 1`).
+
+**Bagian penting dari output:**
+
+* **Load average:** beban sistem (semakin kecil semakin ringan)
+* **Tasks:** jumlah proses aktif, tidur, dan zombie
+* **%Cpu(s):** penggunaan CPU total
+* **MiB Mem/Swap:** penggunaan memori dan swap
+* **Tabel bawah:** daftar proses (dengan kolom sama seperti `ps aux`)
+
+---
+
+**Kesimpulan Eksperimen 2:**
+Kedua perintah (`ps` dan `top`) digunakan untuk **memantau proses sistem** dan melihat konsumsi CPU/memori oleh setiap proses.
+
+---
+
+##  **Eksperimen 3: Membuat dan Mencatat Proses `sleep`**
+
+###  Perintah yang digunakan:
+
+```
+sleep 1000 &
+ps aux | grep sleep
+kill <PID>
+```
+
+---
+
+###  **Penjelasan:**
+
+1. `sleep 1000 &`
+   Menjalankan proses `sleep` selama 1000 detik **di background**.
+   Simbol `&` artinya proses dijalankan di latar belakang.
+
+2. `ps aux | grep sleep`
+   Mencari proses yang mengandung kata “sleep” di daftar proses aktif.
+
+**Output:**
+
+```
+kiararwrr   518  0.0  0.0 2144 1164 pts/2 S 14:39 0:00 sleep 1000
+```
+
+**PID proses sleep = 518**
+
+3. `kill 518`
+   Menghentikan proses `sleep` yang sedang berjalan menggunakan PID-nya.
+
+---
+
+**Kesimpulan Eksperimen 3:**
+Kita berhasil membuat proses background (`sleep`) dan memverifikasi **PID**-nya, kemudian menghentikannya dengan `kill`.
+
+---
+
+## **Eksperimen 4**
+
+### Perintah yang digunakan:
+
+```
+pstree -p | head -20
+```
+
+---
+
+###  **Fungsi:**
+
+Menampilkan **struktur pohon (tree)** dari semua proses di sistem beserta PID-nya.
+
+**Contoh hasil (potongan):**
+
+```
+systemd(1)─┬─agetty(193)
+            ├─cron(158)
+            ├─dbus-daemon(159)
+            ├─init(systemd)(2)
+            ├─login(286)───bash(357)
+            └─...
+```
+
+---
+
+###  **Penjelasan:**
+
+* **`systemd(1)`** → proses dengan **PID 1**, merupakan **proses induk (parent process)** untuk semua proses lain di sistem.
+* Setiap proses lain (seperti `cron`, `dbus-daemon`, `bash`, dll) adalah **anak (child process)** dari `systemd`.
+
+---
+
+**Kesimpulan Eksperimen 4:**
+Dari tampilan `pstree`, kita dapat melihat struktur hierarki proses di Linux. Proses **induk utama adalah `systemd` (PID 1)**, dan semua proses lain diturunkan darinya.
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
 - Dokumentasikan hasil semua perintah dan jelaskan fungsi tiap perintah.
 - Gambarkan hierarki proses dalam bentuk diagram pohon (pstree) di laporan.
 - Jelaskan hubungan antara user management dan keamanan sistem Linux.
