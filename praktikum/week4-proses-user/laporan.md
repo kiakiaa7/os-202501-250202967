@@ -148,21 +148,20 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ---
 
-### *1. `whoami`*
+### 1. `whoami`
 
 Output:
 
 ```
 kiararwrr
 ```
-
-*Fungsi:*
+Fungsi:
 Menampilkan *nama user yang sedang aktif/login ke sistem.
 Hasilnya menunjukkan bahwa user aktif saat ini adalah `kiararwrr`.
 
 ---
 
-### *2. `id`*
+### 2. `id`
 
 Output :
 
@@ -170,8 +169,8 @@ Output :
 uid=1000(kiararwrr) gid=1000(kiararwrr) groups=1000(kiararwrr),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)
 ```
 
-*Fungsi:*
-Menampilkan **identitas lengkap user**:
+Fungsi:
+Menampilkan *identitas lengkap user*:
 
 * `uid` → User ID (1000)
 * `gid` → Group ID utama (1000)
@@ -181,26 +180,23 @@ Artinya, user `kiararwrr` adalah bagian dari grup `sudo`, sehingga bisa menjalan
 
 ---
 
-###  **3. `groups`**
+###  3. `groups`
 
-**Output:**
+Output:
 
 ```
 kiararwrr adm cdrom sudo dip plugdev users
 ```
 
-**Fungsi:**
-Menampilkan **semua grup** yang diikuti oleh user `kiararwrr`.
+Fungsi:
+Menampilkan *semua grup* yang diikuti oleh user `kiararwrr`.
 Grup menentukan hak akses terhadap file dan perintah tertentu.
 
 ---
 
-**Kesimpulan Eksperimen 1:**
-Kita berhasil memverifikasi identitas user, ID, dan grup yang dimiliki. User `kiararwrr` memiliki hak `sudo` yang memungkinkan penggunaan perintah administratif.
-
 ---
 
-##  **Eksperimen 2: Melihat Proses Aktif di Sistem**
+##  **Eksperimen 2**
 
 ###  Perintah yang digunakan:
 
@@ -211,10 +207,10 @@ top -n 1
 
 ---
 
-###  **`ps aux | head -10`**
+###  `ps aux | head -10`
 
-**Fungsi:**
-Menampilkan **daftar proses yang sedang berjalan**, tapi hanya 10 baris pertama.
+Fungsi:
+Menampilkan *daftar proses yang sedang berjalan*, tapi hanya 10 baris pertama.
 
 **Kolom penting:**
 
@@ -241,12 +237,11 @@ Artinya proses dengan `PID=1` dijalankan oleh `root`, statusnya `Ss`, dan merupa
 
 ---
 
-###  **`top -n 1`**
-
-**Fungsi:**
+###  `top -n 1`
+Fungsi:
 Menampilkan **ringkasan aktivitas sistem dan daftar proses secara real-time**, tapi hanya **sekali tampilan** (`-n 1`).
 
-**Bagian penting dari output:**
+Bagian penting dari output:
 
 * **Load average:** beban sistem (semakin kecil semakin ringan)
 * **Tasks:** jumlah proses aktif, tidur, dan zombie
@@ -256,12 +251,9 @@ Menampilkan **ringkasan aktivitas sistem dan daftar proses secara real-time**, t
 
 ---
 
-**Kesimpulan Eksperimen 2:**
-Kedua perintah (`ps` dan `top`) digunakan untuk **memantau proses sistem** dan melihat konsumsi CPU/memori oleh setiap proses.
-
 ---
 
-##  **Eksperimen 3: Membuat dan Mencatat Proses `sleep`**
+##  **Eksperimen 3**
 
 ###  Perintah yang digunakan:
 
@@ -282,7 +274,7 @@ kill <PID>
 2. `ps aux | grep sleep`
    Mencari proses yang mengandung kata “sleep” di daftar proses aktif.
 
-**Output:**
+Output:
 
 ```
 kiararwrr   518  0.0  0.0 2144 1164 pts/2 S 14:39 0:00 sleep 1000
@@ -294,9 +286,6 @@ kiararwrr   518  0.0  0.0 2144 1164 pts/2 S 14:39 0:00 sleep 1000
    Menghentikan proses `sleep` yang sedang berjalan menggunakan PID-nya.
 
 ---
-
-**Kesimpulan Eksperimen 3:**
-Kita berhasil membuat proses background (`sleep`) dan memverifikasi **PID**-nya, kemudian menghentikannya dengan `kill`.
 
 ---
 
@@ -310,11 +299,11 @@ pstree -p | head -20
 
 ---
 
-###  **Fungsi:**
+###  Fungsi:
 
-Menampilkan **struktur pohon (tree)** dari semua proses di sistem beserta PID-nya.
+Menampilkan *struktur pohon (tree)* dari semua proses di sistem beserta PID-nya.
 
-**Contoh hasil (potongan):**
+Contoh hasil (potongan):
 
 ```
 systemd(1)─┬─agetty(193)
@@ -327,30 +316,10 @@ systemd(1)─┬─agetty(193)
 
 ---
 
-###  **Penjelasan:**
+###  Penjelasan:
 
 * **`systemd(1)`** → proses dengan **PID 1**, merupakan **proses induk (parent process)** untuk semua proses lain di sistem.
 * Setiap proses lain (seperti `cron`, `dbus-daemon`, `bash`, dll) adalah **anak (child process)** dari `systemd`.
-
----
-
-**Kesimpulan Eksperimen 4:**
-Dari tampilan `pstree`, kita dapat melihat struktur hierarki proses di Linux. Proses **induk utama adalah `systemd` (PID 1)**, dan semua proses lain diturunkan darinya.
-
----
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
