@@ -149,7 +149,7 @@ Output:
 kiararwrr
 ```
 Fungsi:
-Menampilkan *nama user yang sedang aktif/login ke sistem.
+Menampilkan *nama user yang sedang aktif/login* ke sistem.
 Hasilnya menunjukkan bahwa user aktif saat ini adalah `kiararwrr`.
 
 ---
@@ -187,16 +187,7 @@ Grup menentukan hak akses terhadap file dan perintah tertentu.
 
 ---
 
----
-
 ##  **Eksperimen 2**
-
-###  Perintah yang digunakan:
-
-```
-ps aux | head -10
-top -n 1
-```
 
 ---
 
@@ -244,17 +235,7 @@ Bagian penting dari output:
 
 ---
 
----
-
 ##  **Eksperimen 3**
-
-###  Perintah yang digunakan:
-
-```
-sleep 1000 &
-ps aux | grep sleep
-kill <PID>
-```
 
 ---
 
@@ -284,12 +265,6 @@ kiararwrr   518  0.0  0.0 2144 1164 pts/2 S 14:39 0:00 sleep 1000
 
 ## **Eksperimen 4**
 
-### Perintah yang digunakan:
-
-```
-pstree -p | head -20
-```
-
 ---
 
 ###  Fungsi:
@@ -311,8 +286,8 @@ systemd(1)─┬─agetty(193)
 
 ###  Penjelasan:
 
-* **`systemd(1)`** → proses dengan **PID 1**, merupakan **proses induk (parent process)** untuk semua proses lain di sistem.
-* Setiap proses lain (seperti `cron`, `dbus-daemon`, `bash`, dll) adalah **anak (child process)** dari `systemd`.
+* *`systemd(1)`* → proses dengan *PID 1*, merupakan *proses induk (parent process)* untuk semua proses lain di sistem.
+* Setiap proses lain (seperti `cron`, `dbus-daemon`, `bash`, dll) adalah *anak (child process)* dari `systemd`.
 
 
 
