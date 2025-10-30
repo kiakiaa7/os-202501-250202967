@@ -134,7 +134,6 @@ Sertakan screenshot hasil percobaan atau diagram:
 ## Analisis 
 
 ## **Eksperimen 1**
----
 
 ### 1. `whoami`
 
@@ -184,8 +183,6 @@ Grup menentukan hak akses terhadap file dan perintah tertentu.
 
 ##  **Eksperimen 2**
 
----
-
 ###  `ps aux | head -10`
 
 Fungsi:
@@ -232,8 +229,6 @@ Bagian penting dari output:
 
 ##  **Eksperimen 3**
 
----
-
 ###  **Penjelasan:**
 
 1. `sleep 1000 &`
@@ -259,8 +254,6 @@ kiararwrr   518  0.0  0.0 2144 1164 pts/2 S 14:39 0:00 sleep 1000
 ---
 
 ## **Eksperimen 4**
-
----
 
 ###  Fungsi:
 
