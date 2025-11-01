@@ -306,14 +306,12 @@ Selain itu, percobaan juga menampilkan simulasi manajemen proses dengan menjalan
 
 Perbedaan Hasil di Lingkungan OS Berbeda (Linux vs Windows)
 
-| Aspek                       | **Linux Asli (Native)**                                                                         | **Windows (menggunakan WSL)**                                                                                   |
-| --------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| **Sistem Init**             | Menggunakan `systemd` penuh, menjalankan semua service termasuk `networkd`, `udevd`, `journald` | WSL meniru `systemd` (baru pada WSL2), tetapi beberapa service kernel-level tidak aktif (mis. `udevd` terbatas) |
-| **Proses Kernel**           | Dijalankan langsung oleh kernel Linux (`PID 1 = systemd`)                                       | Kernel Linux dijalankan di atas Hyper-V, bukan kernel Windows langsung                                          |
-| **Pengelolaan User**        | `/etc/passwd` dan `/etc/shadow` langsung memengaruhi login sistem                               | User hanya berlaku di lingkungan WSL, tidak memengaruhi user Windows                                            |
-| **Proses dan PID**          | Semua proses Linux memiliki PID dan hierarki yang lengkap                                       | Proses WSL terlihat di Windows Task Manager sebagai satu proses `wslhost.exe`                                   |
-| **Perintah `ps` dan `top`** | Menampilkan seluruh proses kernel dan user di sistem Linux                                      | Hanya menampilkan proses di dalam konteks WSL (tidak termasuk proses Windows)                                   |
-| **Kinerja dan I/O**         | Native dan langsung ke perangkat keras                                                          | Layered (melalui virtualisasi ringan), sedikit overhead                                                         |
+| Aspek                     | Linux                                                                 | Windows                                                                               |
+| ------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Manajemen Proses**      | Menggunakan perintah terminal (`ps`, `top`, `kill`, `pstree`).        | Menggunakan GUI (Task Manager) dan CLI (`tasklist`, `taskkill`).                      |
+| **Struktur Hierarki**     | Memiliki *parent-child process tree*, berawal dari `systemd (PID 1)`. | Menggunakan *Process Manager*, tetapi hierarki tidak selalu ditampilkan secara jelas. |
+| **System Call**           | Terbuka dan dapat diakses melalui shell, fleksibel untuk scripting.   | Lebih tertutup dan dikontrol oleh kernel secara internal.                             |
+| **Interaksi User–Kernel** | Terjadi langsung melalui shell berbasis teks.                         | Lebih sering melalui antarmuka grafis (GUI).                                          |
 
 
 ---
