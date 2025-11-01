@@ -292,6 +292,11 @@ systemd(1)─┬─agetty(193)
 ├── unattended-upgr(245)
 └── wsl-pro-service(206)
 ```
+Manajemen user (*user management*) merupakan bagian penting dalam menjaga keamanan sistem operasi Linux. Karena Linux bersifat multiuser, setiap pengguna memiliki identitas, hak akses, dan ruang kerja tersendiri. Melalui sistem manajemen user, administrator dapat mengatur siapa saja yang boleh mengakses sistem, menentukan level hak akses, serta mengontrol aktivitas yang dilakukan oleh setiap user. Dengan cara ini, sistem dapat berjalan aman dan terhindar dari penyalahgunaan oleh pengguna yang tidak berwenang.
+
+Selain itu, Linux memiliki mekanisme izin akses (*permission*) yang mengatur hak baca, tulis, dan eksekusi untuk tiga kategori utama, yaitu **owner**, **group**, dan **others**. Administrator dapat membagi user ke dalam grup tertentu agar pengaturan akses menjadi lebih efisien dan terkontrol. Fitur seperti `sudo` juga memungkinkan pemberian hak istimewa sementara kepada user tertentu untuk menjalankan perintah administratif tanpa harus menjadi *root*. Hal ini penting untuk mencegah terjadinya kesalahan fatal atau perubahan sistem yang tidak disengaja oleh pengguna biasa.
+
+Dengan penerapan user management yang baik, keamanan sistem Linux dapat lebih terjamin. Pengaturan password yang kuat, pembatasan akses direktori penting, serta pengawasan aktivitas user melalui log sistem merupakan langkah-langkah penting dalam mencegah ancaman keamanan. Secara keseluruhan, manajemen user dan keamanan sistem saling berkaitan erat, karena pengelolaan user yang tepat akan melindungi integritas sistem, menjaga kerahasiaan data, dan memastikan sistem tetap stabil serta aman dari akses yang tidak sah.
 
 ---
 
