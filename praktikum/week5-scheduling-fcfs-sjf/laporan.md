@@ -62,13 +62,21 @@ Sertakan screenshot hasil percobaan atau diagram:
 Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 
 ---
+Tugas
+1. Hitung waiting time dan turnaround time dari minimal 2 skenario FCFS dan SJF.
+2. Sajikan hasil perhitungan dalam tabel perbandingan (FCFS vs SJF).
+3. Analisis kelebihan dan kelemahan tiap algoritma.
 
+
+
+
+---
 ## Quiz
-1. [Pertanyaan 1]  
+1. Apa perbedaan utama antara FCFS dan SJF?
    **Jawaban:**  
-2. [Pertanyaan 2]  
+2. Mengapa SJF dapat menghasilkan rata-rata waktu tunggu minimum?
    **Jawaban:**  
-3. [Pertanyaan 3]  
+3. Apa kelemahan SJF jika diterapkan pada sistem interaktif? 
    **Jawaban:**  
 
 ---
