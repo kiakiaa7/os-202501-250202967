@@ -270,7 +270,7 @@ systemd(1)─┬─agetty(193)
 - Gambarkan hierarki proses dalam bentuk diagram pohon (pstree) di laporan.
 - Jelaskan hubungan antara user management dan keamanan sistem Linux.
 
-
+```
   systemd(1)
 ├── agetty(193)
 ├── cron(158)
@@ -291,7 +291,7 @@ systemd(1)─┬─agetty(193)
 ├── systemd-udevd(95)
 ├── unattended-upgr(245)
 └── wsl-pro-service(206)
-
+```
 
 ---
 
