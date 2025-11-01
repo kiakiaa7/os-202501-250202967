@@ -265,10 +265,33 @@ systemd(1)─┬─agetty(193)
 * Setiap proses lain (seperti `cron`, `dbus-daemon`, `bash`, dll) adalah *anak (child process)* dari `systemd`.
 
 ---
-ANALISIS
+**TUGAS**
 - Dokumentasikan hasil semua perintah dan jelaskan fungsi tiap perintah.
 - Gambarkan hierarki proses dalam bentuk diagram pohon (pstree) di laporan.
 - Jelaskan hubungan antara user management dan keamanan sistem Linux.
+
+
+  systemd(1)
+├── agetty(193)
+├── cron(158)
+├── dbus-daemon(159)
+├── init(systemd)(2)
+│   ├── init(7)
+│   └── kthreadd(2)
+├── login(286)
+│   └── bash(357)
+│       ├── ps(518)
+│       ├── grep(529)
+│       └── pstree(530)
+├── rsyslogd(196)
+├── systemd-journald(32)
+├── systemd-logind(266)
+├── systemd-resolved(108)
+├── systemd-timesyncd(117)
+├── systemd-udevd(95)
+├── unattended-upgr(245)
+└── wsl-pro-service(206)
+
 
 ---
 
