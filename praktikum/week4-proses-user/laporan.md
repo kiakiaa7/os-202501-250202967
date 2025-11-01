@@ -131,8 +131,6 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ---
 
-## Analisis 
-
 ## **Eksperimen 1**
 
  `whoami`
@@ -300,6 +298,25 @@ Dengan penerapan user management yang baik, keamanan sistem Linux dapat lebih te
 
 ---
 
+ ANALISIS
+
+ Percobaan ini menunjukkan bagaimana manajemen pengguna dan proses dilakukan di sistem operasi berbasis Linux melalui terminal. Langkah-langkah yang dijalankan meliputi pengecekan identitas pengguna dengan perintah `whoami`, `id`, dan `groups`, kemudian penambahan pengguna baru bernama *praktikan* menggunakan `sudo adduser`, serta pengaturan kata sandinya dengan `passwd`. Setelah itu, dilakukan pengamatan terhadap proses yang sedang berjalan menggunakan `ps aux`, `top`, dan `pstree`. Hasilnya menunjukkan berbagai proses inti sistem seperti `systemd`, `cron`, `dbus-daemon`, dan `rsyslogd` yang berjalan di latar belakang, serta struktur hierarki proses yang dimulai dari `init` atau `systemd` sebagai proses utama (PID 1).
+
+Selain itu, percobaan juga menampilkan simulasi manajemen proses dengan menjalankan perintah `sleep 1000` untuk membuat proses berjalan di latar belakang, kemudian menghentikannya menggunakan `kill`. Kesalahan kecil sempat terjadi karena pengetikan perintah yang kurang tepat, namun setelah diperbaiki, proses berhasil dihentikan. Dari keseluruhan langkah tersebut dapat disimpulkan bahwa sistem mampu menjalankan fungsi dasar administrasi Linux dengan baik—mulai dari pembuatan akun pengguna baru hingga pengelolaan proses aktif menggunakan berbagai perintah sistem.
+
+Perbedaan Hasil di Lingkungan OS Berbeda (Linux vs Windows)
+
+| Aspek                       | **Linux Asli (Native)**                                                                         | **Windows (menggunakan WSL)**                                                                                   |
+| --------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Sistem Init**             | Menggunakan `systemd` penuh, menjalankan semua service termasuk `networkd`, `udevd`, `journald` | WSL meniru `systemd` (baru pada WSL2), tetapi beberapa service kernel-level tidak aktif (mis. `udevd` terbatas) |
+| **Proses Kernel**           | Dijalankan langsung oleh kernel Linux (`PID 1 = systemd`)                                       | Kernel Linux dijalankan di atas Hyper-V, bukan kernel Windows langsung                                          |
+| **Pengelolaan User**        | `/etc/passwd` dan `/etc/shadow` langsung memengaruhi login sistem                               | User hanya berlaku di lingkungan WSL, tidak memengaruhi user Windows                                            |
+| **Proses dan PID**          | Semua proses Linux memiliki PID dan hierarki yang lengkap                                       | Proses WSL terlihat di Windows Task Manager sebagai satu proses `wslhost.exe`                                   |
+| **Perintah `ps` dan `top`** | Menampilkan seluruh proses kernel dan user di sistem Linux                                      | Hanya menampilkan proses di dalam konteks WSL (tidak termasuk proses Windows)                                   |
+| **Kinerja dan I/O**         | Native dan langsung ke perangkat keras                                                          | Layered (melalui virtualisasi ringan), sedikit overhead                                                         |
+
+
+---
 ## Kesimpulan
 manajemen proses dan user di Linux merupakan bagian penting untuk menjaga stabilitas, keamanan, dan efisiensi sistem. Proses di Linux memiliki struktur hierarki, di mana setiap proses memiliki PID dan dapat memiliki proses anak, dan semuanya dikendalikan oleh proses induk utama seperti init atau system. User dan group digunakan untuk mengatur hak akses, sehingga hanya pengguna tertentu yang dapat melakukan operasi sensitif, sementara root memiliki hak istimewa untuk mengelola seluruh sistem. Melalui percobaan ini, pemahaman tentang perintah seperti ps, top, kill, killall, chmod, dan chown menjadi lebih jelas, sehingga teori tentang proses dan manajemen user dapat diterapkan secara praktis di sistem Linux.
 
