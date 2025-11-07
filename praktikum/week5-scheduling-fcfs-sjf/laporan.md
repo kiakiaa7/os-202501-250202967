@@ -81,11 +81,44 @@ Penjadwalan CPU adalah proses yang dilakukan sistem operasi untuk menentukan uru
      ```
      praktikum/week5-scheduling-fcfs-sjf/screenshots/
 
+ 5. **Analisis**
+   - Bandingkan hasil rata-rata WT dan TAT antara FCFS & SJF.  
+   - Jelaskan kondisi kapan SJF lebih unggul dari FCFS dan sebaliknya.  
+   - Tambahkan kesimpulan singkat di akhir laporan
+
+6. **Commit & Push**
+   ```bash
+   git add .
+   git commit -m "Minggu 5 - CPU Scheduling FCFS & SJF"
+   git push origin main
+   ```
+
 ---
 
 ## Kode / Perintah
 
+  Gunakan tabel proses berikut sebagai contoh (boleh dimodifikasi dengan data baru):
+   | Proses | Burst Time | Arrival Time |
+   |:--:|:--:|:--:|
+   | P1 | 6 | 0 |
+   | P2 | 8 | 1 |
+   | P3 | 7 | 2 |
+   | P4 | 3 | 3 |
+--
 
+ - Urutkan proses berdasarkan *Arrival Time*.  
+   - Hitung nilai berikut untuk tiap proses:
+     ```
+     Waiting Time (WT) = waktu mulai eksekusi - Arrival Time
+     Turnaround Time (TAT) = WT + Burst Time
+     ```
+   - Hitung rata-rata Waiting Time dan Turnaround Time.  
+   - Buat Gantt Chart sederhana:  
+     ```
+     | P1 | P2 | P3 | P4 |
+     0    6    14   21   24
+     ```
+   
 
    
 
@@ -100,6 +133,20 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ## Analisis
 
+ **Bandingkan hasil rata-rata WT dan TAT antara FCFS & SJF**
+
+| Algoritma | Rata-rata Waiting Time (WT) | Rata-rata Turnaround Time (TAT) |
+| :-------- | :-------------------------: | :-----------------------------: |
+| **FCFS**  |             8.75            |              14.75              |
+| **SJF**   |             6.25            |              12.25              |
+
+hasil perbandingan menunjukkan bahwa algoritma SJF memiliki rata-rata Waiting Time dan Turnaround Time lebih kecil dibandingkan FCFS. Hal ini berarti SJF lebih efisien dalam mengatur proses karena mengeksekusi proses dengan waktu eksekusi terpendek terlebih dahulu. Sementara itu, FCFS lebih sederhana namun kurang efisien, terutama jika ada proses dengan waktu eksekusi panjang yang datang lebih awal.
+
+**Jelaskan kondisi kapan SJF lebih unggul dari FCFS dan sebaliknya**
+
+Algoritma SJF (Shortest Job First) lebih unggul dari FCFS (First Come First Served) ketika sebagian besar proses memiliki waktu eksekusi yang bervariasi, terutama jika terdapat banyak proses dengan waktu eksekusi pendek. Dalam kondisi tersebut, SJF mampu meminimalkan waktu tunggu rata-rata karena proses pendek diselesaikan lebih cepat.
+
+Sebaliknya, FCFS lebih unggul ketika semua proses memiliki waktu eksekusi yang relatif sama atau saat sistem menuntut keadilan berdasarkan urutan kedatangan. Pada situasi ini, FCFS lebih mudah diterapkan dan tidak menimbulkan *starvation*, sedangkan SJF bisa menyebabkan proses panjang tertunda terlalu lama.
 
 
 
