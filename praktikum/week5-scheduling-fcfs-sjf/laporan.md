@@ -171,8 +171,10 @@ Sementara itu, algoritma SJF lebih optimal untuk proses dengan waktu eksekusi pe
 
 
 ---
-Tugas
-1. Hitung waiting time dan turnaround time dari minimal 2 skenario FCFS dan SJF.
+
+# Tugas
+
+**1. Hitung waiting time dan turnaround time dari minimal 2 skenario FCFS dan SJF.**
 
 ![Screenshot hasil](screenshots/SKENARIOFCFSDANSJF.png)
 
@@ -204,7 +206,7 @@ SJF Scheduling
 
 - Rata-rata Turnaround = (4+6+14+15)=39 → 39/4 = 9.75
 
-2. Sajikan hasil perhitungan dalam tabel perbandingan (FCFS vs SJF).
+**2. Sajikan hasil perhitungan dalam tabel perbandingan (FCFS vs SJF).**
 
  TABEL PERBANDINGAN SKENARIO 1
 
@@ -221,7 +223,7 @@ SJF Scheduling
 | **SJF**   |       3.25       |         7.75        | Waktu tunggu dan turnaround paling efisien       | Perlu estimasi burst time, dapat menyebabkan *starvation*                   |
 
 
-3. Analisis kelebihan dan kelemahan tiap algoritma.
+**3. Analisis kelebihan dan kelemahan tiap algoritma.**
    
 - FCFS
 
