@@ -103,21 +103,25 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 
 
-*EKSPERIMEN 2*
+**EKSPERIMEN 2**
 
-
-
-# Perbandingan hasil FCFS dan SJF
+ Perbandingan hasil FCFS dan SJF
 
 | Algoritma | Avg Waiting Time | Avg Turnaround Time | Kelebihan                      | Kekurangan                                |
 | :-------- | :--------------: | :-----------------: | :----------------------------- | :---------------------------------------- |
-| **FCFS**  |       8.75       |        14.75        | Sederhana dan mudah diterapkan | Tidak efisien untuk proses panjang        |
-| **SJF**   |     **6.25**     |      **12.25**      | Optimal untuk job pendek       | Menyebabkan *starvation* pada job panjang |
+|   FCFS   |       8.75       |        14.75        | Sederhana dan mudah diterapkan | Tidak efisien untuk proses panjang        |
+|   SJF    |     6.25     |      12.25      | Optimal untuk job pendek       | Menyebabkan *starvation* pada job panjang |
 
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+
+Berdasarkan hasil praktikum yang telah dilakukan, dapat disimpulkan bahwa algoritma Shortest Job First (SJF) memberikan kinerja yang lebih efisien dibandingkan dengan algoritma First Come First Served (FCFS) . Hal ini terlihat dari nilai rata-rata *waiting time* dan *turnaround time* pada SJF yang lebih rendah, sehingga proses dapat diselesaikan dalam waktu yang lebih optimal.
+
+Algoritma FCFS memiliki kelebihan dalam hal kesederhanaan dan kemudahan penerapan karena proses dijalankan berdasarkan urutan kedatangan. Namun, algoritma ini kurang efisien apabila terdapat proses dengan waktu eksekusi yang panjang, karena dapat menyebabkan penundaan terhadap proses lainnya.
+
+Sementara itu, algoritma SJF lebih optimal untuk proses dengan waktu eksekusi pendek, tetapi memiliki kelemahan berupa potensi terjadinya *starvation* pada proses yang memiliki waktu eksekusi panjang. Oleh karena itu, pemilihan algoritma penjadwalan harus disesuaikan dengan karakteristik sistem dan beban kerja agar diperoleh hasil yang seimbang antara efisiensi dan keadilan dalam penjadwalan proses.
+
 
 ---
 Tugas
