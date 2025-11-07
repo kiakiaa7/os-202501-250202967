@@ -85,88 +85,9 @@ Penjadwalan CPU adalah proses yang dilakukan sistem operasi untuk menentukan uru
 
 ## Kode / Perintah
 
-1. **Siapkan Data Proses**
-   Gunakan tabel proses berikut sebagai contoh (boleh dimodifikasi dengan data baru):
-   | Proses | Burst Time | Arrival Time |
-   |:--:|:--:|:--:|
-   | P1 | 6 | 0 |
-   | P2 | 8 | 1 
-   | P3 | 7 | 2 |
-   | P4 | 3 | 3 |
 
-2. **Eksperimen 1 – FCFS (First Come First Served)**
-- Urut berdasarkan Arrival Time: P1 (0) → P2 (1) → P3 (2) → P4 (3)  
-- Berikut Perhitungan untuk tiap proses:
-```
-P1: start = 0, finish = 0 + 6 = 6
-WT = start − arrival = 0 − 0 = 0
-TAT = WT + burst = 0 + 6 = 6
 
-P2: start = finish(P1) = 6, finish = 6 + 8 = 14
-WT = 6 − 1 = 5
-TAT = 5 + 8 = 13
-
-P3: start = finish(P2) = 14, finish = 14 + 7 = 21
-WT = 14 − 2 = 12
-TAT = 12 + 7 = 19
-
-P4: start = finish(P3) = 21, finish = 21 + 3 = 24
-WT = 21 − 3 = 18
-TAT = 18 + 3 = 21
-```
-   - Rata-rata Waiting Time dan Turnaround Time. 
-   ```
-      - Avg Waiting Time (FCFS) = (0 + 5 + 12 + 18) / 4 = 8.75ms
-      - Avg Turnaround Time (FCFS) = (6 + 13 + 19 + 21) / 4 = 14.75ms
-   ```
-   - Buat Gantt Chart sederhana:  
-     ```
-     | P1 | P2 | P3 | P4 |
-     0    6    14   21   24
-     ```
-
-3. **Eksperimen 2 – SJF (Shortest Job First)**
-   - Urutan proses berdasarkan *Burst Time* terpendek (dengan memperhatikan waktu kedatangan).
-
-   P4 (0) → P1 (1) → P3 (2) → P2 (3)  
-
-   - Perhitungan WT dan TAT
-
-| Proses | Burst Time | Arrival Time | Star Time | Finis Time |WT | TAT|
-   |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-   | P4 | 3 | 3 | 3 | 6 | 0 | 3 |
-   | P1 | 6 | 0 | 6  | 12  | 6  |  12 |
-   | P3 | 7 | 2 | 12 | 19 | 10 | 17 |
-   | P2 | 8 | 1 | 19  | 27 | 18  | 26 |
-
-   rata-rata Waiting Time (WT) = 8,5
-
-   rata-rata Turnaround Time (TAT) = 14,5
-
-Buat Gantt Chart sederhana: 
-    
    
-     | P1 | P2 | P3 | P4 |
-     0    6    12   19   27
-   
-
-
-   - Perbandigan hasil FCFS dan SJF pada tabel berikut:
-
-     | Algoritma | Avg Waiting Time | Avg Turnaround Time | Kelebihan | Kekurangan |
-     |------------|------------------|----------------------|------------|-------------|
-     | FCFS |8.75ms|14.75 ms| Sederhana dan mudah diterapkan | Tidak efisien untuk proses panjang |
-     | SJF |8.5 ms|14.5 ms| Optimal untuk job pendek | Menyebabkan *starvation* pada job panjang |
-
-
-4. **Eksperimen 3 – Visualisasi Spreadsheet (Opsional)**
-   - Gunakan Excel/Google Sheets untuk membuat perhitungan otomatis:
-     - Kolom: Arrival, Burst, Start, Waiting, Turnaround, Finish.
-     - Gunakan formula dasar penjumlahan/subtraksi.
-   - Screenshot hasil perhitungan dan simpan di:
-     ```
-     praktikum/week5-scheduling-fcfs-sjf/screenshots/
-     ```
 
 ---
 
@@ -177,9 +98,20 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
+
+
+
+
+**EKSPERIMEN 2**
+
+
+
+# Perbandingan hasil FCFS dan SJF
+
+| Algoritma | Avg Waiting Time | Avg Turnaround Time | Kelebihan                      | Kekurangan                                |
+| :-------- | :--------------: | :-----------------: | :----------------------------- | :---------------------------------------- |
+| **FCFS**  |       8.75       |        14.75        | Sederhana dan mudah diterapkan | Tidak efisien untuk proses panjang        |
+| **SJF**   |     **6.25**     |      **12.25**      | Optimal untuk job pendek       | Menyebabkan *starvation* pada job panjang |
 
 ---
 
