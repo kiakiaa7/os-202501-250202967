@@ -93,7 +93,8 @@ Penjadwalan CPU adalah proses yang dilakukan sistem operasi untuk menentukan uru
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/EKSPERIMEN1.png)
+![Screenshot hasil](screenshots/EKSPERIMEN2.png)
 
 ---
 
@@ -121,8 +122,67 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 ---
 Tugas
 1. Hitung waiting time dan turnaround time dari minimal 2 skenario FCFS dan SJF.
+
+![Screenshot hasil](screenshots/SKENARIOFCFSDANSJF.png)
+
+*Skenario 1*
+FCFS Scheduling
+
+- Rata-rata Waiting = (0 + 5 + 12 + 18) = 35 → 35 / 4 = 8.75
+  
+- Rata-rata Turnaround = (6 + 13 + 19 + 21) = 59 → 59 / 4 = 14.75
+
+SJF Scheduling
+
+- Rata-rata Waiting = (0+3+7+15)=25 → 25/4 = 6.25
+
+- Rata-rata Turnaround = (6+6+14+23)=49 → 49/4 = 12.25
+
+*Skenario 2*
+FCFS Scheduling
+
+- Rata-rata Waiting = (0+3+5+13)=21 → 21/4 = 5.25
+
+- Rata-rata Turnaround = (4+6+14+15)=39 → 39/4 = 9.75
+
+SJF Scheduling
+
+- Rata-rata Waiting = (0+3+5+13)=21 → 21/4 = 5.25
+
+- Rata-rata Turnaround = (4+6+14+15)=39 → 39/4 = 9.75
+
 2. Sajikan hasil perhitungan dalam tabel perbandingan (FCFS vs SJF).
+
+# TABEL PERBANDINGAN SKENARIO 1
+
+| Algoritma | Avg Waiting Time | Avg Turnaround Time | Kelebihan                                                       | Kekurangan                                           |
+| :-------- | :--------------: | :-----------------: | :-------------------------------------------------------------- | :--------------------------------------------------- |
+| **FCFS**  |       8.75       |        14.75        | Sederhana dan mudah diterapkan                                  | Tidak efisien untuk proses panjang (*convoy effect*) |
+| **SJF**   |       6.25       |        12.25        | Optimal untuk proses pendek, waktu tunggu rata-rata lebih kecil | Menyebabkan *starvation* pada proses panjang         |
+
+# TABEL PERBANDINGAN SKENARIO 2
+
+| Algoritma | Avg Waiting Time | Avg Turnaround Time | Kelebihan                                        | Kekurangan                                                                  |
+| :-------- | :--------------: | :-----------------: | :----------------------------------------------- | :-------------------------------------------------------------------------- |
+| **FCFS**  |       5.25       |         9.75        | Sederhana dan adil berdasarkan urutan kedatangan | Tidak mempertimbangkan burst time, bisa lama jika job panjang datang duluan |
+| **SJF**   |       3.25       |         7.75        | Waktu tunggu dan turnaround paling efisien       | Perlu estimasi burst time, dapat menyebabkan *starvation*                   |
+
+
 3. Analisis kelebihan dan kelemahan tiap algoritma.
+   
+- FCFS
+
+Kelebihan: sangat sederhana, mudah diimplementasikan; adil menurut urutan kedatangan (non-preemptive tanpa starve pada pola sederhana).
+
+Kekurangan: proses panjang awal menyebabkan convoy effect (membuat proses lain menunggu lama) sehingga rata-rata WT & TAT bisa besar. Tidak mempertimbangkan burst time.
+
+- SJF 
+
+Kelebihan: biasanya meminimalkan rata-rata waiting time dan rata-rata turnaround time (optimal untuk kasus di mana burst time diketahui). Terlihat pada kedua skenario: SJF memberikan nilai WT & TAT lebih kecil.
+
+Kekurangan: bisa menyebabkan starvation untuk job panjang (jika job pendek terus datang), dan memerlukan pengetahuan atau estimasi burst time. Kurang cocok bila burst time tidak diketahui/berubah-ubah
+
+
 
 ---
 ## Quiz
