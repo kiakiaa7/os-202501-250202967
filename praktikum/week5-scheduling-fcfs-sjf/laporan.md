@@ -103,7 +103,7 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 
 
-**EKSPERIMEN 2**
+*EKSPERIMEN 2*
 
 
 
@@ -126,6 +126,7 @@ Tugas
 ![Screenshot hasil](screenshots/SKENARIOFCFSDANSJF.png)
 
 *Skenario 1*
+
 FCFS Scheduling
 
 - Rata-rata Waiting = (0 + 5 + 12 + 18) = 35 → 35 / 4 = 8.75
@@ -139,6 +140,7 @@ SJF Scheduling
 - Rata-rata Turnaround = (6+6+14+23)=49 → 49/4 = 12.25
 
 *Skenario 2*
+
 FCFS Scheduling
 
 - Rata-rata Waiting = (0+3+5+13)=21 → 21/4 = 5.25
@@ -153,14 +155,14 @@ SJF Scheduling
 
 2. Sajikan hasil perhitungan dalam tabel perbandingan (FCFS vs SJF).
 
-# TABEL PERBANDINGAN SKENARIO 1
+ TABEL PERBANDINGAN SKENARIO 1
 
 | Algoritma | Avg Waiting Time | Avg Turnaround Time | Kelebihan                                                       | Kekurangan                                           |
 | :-------- | :--------------: | :-----------------: | :-------------------------------------------------------------- | :--------------------------------------------------- |
 | **FCFS**  |       8.75       |        14.75        | Sederhana dan mudah diterapkan                                  | Tidak efisien untuk proses panjang (*convoy effect*) |
 | **SJF**   |       6.25       |        12.25        | Optimal untuk proses pendek, waktu tunggu rata-rata lebih kecil | Menyebabkan *starvation* pada proses panjang         |
 
-# TABEL PERBANDINGAN SKENARIO 2
+ TABEL PERBANDINGAN SKENARIO 2
 
 | Algoritma | Avg Waiting Time | Avg Turnaround Time | Kelebihan                                        | Kekurangan                                                                  |
 | :-------- | :--------------: | :-----------------: | :----------------------------------------------- | :-------------------------------------------------------------------------- |
@@ -193,10 +195,13 @@ Kekurangan: bisa menyebabkan starvation untuk job panjang (jika job pendek terus
 
 2. Mengapa SJF dapat menghasilkan rata-rata waktu tunggu minimum?
    **Jawaban:**
+
+   
    SJF menghasilkan rata-rata waktu tunggu minimum karena selalu menjalankan proses dengan waktu eksekusi paling singkat terlebih dahulu, sehingga proses-proses kecil cepat selesai dan tidak menumpuk dalam antrian, yang membuat total waktu tunggu seluruh proses menjadi lebih rendah.
    
-3. Apa kelemahan SJF jika diterapkan pada sistem interaktif? 
-   **Jawaban:**  
+4. Apa kelemahan SJF jika diterapkan pada sistem interaktif? 
+   **Jawaban:**
+   
 SJF tidak cocok untuk sistem interaktif karena membuat sistem kurang responsif dan tidak adil untuk semua proses di lingkungan. contohnya:
 1. SJF membutuhkan perkiraan waktu proses (burst time) setiap job.
 2. Proses panjang bisa mengalami starvation, sebab CPU selalu mendahulukan proses yang lebih pendek.
