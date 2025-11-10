@@ -12,7 +12,7 @@ Topik: Penjadwalan CPU – Round Robin (RR) dan Priority Scheduling
 ---
 
 ## Tujuan
-
+Setelah menyelesaikan tugas ini, mahasiswa mampu:
 1. Menghitung waiting time dan turnaround time pada algoritma RR dan Priority.
 2. Menyusun tabel hasil perhitungan dengan benar dan sistematis.
 3. Membandingkan performa algoritma RR dan Priority.
