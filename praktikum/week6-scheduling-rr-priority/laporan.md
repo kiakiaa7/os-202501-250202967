@@ -23,29 +23,13 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 
 ## Dasar Teori
 
-1. Pengertian Penjadwalan CPU
+Penjadwalan CPU adalah mekanisme dalam sistem operasi yang bertugas menentukan urutan eksekusi proses yang berada dalam antrian siap (ready queue). Tujuannya adalah untuk memaksimalkan penggunaan CPU, meminimalkan waktu tunggu, serta meningkatkan efisiensi dan kinerja sistem secara keseluruhan. Salah satu algoritma penjadwalan yang paling umum digunakan adalah Round Robin (RR). Algoritma ini bersifat preemptive dan menggunakan time quantum atau jatah waktu yang sama untuk setiap proses. Proses akan dieksekusi secara bergiliran; jika waktu yang dialokasikan habis sebelum proses selesai, maka CPU akan menghentikan sementara proses tersebut dan memberikannya kembali giliran setelah semua proses lain mendapatkan jatahnya.
 
-Penjadwalan CPU adalah mekanisme sistem operasi untuk menentukan urutan proses yang akan dijalankan oleh prosesor, dengan tujuan mengoptimalkan penggunaan CPU dan meningkatkan kinerja sistem secara keseluruhan.
+Round Robin memiliki karakteristik yang adil karena setiap proses memperoleh kesempatan eksekusi yang sama, sehingga cocok untuk sistem time-sharing atau sistem interaktif. Namun, ukuran quantum harus ditentukan dengan hati-hati. Quantum yang terlalu kecil dapat menyebabkan terlalu banyak context switching, sehingga meningkatkan overhead sistem, sedangkan quantum yang terlalu besar akan membuat algoritma ini berperilaku seperti First Come First Serve (FCFS).
 
-2. Round Robin (RR) Scheduling
+Sementara itu, Priority Scheduling adalah algoritma penjadwalan yang memilih proses berdasarkan tingkat prioritas. Proses dengan prioritas tertinggi akan dieksekusi terlebih dahulu, baik dengan cara preemptive (menghentikan proses lain yang sedang berjalan) maupun non-preemptive (menunggu proses selesai terlebih dahulu). Algoritma ini efisien dalam menangani proses penting atau kritis, terutama dalam sistem real-time.
 
-Round Robin adalah algoritma **preemptive** yang menggunakan **time quantum** (jatah waktu) untuk setiap proses. Proses dijalankan secara bergiliran dalam antrian melingkar; jika belum selesai dalam quantum tersebut, proses dikembalikan ke antrian untuk menunggu giliran berikutnya.
-
-
-3. Karakteristik Round Robin
-   
-* Adil bagi semua proses karena mendapat jatah waktu yang sama.
-* Cocok untuk sistem **time-sharing** dan proses interaktif.
-* Pemilihan ukuran quantum sangat penting: terlalu kecil menyebabkan overhead besar, terlalu besar menurunkan responsivitas.
-
-4. Priority Scheduling
-
-Algoritma ini memilih proses berdasarkan tingkat prioritas. Proses dengan prioritas tertinggi dieksekusi lebih dahulu. Dapat bersifat preemptive (menghentikan proses lain) atau non-preemptive.
-
-5. Perbandingan & Kelemahan
-
-* Round Robin: adil namun kurang efisien jika terlalu banyak context switching.
-* Priority Scheduling: efisien untuk proses penting, tetapi dapat menyebabkan *starvation* pada proses prioritas rendah (bisa diatasi dengan teknik *aging*).
+Namun, kelemahan utama Priority Scheduling adalah kemungkinan terjadinya starvation, yaitu kondisi di mana proses dengan prioritas rendah tidak pernah mendapat giliran eksekusi karena selalu kalah oleh proses dengan prioritas tinggi. Untuk mengatasinya, dapat digunakan teknik aging, yaitu menaikkan prioritas proses yang telah menunggu terlalu lama. Secara umum, Round Robin lebih menekankan pada keadilan waktu eksekusi, sedangkan Priority Scheduling berfokus pada pentingnya urutan eksekusi berdasarkan tingkat kepentingan proses.
 
 ---
 
@@ -140,11 +124,20 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 ---
 ## Quiz
 1. Apa perbedaan utama antara Round Robin dan Priority Scheduling? 
-   **Jawaban:**  
+   **Jawaban:**
+
+  Perbedaan utama antara Round Robin (RR) dan Priority Scheduling terletak pada dasar pemilihan proses yang akan dieksekusi oleh CPU. Round Robin memilih proses secara bergiliran berdasarkan urutan kedatangan dan memberikan setiap proses jatah waktu eksekusi (time quantum) yang sama, sehingga lebih menekankan pada keadilan dan cocok untuk sistem time-sharing atau interaktif. 
+  Sebaliknya, Priority Scheduling memilih proses berdasarkan tingkat prioritas, di mana proses dengan prioritas tertinggi akan dijalankan terlebih dahulu, baik secara preemptive maupun non-preemptive. Algoritma ini lebih efisien untuk menangani proses penting, namun dapat menyebabkan proses dengan prioritas rendah mengalami kelaparan (starvation) jika tidak diatasi dengan teknik seperti aging.
+
 2. Apa pengaruh besar/kecilnya time quantum terhadap performa sistem?
-   **Jawaban:**  
+   **Jawaban:**
+
+   Besar atau kecilnya time quantum dalam algoritma Round Robin memiliki pengaruh yang sangat penting terhadap performa sistem. Jika time quantum terlalu kecil, maka CPU akan sering melakukan context switching (perpindahan antar proses), yang menyebabkan overhead tinggi karena waktu CPU lebih banyak digunakan untuk pergantian proses daripada eksekusi sebenarnya. Hal ini membuat sistem menjadi tidak efisien, meskipun respons terhadap proses interaktif menjadi cepat. Sebaliknya, jika time quantum terlalu besar, maka setiap proses dapat berjalan terlalu lama sebelum berganti, sehingga sistem akan berperilaku mirip dengan First Come First Serve (FCFS). Akibatnya, waktu respons untuk proses lain menjadi lebih lambat dan sistem kehilangan keadilan antar proses. Oleh karena itu, pemilihan ukuran time quantum harus seimbang cukup besar untuk mengurangi overhead, namun cukup kecil agar sistem tetap responsif.
+
 3. Mengapa algoritma Priority dapat menyebabkan starvation?
-   **Jawaban:**  
+   **Jawaban:**
+
+   karena proses dengan prioritas rendah bisa terus-menerus tertunda eksekusinya apabila selalu ada proses baru dengan prioritas lebih tinggi yang datang ke sistem. Dalam kondisi seperti ini, proses berprioritas rendah bisa menunggu sangat lama bahkan tidak pernah dijalankan sama sekali. Dengan kata lain, starvation terjadi karena tidak adanya mekanisme pembatas waktu atau penyeimbang antara proses prioritas tinggi dan rendah. Untuk mengatasinya, sistem dapat menerapkan aging, yaitu menaikkan prioritas proses yang sudah lama menunggu agar tetap mendapat kesempatan dieksekusi dan mencegah kelaparan proses di antrian.
 
 ---
 
