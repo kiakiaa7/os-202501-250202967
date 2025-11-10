@@ -128,6 +128,7 @@ Penjadwalan CPU adalah proses yang dilakukan sistem operasi untuk menentukan uru
 Sertakan screenshot hasil percobaan atau diagram:
 ![Screenshot hasil](screenshots/EKSPERIMEN1.png)
 ![Screenshot hasil](screenshots/EKSPERIMEN2.png)
+![Screenshot hasil](screenshots/SKENARIOFCFSDANSJF.png)
 
 Gantt Chart
 
