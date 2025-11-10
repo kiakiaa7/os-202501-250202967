@@ -129,6 +129,35 @@ Sertakan screenshot hasil percobaan atau diagram:
 ![Screenshot hasil](screenshots/EKSPERIMEN1.png)
 ![Screenshot hasil](screenshots/EKSPERIMEN2.png)
 
+Gantt Chart
+
+Skenario 1
+
+FCFS
+ ```
+     | P1 | P2 | P3 | P4 |
+     0    6    14   21   24
+ ```
+
+SJF
+ ```
+     | P4 | P1 | P3 | P2 |
+     6    0    9    16   24
+ ```
+Skenario 2
+
+FCFS
+ ```
+     | P1 | P2 | P3 | P4 |
+     0    4    7   16   18
+ ```
+SJF
+ ```
+     | P4 | P1 | P3 | P2 |
+     4    0    9    6   18
+ ```
+
+
 ---
 
 ## Analisis
