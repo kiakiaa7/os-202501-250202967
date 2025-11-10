@@ -22,7 +22,30 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 ---
 
 ## Dasar Teori
-Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
+
+1. Pengertian Penjadwalan CPU
+
+Penjadwalan CPU adalah mekanisme sistem operasi untuk menentukan urutan proses yang akan dijalankan oleh prosesor, dengan tujuan mengoptimalkan penggunaan CPU dan meningkatkan kinerja sistem secara keseluruhan.
+
+2. Round Robin (RR) Scheduling
+
+Round Robin adalah algoritma **preemptive** yang menggunakan **time quantum** (jatah waktu) untuk setiap proses. Proses dijalankan secara bergiliran dalam antrian melingkar; jika belum selesai dalam quantum tersebut, proses dikembalikan ke antrian untuk menunggu giliran berikutnya.
+
+
+3. Karakteristik Round Robin
+   
+* Adil bagi semua proses karena mendapat jatah waktu yang sama.
+* Cocok untuk sistem **time-sharing** dan proses interaktif.
+* Pemilihan ukuran quantum sangat penting: terlalu kecil menyebabkan overhead besar, terlalu besar menurunkan responsivitas.
+
+4. Priority Scheduling
+
+Algoritma ini memilih proses berdasarkan tingkat prioritas. Proses dengan prioritas tertinggi dieksekusi lebih dahulu. Dapat bersifat preemptive (menghentikan proses lain) atau non-preemptive.
+
+5. Perbandingan & Kelemahan
+
+* Round Robin: adil namun kurang efisien jika terlalu banyak context switching.
+* Priority Scheduling: efisien untuk proses penting, tetapi dapat menyebabkan *starvation* pada proses prioritas rendah (bisa diatasi dengan teknik *aging*).
 
 ---
 
