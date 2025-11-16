@@ -99,7 +99,97 @@ dmesg | head
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/ScreenshotWeek6.png)
+
+## *EKSPERIMEN 1*
+
+**Round Robin**(RR) _time quantum = 3_
+
+| Proses | Arrival | Burst | Completion Time | Turnaround (CT - Arrival) | Waiting (TAT - Burst) |
+| -----: | ------: | ----: | --------------: | ------------------------: | --------------------: |
+|     P1 |       0 |     5 |              14 |                        14 |                     9 |
+|     P2 |       1 |     3 |               6 |                         5 |                     2 |
+|     P3 |       2 |     8 |              22 |                        20 |                    12 |
+|     P4 |       3 |     6 |              20 |                        17 |                    11 |
+|          Averange                           | 14                        |         8,5           |
+
+
+**Simulasikan eksekusi menggunakan Gantt Chart**
+
+```
+| P1 | P2 | P3 | P4 | P1 | P3 | P4 | P3 |
+0    3    6    9   12   14   17   20   22
+```
+
+**Sisa burst time tiap putaran.**
+
+| No | Proses | Start | End | Exec (ms) |    Remaining sebelum   |    Remaining sesudah   |
+| -: | :----: | ----: | --: | --------: | :--------------------: | :--------------------: |
+|  1 |   P1   |     0 |   3 |         3 | P1:5, P2:3, P3:8, P4:6 | P1:2, P2:3, P3:8, P4:6 |
+|  2 |   P2   |     3 |   6 |         3 | P1:2, P2:3, P3:8, P4:6 | P1:2, P2:0, P3:8, P4:6 |
+|  3 |   P3   |     6 |   9 |         3 | P1:2, P2:0, P3:8, P4:6 | P1:2, P2:0, P3:5, P4:6 |
+|  4 |   P4   |     9 |  12 |         3 | P1:2, P2:0, P3:5, P4:6 | P1:2, P2:0, P3:5, P4:3 |
+|  5 |   P1   |    12 |  14 |         2 | P1:2, P2:0, P3:5, P4:3 | P1:0, P2:0, P3:5, P4:3 |
+|  6 |   P3   |    14 |  17 |         3 | P1:0, P2:0, P3:5, P4:3 | P1:0, P2:0, P3:2, P4:3 |
+|  7 |   P4   |    17 |  20 |         3 | P1:0, P2:0, P3:2, P4:3 | P1:0, P2:0, P3:2, P4:0 |
+|  8 |   P3   |    20 |  22 |         2 | P1:0, P2:0, P3:2, P4:0 | P1:0, P2:0, P3:0, P4:0 |
+
+
+
+## *Eksperimen 2*
+
+**Priority Scheduling**
+
+| Proses | Arrival | Burst | Start | Completion | WT = Start − Arrival | TAT = WT + Burst |
+| -----: | ------: | ----: | ----: | ---------: | -------------------: | ---------------: |
+|     P1 |       0 |     5 |     0 |          5 |                    0 |                5 |
+|     P2 |       1 |     3 |     5 |          8 |                    4 |                7 |
+|     P4 |       3 |     6 |     8 |         14 |                    5 |               11 |
+|     P3 |       2 |     8 |    14 |         22 |                   12 |               20 |
+|        |         |       |       | Average    | 5,24                 |         10,75    |
+
+**Tabel Perbandingan RR dan Priority Scheduling**
+
+| Proses | RR WT | RR TAT | RR Completion | Priority WT | Priority TAT | Priority Completion |
+| -----: | ----: | -----: | ------------: | ----------: | -----------: | ------------------: |
+|     P1 |     9 |     14 |            14 |           0 |            5 |                   5 |
+|     P2 |     2 |      5 |             6 |           4 |            7 |                   8 |
+|     P3 |    12 |     20 |            22 |          12 |           20 |                  22 |
+|     P4 |    11 |     17 |            20 |           5 |           11 |                  14 |
+
+
+
+## Eksperimen 3
+
+**Analisis Variasi Time Quantum (Opsional)**
+
+**Round Robin(RR)** _time quantum (q) = 2_
+
+| Proses | Arrival | Burst | Completion | Turnaround (CT − Arrival) | Waiting (TAT − Burst) |
+| -----: | ------: | ----: | ---------: | ------------------------: | --------------------: |
+|     P1 |       0 |     5 |         14 |                        14 |                     9 |
+|     P2 |       1 |     3 |         11 |                        10 |                     7 |
+|     P3 |       2 |     8 |         22 |                        20 |                    12 |
+|     P4 |       3 |     6 |         20 |                        17 |                    11 |
+|               Averange                | 15,25                     |         9,75          |
+
+
+**Round Robin(RR)** _time quantum (q) = 5_
+
+| Proses | Arrival | Burst | Completion | Turnaround (CT − Arrival) | Waiting (TAT − Burst)|
+| -----: | ------: | ----: | ---------: | ---------:                | ------:              |
+|     P1 |       0 |     5 |          5 |          5                |       0              |
+|     P2 |       1 |     3 |          8 |          7                |       4              |
+|     P3 |       2 |     8 |         21 |         19                |      11              |
+|     P4 |       3 |     6 |         22 |         19                |      13              |
+|                 Averange              | 15,25                     |         9,75         |
+
+
+
+
+
+
+
 
 ---
 
