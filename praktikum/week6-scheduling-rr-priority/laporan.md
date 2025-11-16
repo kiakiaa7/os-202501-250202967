@@ -111,7 +111,7 @@ Sertakan screenshot hasil percobaan atau diagram:
 |     P2 |       1 |     3 |               6 |                         5 |                     2 |
 |     P3 |       2 |     8 |              22 |                        20 |                    12 |
 |     P4 |       3 |     6 |              20 |                        17 |                    11 |
-|          Averange                           | 14                        |         8,5           |
+|        |         |       |        Averange | 14                        |         8,5           |
 
 
 **Simulasikan eksekusi menggunakan Gantt Chart**
@@ -171,7 +171,7 @@ Sertakan screenshot hasil percobaan atau diagram:
 |     P2 |       1 |     3 |         11 |                        10 |                     7 |
 |     P3 |       2 |     8 |         22 |                        20 |                    12 |
 |     P4 |       3 |     6 |         20 |                        17 |                    11 |
-|               Averange                | 15,25                     |         9,75          |
+|        |         |       |    Averang | 15,25                     |         9,75          |
 
 
 **Round Robin(RR)** _time quantum (q) = 5_
@@ -182,23 +182,73 @@ Sertakan screenshot hasil percobaan atau diagram:
 |     P2 |       1 |     3 |          8 |          7                |       4              |
 |     P3 |       2 |     8 |         21 |         19                |      11              |
 |     P4 |       3 |     6 |         22 |         19                |      13              |
-|                 Averange              | 15,25                     |         9,75         |
+|        |         |       |  Averange  | 15,25                     |         9,75         |
+
+
+**Tabel perbandingan efek quantum**
+
+| Quantum | Avg Waiting Time | Avg Turnaround Time | Jumlah Slices (dispatches) | Context switches | CPU busy time | Total makespan |
+| ------- | ---------------- | ------------------- |--------                    |-----             |-----          |-----           |
+| **2**   | **10.75**        | **16.25**           | 12                         | 11               |22 / 22 (100%) |             22 |
+| **3**   | **8.50**         | **14.00**           |8                           |                7 | 22 / 22 (100%)| 22             |
+| **5**   | **7.00**         | **12.50**           |6                           | 5                | 22 / 22 (100%)| 22             |
+
+Saya menghitung context switch sebagai jumlah perpindahan CPU dari satu proses ke proses lain. Semakin kecil quantum, semakin sering CPU memotong proses dan berpindah, sehingga jumlah context switch menjadi lebih banyak. Semakin besar quantum, proses berjalan lebih lama tanpa dipotong sehingga switching menjadi lebih sedikit. Efeknya berpengaruh langsung pada waiting time dan turnaround time.
+penjelasan untuk tiap nilai quantum:
+
+
+- Quantum = 2 (kecil)
+
+Quantum kecil membuat setiap proses hanya berjalan sebentar sebelum dipotong.
+Akibatnya:
+
+- CPU berpindah-pindah sangat sering, sehingga context switch jadi paling banyak.
+
+- Waiting time dan turnaround time menjadi paling tinggi, karena proses harus menunggu gilirannya berkali-kali.
+
+- Cocok hanya untuk sistem yang butuh respons cepat, tetapi kurang efisien karena overhead besar.
+
+Intinya: Quantum kecil = proses sering dipotong → banyak antrian → waktu tunggu lama.
+
+- Quantum = 3 (menengah)
+
+Quantum ini berada di tengah-tengah antara potongan kecil dan besar.
+Efeknya:
+
+- Jumlah context switch lebih sedikit dibanding q=2.
+
+- Waiting time dan turnaround time lebih baik, tidak terlalu tinggi.
+
+- Setiap proses masih mendapat giliran secara adil, tetapi overhead tidak terlalu besar.
+
+Intinya: Seimbang — tidak terlalu sering memotong proses, tapi tetap menjaga keadilan.
+
+- Quantum = 5 (besar)
+
+Quantum besar membuat proses bisa berjalan cukup lama sebelum dihentikan.
+Dampaknya:
+
+- Context switch paling sedikit, sehingga overhead sangat kecil.
+
+- Waiting time dan turnaround time menjadi yang paling rendah.
+
+- Perilaku Round Robin mulai mirip FCFS, karena proses cenderung selesai tanpa banyak gangguan.
+
+ Intinya: Paling efisien, tetapi keadilan sedikit berkurang karena proses awal bisa selesai duluan
 
 
 
 
+## Eksperimen 4
 
-
+ | Algoritma | Avg Waiting Time | Avg Turnaround Time | Kelebihan                     | Kekurangan                             |
+ |-----------|------------------|---------------------|-----------                    |-------------                           |
+ | RR        | 8,5              | 14                  | Adil terhadap semua proses    | Tidak efisien jika quantum tidak tepat |
+ | Priority  | 5,25             | 10,75               | Efisien untuk proses penting  | Potensi *starvation* pada prioritas rendah |
 
 
 ---
 
-## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
-
----
 
 ## Kesimpulan
 Tuliskan 2–3 poin kesimpulan dari praktikum ini.
@@ -207,8 +257,122 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 ## Tugas
 
 1. Hitung waiting time dan turnaround time untuk algoritma RR dan Priority.
+
+  **Round Robin(RR)** _time quantum (q) = 3_
+
+| Proses | Arrival | Burst | Completion Time | Turnaround (CT - Arrival) | Waiting (TAT - Burst) |
+| -----: | ------: | ----: | --------------: | ------------------------: | --------------------: |
+|     P1 |       0 |     5 |              14 |                        14 |                     9 |
+|     P2 |       1 |     3 |               6 |                         5 |                     2 |
+|     P3 |       2 |     8 |              22 |                        20 |                    12 |
+|     P4 |       3 |     6 |              20 |                        17 |                    11 |
+|        |         |       | Average         | 14                        |         8,5           |
+
+**Priority Scheduling (Non-Preemptive)**
+
+| Proses | Arrival | Burst | Start | Completion | WT = Start − Arrival | TAT = WT + Burst |
+| -----: | ------: | ----: | ----: | ---------: | -------------------: | ---------------: |
+|     P1 |       0 |     5 |     0 |          5 |                    0 |                5 |
+|     P2 |       1 |     3 |     5 |          8 |                    4 |                7 |
+|     P4 |       3 |     6 |     8 |         14 |                    5 |               11 |
+|     P3 |       2 |     8 |    14 |         22 |                   12 |               20 |
+|        |         |       |       | Average    | 5,24                 |         10,75    |
+
+
+**Round Robin(RR)** _time quantum (q) = 2_
+
+| Proses | Arrival | Burst | Completion | Turnaround (CT − Arrival) | Waiting (TAT − Burst) |
+| -----: | ------: | ----: | ---------: | ------------------------: | --------------------: |
+|     P1 |       0 |     5 |         14 |                        14 |                     9 |
+|     P2 |       1 |     3 |         11 |                        10 |                     7 |
+|     P3 |       2 |     8 |         22 |                        20 |                    12 |
+|     P4 |       3 |     6 |         20 |                        17 |                    11 |
+|        |         |       | Average    | 15,25                     |         9,75          |
+
+
+**Round Robin(RR)** _time quantum (q) = 5_
+
+| Proses | Arrival | Burst | Completion | Turnaround (CT − Arrival) | Waiting (TAT − Burst)|
+| -----: | ------: | ----: | ---------: | ---------:                | ------:              |
+|     P1 |       0 |     5 |          5 |          5                |       0              |
+|     P2 |       1 |     3 |          8 |          7                |       4              |
+|     P3 |       2 |     8 |         21 |         19                |      11              |
+|     P4 |       3 |     6 |         22 |         19                |      13              |
+|        |         |       | Average    | 15,25                     |         9,75         |
+
+
+
 2. Sajikan hasil perhitungan dan Gantt Chart dalam laporan.md.
+
+RR _quantum 3_
+
+```
+| P1 | P2 | P3 | P4 | P1 | P3 | P4 | P3 |
+0    3    6    9   12   14   17   20   22
+```
+
+RR _quantum 2_
+```
+| P1 | P2 | P3 | P1 | P4 | P2 | P3 | P1 | P4 | P3 | P4 | P3 |
+0    2    4    6    8   10   11   13   14   16   18   20   22
+```
+
+RR _quantum 5_
+```
+| P1 | P2 | P3   | P4   | P3  | P4 |
+0    5    8    13   18   21   22
+```
+
+_Priority Scheduling (Non-Preemptive)_
+```
+|  P1  |  P2  |   P4   |    P3    |
+0      5      8        14        22
+```
+
+
 3. Bandingkan performa dan jelaskan pengaruh time quantum serta prioritas.
+
+| Algoritma (konfigurasi)   | Avg Waiting Time | Avg Turnaround Time | Jumlah Slices (dispatches) | Context switches* | Makespan | Throughput (job/ms) | CPU busy time |
+| ------------------------- | ---------------: | ------------------: | -------------------------: | ----------------: | -------: | ------------------: | ------------: |
+| RR (q = 2)                |             9.75 |               15.25 |                         12 |                11 |       22 |     4 / 22 ≈ 0.1818 |     22 (100%) |
+| RR (q = 3)                |             8.50 |               14.00 |                          8 |                 7 |       22 |              0.1818 |     22 (100%) |
+| RR (q = 5)                |             7.00 |               12.50 |                          6 |                 5 |       22 |              0.1818 |     22 (100%) |
+| Priority (non-preemptive) |             5.25 |               10.75 |                          4 |                 3 |       22 |              0.1818 |     22 (100%) |
+
+**Tabel Pengaruh**
+
+| Algoritma                 |                          Responsiveness |                             Fairness |      Overhead switching |                     Risiko starvation | Kapan direkomendasikan                                            |
+| ------------------------- | --------------------------------------: | -----------------------------------: | ----------------------: | ------------------------------------: | ----------------------------------------------------------------- |
+| RR (q small, e.g. 2)      | Tinggi (responsif ke proses interaktif) |       Tinggi (setiap job bergantian) |  Tinggi (banyak switch) |                                Rendah | Sistem interaktif dengan job pendek & switching murah             |
+| RR (q medium, e.g. 3)     |                                Seimbang |                                 Baik |                  Sedang |                                Rendah | General-purpose time-sharing, trade-off responsivitas/overhead    |
+| RR (q large, e.g. 5)      |         Lebih rendah (lebih mirip FCFS) |     Kurang (proses awal diuntungkan) |                  Rendah |                         Rendah–sedang | Kalau switching mahal atau ingin throughput/turnaround lebih baik |
+| Priority (non-preemptive) | Rendah untuk job yang datang belakangan | Rendah (prioritas menentukan urutan) | Rendah (sedikit switch) | Ada kemungkinan (terutama preemptive) | Jika beberapa job jelas lebih penting (SLA/real-time soft)        |
+
+penjelasan : 
+
+a. Pengaruh time quantum
+
+Pada algoritma Round Robin (RR), ukuran time quantum sangat memengaruhi cara CPU menangani setiap proses. 
+- Jika quantum terlalu kecil, proses memang mendapat respon sangat cepat karena sering diputar, tetapi hal ini membuat context switching terjadi terlalu sering sehingga menambah overhead dan dapat memperpanjang waktu tunggu.
+  
+- Sebaliknya, quantum yang terlalu besar membuat RR menjadi kurang responsif, terutama untuk proses kecil atau proses interaktif, meskipun jumlah context switch menjadi lebih sedikit dan overhead berkurang. Dalam kondisi ini, RR mulai berperilaku seperti FCFS karena proses dapat berjalan lebih lama tanpa digantikan.
+  
+-  Oleh karena itu, time quantum yang ideal biasanya berada di tengah—cukup kecil untuk menjaga responsivitas, namun tidak terlalu kecil agar sistem tetap efisien dan tidak membuang waktu pada pergantian konteks yang berlebihan.
+
+b. Pengaruh prioritas
+
+- CPU selalu mengeksekusi proses dengan prioritas tertinggi terlebih dahulu. Akibatnya, proses yang memiliki prioritas tinggi akan memperoleh waktu eksekusi yang lebih cepat, menghasilkan waiting time dan turnaround time yang lebih baik untuk proses-proses tersebut.
+  
+- Namun, proses dengan prioritas rendah bisa tertunda sangat lama, terutama jika proses prioritas tinggi datang terus-menerus. Kondisi ini dapat menyebabkan starvation, yaitu proses prioritas rendah hampir tidak pernah dijalankan. Selain itu, sistem menjadi kurang “fair” karena tidak semua proses diperlakukan sama, yang menentukan cepat atau lamanya eksekusi hanyalah level prioritasnya.
+  
+c.  Overhead context switch
+
+Semakin sering pergantian terjadi, semakin besar waktu yang terbuang untuk menyimpan dan memuat konteks proses. Pada algoritma seperti Round Robin dengan quantum kecil, switching terjadi sangat sering sehingga overhead meningkat dan membuat eksekusi keseluruhan jadi kurang efisien. Sementara itu, algoritma dengan pergantian proses yang lebih jarang akan memiliki overhead lebih kecil dan kinerja sistem lebih stabil.
+
+d. Makespan & Throughput
+ 
+Dalam simulasi tanpa memperhitungkan context switching, semua algoritma menghasilkan makespan yang sama, yaitu total waktu penyelesaian seluruh proses tetap *22 ms*, apa pun metode penjadwalannya. Karena total waktunya sama, throughput-nya juga identik, yaitu *4 proses selesai dalam 22 ms*. Dengan kata lain, jumlah proses dan total waktu penyelesaiannya tidak berubah, sehingga nilai makespan dan throughput tetap konstan. Perbedaan antar algoritma baru terlihat pada WT dan TT , karena setiap algoritma mengatur urutan eksekusi proses dengan cara yang berbeda.
+
 
 
 ---
