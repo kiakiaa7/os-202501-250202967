@@ -251,7 +251,8 @@ Dampaknya:
 
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+
+Dapat disimpulkan bahwa algoritma penjadwalan Priority Scheduling memberikan hasil yang paling efisien dengan rata-rata waktu tunggu sebesar 5,25 dan rata-rata turnaround time sebesar 10,75. Sementara itu, algoritma Round Robin dengan berbagai nilai time quantum menunjukkan perbedaan performa. Round Robin dengan time quantum 5 memiliki rata-rata turnaround time sebesar 12,5 dan rata-rata waktu tunggu 7, yang lebih baik dibandingkan dengan time quantum 3 (turnaround 14 dan waktu tunggu 8,5) dan time quantum 2 (turnaround 15,25 dan waktu tunggu 9,75). Hal ini menunjukkan bahwa pemilihan time quantum yang tepat pada algoritma Round Robin sangat mempengaruhi efisiensi penjadwalan, di mana time quantum yang lebih besar (q=5) dapat menghasilkan kinerja yang lebih baik dibandingkan time quantum yang lebih kecil. Secara keseluruhan, Priority Scheduling dianggap lebih optimal dalam mengurangi waktu tunggu dan turnaround dibandingkan Round Robin dengan variasi time quantum yang diuji.
 
 ---
 ## Tugas
