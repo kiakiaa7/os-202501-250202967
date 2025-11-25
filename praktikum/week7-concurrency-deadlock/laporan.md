@@ -243,20 +243,25 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
    **Jawaban:**
    
    Empat kondisi utama (syarat) terjadinya *deadlock* menurut teori klasikal (Coffman conditions) adalah:
-   -Mutual Exclusion
+
+    -Mutual Exclusion :
+   
    Setiap resource hanya dapat digunakan oleh satu proses pada satu waktu.
 
-   -Hold and Wait
+   -Hold and Wait :
+   
    Proses sudah memegang satu resource dan menunggu resource lain yang sedang dipegang proses lain.
 
-   -No Preemption
+   -No Preemption :
+   
    Resource yang sedang digunakan proses tidak dapat diambil paksa; hanya dapat dilepaskan secara sukarela oleh proses tersebut.
 
-   -Circular Wait
+   -Circular Wait :
+   
    Terjadi rantai proses yang saling menunggu, misalnya P1 menunggu resource yang dipegang P2, P2 menunggu resource yang dipegang P3, dan seterusnya hingga kembali ke P1.
 
 
-2. Mengapa sinkronisasi diperlukan dalam sistem operasi?  
+3. Mengapa sinkronisasi diperlukan dalam sistem operasi?  
    **Jawaban:**
    
 Sinkronisasi diperlukan dalam sistem operasi untuk memastikan bahwa proses atau thread yang berjalan secara bersamaan dapat mengakses resource bersama dengan aman. Tanpa sinkronisasi, kondisi seperti *race condition* dapat terjadi ketika beberapa proses mengubah data secara bersamaan sehingga menghasilkan output yang tidak dapat diprediksi. Mekanisme sinkronisasi juga menjaga konsistensi dan integritas data, mencegah terjadinya kerusakan atau ketidaksesuaian akibat akses yang tak terkoordinasi. Selain itu, sinkronisasi memungkinkan koordinasi eksekusi antar-proses, memastikan bahwa proses tertentu berjalan dalam urutan yang benar sesuai kebutuhan. Dengan penerapan sinkronisasi yang baik, sistem dapat terhindar dari *deadlock* serta memanfaatkan resource secara lebih optimal dan efisien.
