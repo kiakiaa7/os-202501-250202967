@@ -45,9 +45,9 @@ dmesg | head
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/SimulasiDining.png)
+![Screenshot hasil](screenshots/SimulasiDining_week7.png)
 ![Screenshot hasil](screenshots/FixedversiSemapohore_week7.png)
-![Screenshot hasil](screenshots/Fixedversiodd.png)
+![Screenshot hasil](screenshots/Fixedversiodd_week7.png)
 ![Screenshot hasil](screenshots/FixedversiBatasMaks4_week7.png)
 
 
