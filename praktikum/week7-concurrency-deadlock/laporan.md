@@ -1,6 +1,6 @@
 
-# Laporan Praktikum Minggu [7]
-Topik: [Tuliskan judul topik, misalnya "Arsitektur Sistem Operasi dan Kernel"]
+# Laporan Praktikum Minggu 7
+Topik: Sinkronisasi Proses dan Masalah Deadlock 
 
 ---
 
@@ -65,8 +65,6 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 1. Analisis versi *Dining Philosophers* yang menyebabkan deadlock dan versi fixed yang bebas deadlock.  
 2. Sertakan diagram atau screenshot hasil simulasi/pseudocode.  
 3. Laporkan temuan penyebab deadlock dan solusi pencegahannya. 
-
-
 
 ## Quiz
 1. Sebutkan empat kondisi utama penyebab deadlock. 
