@@ -256,6 +256,7 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
    Terjadi rantai proses yang saling menunggu, misalnya P1 menunggu resource yang dipegang P2, P2 menunggu resource yang dipegang P3, dan seterusnya hingga kembali ke P1.
 
 
+
 2. Mengapa sinkronisasi diperlukan dalam sistem operasi?  
    **Jawaban:**
    
@@ -264,7 +265,6 @@ Sinkronisasi diperlukan dalam sistem operasi untuk memastikan bahwa proses atau 
 
 3. Jelaskan perbedaan antara *semaphore* dan *monitor*
    **Jawaban:**  
-**Semaphore** dan **monitor** adalah dua mekanisme sinkronisasi, tetapi keduanya memiliki konsep dan cara kerja yang berbeda secara mendasar:
 
 Semaphore adalah struktur sinkronisasi berbasis variabel counter yang dapat memiliki nilai integer, dan penggunaannya bergantung pada operasi dasar wait (P) dan signal (V). Semaphore bersifat *low-level*, sehingga programmer harus mengatur sendiri kapan harus memanggil wait atau signal. Hal ini membuat semaphore fleksibel tetapi rawan kesalahan seperti *deadlock* atau *missed wakeup* jika urutan pemanggilan tidak tepat. Semaphore juga tidak memiliki batasan bahwa operasi harus terikat pada satu blok kode tertentu.
 
