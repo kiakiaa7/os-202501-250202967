@@ -243,18 +243,17 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
    **Jawaban:**
    
    Empat kondisi utama (syarat) terjadinya *deadlock* menurut teori klasikal (Coffman conditions) adalah:
-1. Mutual Exclusion
+   -Mutual Exclusion
    Setiap resource hanya dapat digunakan oleh satu proses pada satu waktu.
 
-2. Hold and Wait
+   -Hold and Wait
    Proses sudah memegang satu resource dan menunggu resource lain yang sedang dipegang proses lain.
 
-3. No Preemption
+   -No Preemption
    Resource yang sedang digunakan proses tidak dapat diambil paksa; hanya dapat dilepaskan secara sukarela oleh proses tersebut.
 
-4. Circular Wait
+   -Circular Wait
    Terjadi rantai proses yang saling menunggu, misalnya P1 menunggu resource yang dipegang P2, P2 menunggu resource yang dipegang P3, dan seterusnya hingga kembali ke P1.
-
 
 
 2. Mengapa sinkronisasi diperlukan dalam sistem operasi?  
