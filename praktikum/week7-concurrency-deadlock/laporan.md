@@ -45,11 +45,14 @@ dmesg | head
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/SimulasiDining.png)
+![Screenshot hasil](screenshots/FixedversiSemapohore_week7.png)
+![Screenshot hasil](screenshots/Fixedversiodd.png)
+![Screenshot hasil](screenshots/FixedversiBatasMaks4_week7.png)
 
 
 
-##EKSPERIMEN 1
+## EKSPERIMEN 1
 
 ```
 import threading
