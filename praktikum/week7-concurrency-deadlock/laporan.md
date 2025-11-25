@@ -272,7 +272,7 @@ Sinkronisasi diperlukan dalam sistem operasi untuk memastikan bahwa proses atau 
 
 Semaphore adalah struktur sinkronisasi berbasis variabel counter yang dapat memiliki nilai integer, dan penggunaannya bergantung pada operasi dasar wait (P) dan signal (V). Semaphore bersifat *low-level*, sehingga programmer harus mengatur sendiri kapan harus memanggil wait atau signal. Hal ini membuat semaphore fleksibel tetapi rawan kesalahan seperti *deadlock* atau *missed wakeup* jika urutan pemanggilan tidak tepat. Semaphore juga tidak memiliki batasan bahwa operasi harus terikat pada satu blok kode tertentu.
 
-sebaliknya, MOnitor adalah mekanisme sinkronisasi *high-level* yang menggabungkan data, operasi, dan pengendalian akses dalam satu abstraksi. Monitor memastikan bahwa hanya satu thread yang dapat mengeksekusi fungsi di dalamnya pada satu waktu, sehingga memberikan *mutual exclusion* secara otomatis. Selain itu, monitor biasanya menggunakan *condition variable* untuk mengatur thread yang harus menunggu dan bangun pada keadaan tertentu. Karena sifatnya yang terstruktur, monitor lebih aman dan mudah digunakan dibanding semaphore, tetapi fleksibilitasnya lebih rendah.
+sebaliknya, Monitor adalah mekanisme sinkronisasi *high-level* yang menggabungkan data, operasi, dan pengendalian akses dalam satu abstraksi. Monitor memastikan bahwa hanya satu thread yang dapat mengeksekusi fungsi di dalamnya pada satu waktu, sehingga memberikan *mutual exclusion* secara otomatis. Selain itu, monitor biasanya menggunakan *condition variable* untuk mengatur thread yang harus menunggu dan bangun pada keadaan tertentu. Karena sifatnya yang terstruktur, monitor lebih aman dan mudah digunakan dibanding semaphore, tetapi fleksibilitasnya lebih rendah.
 
 ---
 
