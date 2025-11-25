@@ -1,20 +1,22 @@
 
-# Laporan Praktikum Minggu [X]
+# Laporan Praktikum Minggu [7]
 Topik: [Tuliskan judul topik, misalnya "Arsitektur Sistem Operasi dan Kernel"]
 
 ---
 
 ## Identitas
-- **Nama**  : [Nama Mahasiswa]  
-- **NIM**   : [NIM Mahasiswa]  
-- **Kelas** : [Kelas]
-
+- **Nama**  : SASKIA ISTIQOMAH 
+- **NIM**   : 250202967  
+- **Kelas** : 1IKRA
 ---
 
 ## Tujuan
-Tuliskan tujuan praktikum minggu ini.  
-Contoh:  
-> Mahasiswa mampu menjelaskan fungsi utama sistem operasi dan peran kernel serta system call.
+Setelah menyelesaikan tugas ini, mahasiswa mampu:
+1. Mengidentifikasi empat kondisi penyebab deadlock (*mutual exclusion, hold and wait, no preemption, circular wait*).  
+2. Menjelaskan mekanisme sinkronisasi menggunakan *semaphore* atau *monitor*.  
+3. Menganalisis dan memberikan solusi untuk kasus deadlock.  
+4. Berkolaborasi dalam tim untuk menyusun laporan analisis.  
+5. Menyajikan hasil studi kasus secara sistematis. 
 
 ---
 
@@ -59,12 +61,19 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 
 ---
 
+## Tugas
+1. Analisis versi *Dining Philosophers* yang menyebabkan deadlock dan versi fixed yang bebas deadlock.  
+2. Sertakan diagram atau screenshot hasil simulasi/pseudocode.  
+3. Laporkan temuan penyebab deadlock dan solusi pencegahannya. 
+
+
+
 ## Quiz
-1. [Pertanyaan 1]  
+1. Sebutkan empat kondisi utama penyebab deadlock. 
    **Jawaban:**  
-2. [Pertanyaan 2]  
+2. Mengapa sinkronisasi diperlukan dalam sistem operasi?  
    **Jawaban:**  
-3. [Pertanyaan 3]  
+3. Jelaskan perbedaan antara *semaphore* dan *monitor*
    **Jawaban:**  
 
 ---
