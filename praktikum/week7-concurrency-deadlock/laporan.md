@@ -5,8 +5,14 @@ Topik: Sinkronisasi Proses dan Masalah Deadlock
 ---
 
 ## Identitas
-- **Nama**  : SASKIA ISTIQOMAH 
-- **NIM**   : 250202967  
+
+-  ## Nama Kelompok
+ 1. Ervita Dwi Riyanti bertugas sebagai Ketua Kelompok dan analisis [250202977] ,
+
+ 2. Saskia Istiqomah bertugas implementasi [250202967] , 
+
+ 3. Zaki Humam Faradi bertugas dokumentasi [250202972] ,
+
 - **Kelas** : 1IKRA
 ---
 
