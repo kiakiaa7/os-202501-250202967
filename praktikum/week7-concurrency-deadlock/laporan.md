@@ -22,24 +22,21 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 
 ## Dasar Teori
 
-1. Sinkronisasi Proses
+1. Sinkronisasi Proses:
    Mengatur eksekusi beberapa proses agar tidak saling mengganggu saat mengakses resource bersama, menjaga konsistensi data.
 
-2. Critical Section & Race Condition
+2. Critical Section & Race Condition:
    Critical section adalah bagian kode yang mengakses resource bersama; tanpa kontrol akan memicu race condition, sehingga perlu mekanisme mutual exclusion.
 
-3. Mekanisme Sinkronisasi
+3. Mekanisme Sinkronisasi:
    Meliputi mutex, semaphore, monitor, dan spinlock untuk membatasi akses dan mengoordinasikan proses.
 
-4. Deadlock & Penyebabnya
+4. Deadlock & Penyebabnya:
    Deadlock terjadi ketika proses saling menunggu resource sehingga tidak ada yang bisa lanjut. Terjadi jika empat kondisi Coffman terpenuhi: mutual exclusion, hold and wait, no preemption, circular wait.
 
-5. Penanganan Deadlock
+5. Penanganan Deadlock:
    Meliputi pencegahan, penghindaran (mis. Banker’s Algorithm), deteksi dan pemulihan, serta pendekatan mengabaikan deadlock jika jarang terjadi.
 
----
-
-Jika ingin lebih dipadatkan lagi atau dibuat menjadi paragraf tunggal, tinggal beri tahu!
 
 ---
 
