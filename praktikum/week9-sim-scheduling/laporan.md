@@ -1,13 +1,13 @@
 
 # Laporan Praktikum Minggu [X]
-Topik: [Simulasi Algoritma Penjadwalan CPU]
+Topik: Simulasi Algoritma Penjadwalan CPU
 
 ---
 
 ## Identitas
-- **Nama**  : [SASKIA ISTIQOMAH]  
-- **NIM**   : [250202967]  
-- **Kelas** : [1 IKRA]
+- **Nama**  : SASKIA ISTIQOMAH
+- **NIM**   : 250202967 
+- **Kelas** : 1 IKRA
 
 ---
 
@@ -102,11 +102,11 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 ---
 
 ## Quiz
-1. [Mengapa simulasi diperlukan untuk menguji algoritma scheduling?]  
+1. Mengapa simulasi diperlukan untuk menguji algoritma scheduling?
    **Jawaban:**  
-2. [Pertanyaan 2]  
+2. Apa perbedaan hasil simulasi dengan perhitungan manual jika dataset besar?  
    **Jawaban:**  
-3. [Pertanyaan 3]  
+3. Algoritma mana yang lebih mudah diimplementasikan? Jelaskan. 
    **Jawaban:**  
 
 ---
