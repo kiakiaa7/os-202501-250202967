@@ -1,20 +1,22 @@
 
-# Laporan Praktikum Minggu [X]
-Topik: [Tuliskan judul topik, misalnya "Arsitektur Sistem Operasi dan Kernel"]
-
+# Laporan Praktikum Minggu 10
+Topik: Manajemen Memori – Page Replacement (FIFO & LRU)
 ---
 
 ## Identitas
-- **Nama**  : [Nama Mahasiswa]  
-- **NIM**   : [NIM Mahasiswa]  
-- **Kelas** : [Kelas]
+- **Nama**  : SASKIA ISTIQOMAH
+- **NIM**   : 250202967
+- **Kelas** : 1 IKRA
 
 ---
 
 ## Tujuan
-Tuliskan tujuan praktikum minggu ini.  
-Contoh:  
-> Mahasiswa mampu menjelaskan fungsi utama sistem operasi dan peran kernel serta system call.
+Setelah menyelesaikan tugas ini, mahasiswa mampu:
+1. Mengimplementasikan algoritma page replacement FIFO dalam program.
+2. Mengimplementasikan algoritma page replacement LRU dalam program.
+3. Menjalankan simulasi page replacement dengan dataset tertentu.
+4. Membandingkan performa FIFO dan LRU berdasarkan jumlah *page fault*.
+5. Menyajikan hasil simulasi dalam laporan yang sistematis.
 
 ---
 
@@ -24,10 +26,52 @@ Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
 ---
 
 ## Langkah Praktikum
-1. Langkah-langkah yang dilakukan.  
-2. Perintah yang dijalankan.  
-3. File dan kode yang dibuat.  
-4. Commit message yang digunakan.
+1. **Menyiapkan Dataset**
+
+   Gunakan *reference string* berikut sebagai contoh:
+   ```
+   7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2
+   ```
+   Jumlah frame memori: **3 frame**.
+
+2. **Implementasi FIFO**
+
+   - Simulasikan penggantian halaman menggunakan algoritma FIFO.
+   - Catat setiap *page hit* dan *page fault*.
+   - Hitung total *page fault*.
+
+3. **Implementasi LRU**
+
+   - Simulasikan penggantian halaman menggunakan algoritma LRU.
+   - Catat setiap *page hit* dan *page fault*.
+   - Hitung total *page fault*.
+
+4. **Eksekusi & Validasi**
+
+   - Jalankan program untuk FIFO dan LRU.
+   - Pastikan hasil simulasi logis dan konsisten.
+   - Simpan screenshot hasil eksekusi.
+
+5. **Analisis Perbandingan**
+
+   Buat tabel perbandingan seperti berikut:
+
+   | Algoritma | Jumlah Page Fault | Keterangan |
+   |:--|:--:|:--|
+   | FIFO | ... | ... |
+   | LRU | ... | ... |
+
+
+   - Jelaskan mengapa jumlah *page fault* bisa berbeda.
+   - Analisis algoritma mana yang lebih efisien dan alasannya.
+
+6. **Commit & Push**
+
+   ```bash
+   git add .
+   git commit -m "Minggu 10 - Page Replacement FIFO & LRU"
+   git push origin main
+   ```
 
 ---
 
@@ -58,13 +102,19 @@ Sertakan screenshot hasil percobaan atau diagram:
 Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 
 ---
+## Tugas
+1. Buat program simulasi page replacement FIFO dan LRU.
+2. Jalankan simulasi dengan dataset uji.
+3. Sajikan hasil simulasi dalam tabel atau grafik.
+4. Tulis laporan praktikum pada `laporan.md`.
+
 
 ## Quiz
-1. [Pertanyaan 1]  
+1. Apa perbedaan utama FIFO dan LRU?
    **Jawaban:**  
-2. [Pertanyaan 2]  
+2. Mengapa FIFO dapat menghasilkan *Belady’s Anomaly*?
    **Jawaban:**  
-3. [Pertanyaan 3]  
+3. Mengapa LRU umumnya menghasilkan performa lebih baik dibanding FIFO?
    **Jawaban:**  
 
 ---
