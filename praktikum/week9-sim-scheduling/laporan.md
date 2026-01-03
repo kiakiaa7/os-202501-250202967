@@ -174,7 +174,7 @@ FCFS Model Program Python
 
 **FCFS (First Come First Serve) :**
 
-* Fungsi fcfs(proses) menerima data proses dalam bentuk daftar (list) yang berisi PID, arrival time, dan burst time.
+* Fungsi fcfs : (proses) menerima data proses dalam bentuk daftar (list) yang berisi PID, arrival time, dan burst time.
 * Data proses diurutkan berdasarkan arrival time agar dieksekusi sesuai urutan kedatangan.
 * Variabel time digunakan untuk menyimpan waktu CPU saat ini.
 * Program kemudian memproses setiap proses satu per satu:
