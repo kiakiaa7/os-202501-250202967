@@ -84,9 +84,71 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 ## Kode / Perintah
 Tuliskan potongan kode atau perintah utama:
 ```bash
-uname -a
-lsmod | head
-dmesg | head
+def fcfs(proses):
+    # Mengurutkan proses berdasarkan arrival time
+    proses.sort(key=lambda x: x['arrival'])
+
+    time = 0
+    hasil = []
+
+    for p in proses:
+        pid = p['pid']
+        arrival = p['arrival']
+        burst = p['burst']
+
+        # Menentukan waktu mulai proses
+        start = max(time, arrival)
+
+        # Menentukan waktu selesai proses
+        finish = start + burst
+
+        # Menghitung turnaround time dan waiting time
+        turnaround = finish - arrival
+        waiting = turnaround - burst
+
+        # Menyimpan hasil perhitungan
+        hasil.append({
+            'pid': pid,
+            'arrival': arrival,
+            'burst': burst,
+            'start': start,
+            'finish': finish,
+            'waiting': waiting,
+            'turnaround': turnaround
+        })
+
+        # Update waktu CPU
+        time = finish
+
+    return hasil
+
+
+# =====================
+# DATASET PROSES
+# =====================
+proses = [
+    {'pid': 'P1', 'arrival': 0, 'burst': 6},
+    {'pid': 'P2', 'arrival': 1, 'burst': 8},
+    {'pid': 'P3', 'arrival': 2, 'burst': 7},
+    {'pid': 'P4', 'arrival': 3, 'burst': 3}
+]
+
+# Menjalankan simulasi FCFS
+hasil_fcfs = fcfs(proses)
+
+# Menampilkan hasil
+print("PID | AT | BT | ST | FT | WT | TAT")
+for h in hasil_fcfs:
+    print(
+        h['pid'], "|",
+        h['arrival'], "|",
+        h['burst'], "|",
+        h['start'], "|",
+        h['finish'], "|",
+        h['waiting'], "|",
+        h['turnaround']
+    )
+
 ```
 ---
 
