@@ -20,7 +20,11 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 ---
 
 ## Dasar Teori
-Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
+ - Deadlock adalah kondisi ketika dua atau lebih proses saling menunggu sumber daya yang sedang digunakan proses lain, sehingga tidak ada proses yang dapat melanjutkan eksekusi.
+ - Konsep Deteksi Deadlock : Deteksi deadlock memungkinkan deadlock terjadi, kemudian sistem operasi melakukan pemeriksaan secara berkala untuk mendeteksi adanya deadlock dan mengambil tindakan pemulihan.
+- Resource Allocation Graph (RAG) : RAG digunakan untuk merepresentasikan hubungan proses dan sumber daya. Deadlock terdeteksi jika terdapat siklus (cycle) pada graf, khususnya pada sistem dengan satu instance sumber daya.
+- Algoritma Deteksi Deadlock : Pada sistem dengan satu instance resource, deadlock dideteksi dengan pencarian siklus pada RAG. Pada sistem dengan banyak instance, digunakan algoritma berbasis matriks (Available, Allocation, Request) untuk mengidentifikasi proses yang terjebak deadlock.
+- Pemulihan Deadlock (Recovery) : Setelah deadlock terdeteksi, sistem melakukan pemulihan dengan cara menghentikan proses, melakukan *resource preemption*, atau melakukan *rollback* ke kondisi aman sebelumnya.
 
 ---
 
