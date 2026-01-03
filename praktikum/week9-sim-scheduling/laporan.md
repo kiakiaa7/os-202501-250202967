@@ -92,7 +92,7 @@ dmesg | head
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/ScreenshotSchedulling_Week9.png)
 
 ---
 
@@ -137,7 +137,7 @@ FCFS Model Program Python
 
  FCFS Model Manual Week-5
 
-
+![Screenshot hasil](screenshots/Screenshot_Week9.png)
 
 
 
