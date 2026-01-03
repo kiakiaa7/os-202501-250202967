@@ -96,25 +96,95 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ---
 
-## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
+## Tugas dan Analisis
+
+FCFS Model Program Python
+| Proses | Arrival | Burst | Start | Finish Time | Waiting Time | Turnaround Time |
+| ------ | ------- | ----- | ----- | ---------- | ------------ | --------------- |
+| P1     | 0       | 6     | 0     | 6          | 0            | 6               |
+| P2     | 1       | 8     | 6     | 14         | 5            | 13              |
+| P3     | 2       | 7     | 14    | 21         | 12           | 19              |
+| P4     | 3       | 3     | 21    | 24         | 18           | 21              |
+
+---
+
+**1. Penjelasan alur program**
+
+**FCFS (First Come First Serve) :**
+
+* Fungsi fcfs(proses) menerima data proses dalam bentuk daftar (list) yang berisi PID, arrival time, dan burst time.
+* Data proses diurutkan berdasarkan arrival time agar dieksekusi sesuai urutan kedatangan.
+* Variabel time digunakan untuk menyimpan waktu CPU saat ini.
+* Program kemudian memproses setiap proses satu per satu:
+  * Start time : ditentukan dari waktu CPU saat ini atau waktu kedatangan proses (dipilih yang paling besar).
+  * Finish time : dihitung dengan menambahkan burst time ke start time.
+  * Turnaround time : dihitung dari selisih antara finish time dan arrival time.
+  * Waiting time : dihitung dari turnaround time dikurangi burst time.
+* Setelah satu proses selesai, nilai time diperbarui menjadi finish time.
+* Semua hasil perhitungan disimpan dalam bentuk list.
+* Program menampilkan hasil akhir dalam bentuk tabel yang berisi PID, Arrival, Burst, Start, Finish, Waiting, dan Turnaround.
+
+ **2. Perbandingan hasil simulasi dengan perhitungan manual** 
+
+  FCFS Model Program 
+
+  | Proses | Arrival Time | Burst Time | Start Time | Finish Time | Waiting Time | Turnaround Time |
+| ------ | ------------ | ---------- | ---------- | ----------- | ------------ | --------------- |
+| P1     | 0            | 6          | 0          | 6           | 0            | 6               |
+| P2     | 1            | 8          | 6          | 14          | 5            | 13              |
+| P3     | 2            | 7          | 14         | 21          | 12           | 19              |
+| P4     | 3            | 3          | 21         | 24          | 18           | 21              |
+
+ FCFS Model Manual Week-5
+
+
+
+
+
+| Aspek Perbandingan | Perhitungan Manual | Simulasi Program  |
+| ------------------ | ------------------ | ----------------- |
+| Urutan Proses      | P1 → P2 → P3 → P4  | P1 → P2 → P3 → P4 |
+| Start Time         | Sesuai Gantt Chart | Sama              |
+| Finish Time        | Sesuai Gantt Chart | Sama              |
+| Waiting Time       | Dihitung manual    | Sama              |
+| Turnaround Time    | Dihitung manual    | Sama              |
+| Selisih Hasil      | –                  | Tidak ada         |
+
+**3. Penjelasan kelebihan dan keterbatasan simulasi**
+
+**Kelebihan Simulasi FCFS**
+
+* Mudah dipahami karena proses dijalankan sesuai urutan kedatangan.
+* Algoritma sederhana dan mudah diimplementasikan dalam program.
+* Memudahkan pemahaman konsep **waiting time** dan **turnaround time**.
+* Hasil simulasi dapat digunakan untuk memvalidasi perhitungan manual.
+* Cocok digunakan sebagai simulasi awal dalam pembelajaran penjadwalan CPU.
+
+**Keterbatasan Simulasi FCFS**
+
+* Tidak mempertimbangkan burst time dalam menentukan urutan proses.
+* Proses dengan burst time kecil dapat mengalami waktu tunggu yang lama.
+* Bersifat non-preemptive sehingga kurang mencerminkan sistem operasi modern.
+* Tidak mendukung prioritas proses.
+* Simulasi masih bersifat statis karena menggunakan dataset tetap.
+
 
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+
+* Algoritma First Come First Serve (FCFS) mengeksekusi proses berdasarkan urutan waktu kedatangan.
+* Hasil simulasi program FCFS sesuai dengan perhitungan manual, tanpa perbedaan nilai.
+* Nilai start time, finish time, waiting time, dan turnaround time berhasil dihitung dengan benar.
+* Simulasi membantu memahami konsep dasar penjadwalan CPU dan validasi perhitungan manual.
+* Algoritma FCFS mudah diimplementasikan namun memiliki keterbatasan.
+* FCFS tidak mempertimbangkan burst time dan bersifat non-preemptive.
+* Proses dengan burst time kecil dapat mengalami waktu tunggu yang lama.
+* FCFS lebih cocok digunakan untuk pembelajaran dasar dibandingkan sistem operasi modern.
 
 --- 
 
-## Tugas 
-1. Buat program simulasi FCFS atau SJF.  
-2. Jalankan program dengan dataset uji.  
-3. Sajikan output dalam tabel atau grafik.  
-4. Tulis laporan praktikum pada `laporan.md`.
-   
----
+
 
 ## Quiz
 1. Mengapa simulasi diperlukan untuk menguji algoritma scheduling?
