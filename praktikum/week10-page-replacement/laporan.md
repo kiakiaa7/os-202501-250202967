@@ -183,7 +183,8 @@ if __name__ == "__main__":
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/ScreenshotFIFO_Week10.png)
+![Screenshot hasil](screenshots/ScreenshotLRU_Week10.png)
 
 ---
 ## Tugas dan Analisis
