@@ -190,7 +190,7 @@ Sertakan screenshot hasil percobaan atau diagram:
 ## Tugas dan Analisis
 
 **Simulasi Algoritma FIFO (First In First Out)**
-Reference String: [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2]*
+Reference String: [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2]
   *Jumlah Frame: 3*
   
   FIFO (First-In First-Out)
