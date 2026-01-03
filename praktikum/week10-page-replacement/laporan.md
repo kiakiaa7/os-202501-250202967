@@ -76,20 +76,107 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 
 6. **Commit & Push**
 
-   ```bash
-   git add .
-   git commit -m "Minggu 10 - Page Replacement FIFO & LRU"
-   git push origin main
-   ```
-
+   
 ---
 
 ## Kode / Perintah
 Tuliskan potongan kode atau perintah utama:
+
+FIFO (First-In First-Out)
 ```bash
-uname -a
-lsmod | head
-dmesg | head
+def fifo_page_replacement(pages, frame_count):
+    frames = []
+    page_faults = 0
+    page_hits = 0
+    pointer = 0
+    total_access = len(pages)
+
+    print("=== FIFO PAGE REPLACEMENT ===")
+    print("Reference String :", pages)
+    print("Jumlah Frame     :", frame_count)
+    print("-" * 45)
+    print(f"{'Step':<5} {'Page':<6} {'Status':<8} {'Frames'}")
+    print("-" * 45)
+
+    for step, page in enumerate(pages, start=1):
+        if page in frames:
+            status = "HIT"
+            page_hits += 1
+        else:
+            status = "FAULT"
+            page_faults += 1
+            if len(frames) < frame_count:
+                frames.append(page)
+            else:
+                frames[pointer] = page
+                pointer = (pointer + 1) % frame_count
+
+        print(f"{step:<5} {page:<6} {status:<8} {frames}")
+
+    print("-" * 45)
+    print("HASIL AKHIR")
+    print("Total Akses      :", total_access)
+    print("Total Page Hits  :", page_hits)
+    print("Total Page Fault:", page_faults)
+
+
+# ===== PROGRAM UTAMA =====
+if __name__ == "__main__":
+    pages = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2]
+    frame_count = 3
+    fifo_page_replacement(pages, frame_count)
+
+```
+LRU  (Least Recently Used)
+
+```bash
+def lru_page_replacement(pages, frame_count):
+    frames = []
+    recent = []          # menyimpan urutan pemakaian halaman
+    page_faults = 0
+    page_hits = 0
+    total_access = len(pages)
+
+    print("=== LRU PAGE REPLACEMENT ===")
+    print("Reference String :", pages)
+    print("Jumlah Frame     :", frame_count)
+    print("-" * 50)
+    print(f"{'Step':<5} {'Page':<6} {'Status':<8} {'Frames'}")
+    print("-" * 50)
+
+    for step, page in enumerate(pages, start=1):
+        if page in frames:
+            status = "HIT"
+            page_hits += 1
+            recent.remove(page)
+            recent.append(page)
+        else:
+            status = "FAULT"
+            page_faults += 1
+            if len(frames) < frame_count:
+                frames.append(page)
+                recent.append(page)
+            else:
+                lru_page = recent.pop(0)
+                index = frames.index(lru_page)
+                frames[index] = page
+                recent.append(page)
+
+        print(f"{step:<5} {page:<6} {status:<8} {frames}")
+
+    print("-" * 50)
+    print("HASIL AKHIR")
+    print("Total Akses      :", total_access)
+    print("Total Page Hits  :", page_hits)
+    print("Total Page Fault:", page_faults)
+
+
+# ===== PROGRAM UTAMA =====
+if __name__ == "__main__":
+    pages = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2]
+    frame_count = 3
+    lru_page_replacement(pages, frame_count)
+
 ```
 
 ---
