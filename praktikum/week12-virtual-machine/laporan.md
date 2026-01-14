@@ -64,11 +64,23 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 
 ## Quiz
 1. Apa perbedaan antara host OS dan guest OS?
-   **Jawaban:**  
+   **Jawaban:**
+
+   Host OS dan Guest OS adalah dua jenis sistem operasi yang digunakan dalam konsep virtualisasi.
+Host OS merupakan sistem operasi utama yang terinstal langsung pada perangkat keras komputer dan bertugas mengelola seluruh sumber daya fisik seperti prosesor, memori, penyimpanan, dan perangkat input/output. Host OS juga menjadi platform tempat aplikasi virtualisasi (hypervisor) dijalankan.
+Sementara itu, Guest OS adalah sistem operasi yang berjalan di dalam mesin virtual yang dibuat oleh hypervisor di atas Host OS. Guest OS tidak berinteraksi langsung dengan perangkat keras, melainkan menggunakan sumber daya yang dialokasikan oleh Host OS. Dengan demikian, Host OS berperan sebagai pengelola utama sistem, sedangkan Guest OS berfungsi sebagai sistem operasi tambahan yang berjalan secara terisolasi untuk keperluan tertentu, seperti pengujian aplikasi, pembelajaran, atau menjalankan sistem operasi yang berbeda dalam satu komputer.
+
 2. Apa peran hypervisor dalam virtualisasi?
-   **Jawaban:**  
+   **Jawaban:**
+   
+Hypervisor memiliki peran sebagai lapisan kontrol utama dalam teknologi virtualisasi yang bertanggung jawab menciptakan, menjalankan, dan mengelola mesin virtual. Hypervisor bekerja dengan mengabstraksi perangkat keras fisik sehingga dapat digunakan oleh beberapa sistem operasi secara bersamaan. Ia menentukan pembagian sumber daya seperti waktu pemrosesan CPU, kapasitas memori, ruang penyimpanan, dan akses jaringan untuk setiap Guest OS. Selain itu, hypervisor menjaga keamanan dan stabilitas sistem dengan memisahkan satu mesin virtual dari mesin virtual lainnya, sehingga kegagalan atau kesalahan pada satu Guest OS tidak memengaruhi sistem yang lain. Dengan fungsi ini, hypervisor memungkinkan pemanfaatan hardware yang lebih optimal dan mendukung efisiensi operasional dalam lingkungan virtual dan komputasi awan.
+
+   
 3. Mengapa virtualisasi meningkatkan keamanan sistem?  
-   **Jawaban:**  
+   **Jawaban:**
+
+   Virtualisasi meningkatkan keamanan sistem karena setiap sistem operasi dan aplikasi dijalankan dalam lingkungan yang terisolasi satu sama lain melalui mesin virtual. Isolasi ini membuat serangan, malware, atau kesalahan pada satu Guest OS tidak langsung menyebar ke Guest OS lain maupun ke Host OS. Selain itu, virtualisasi memungkinkan penerapan kontrol akses dan pembatasan sumber daya yang ketat, sehingga dampak dari penyalahgunaan sistem dapat diminimalkan. Fitur seperti snapshot dan rollback juga meningkatkan keamanan karena sistem dapat dengan cepat dikembalikan ke kondisi aman sebelum terjadi gangguan. Dengan demikian, virtualisasi membantu menjaga stabilitas, mencegah eskalasi serangan, dan mempermudah pemulihan sistem ketika terjadi masalah keamanan.
+
 
 ---
 
