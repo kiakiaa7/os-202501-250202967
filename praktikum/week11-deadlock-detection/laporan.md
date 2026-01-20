@@ -85,7 +85,7 @@ dmesg | head
 
 ## Hasil Eksekusi
 Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/ScreenshotDeadlock_Week11.png)
 
 ---
 
@@ -98,13 +98,6 @@ Sertakan screenshot hasil percobaan atau diagram:
 
 ## Kesimpulan
 Tuliskan 2–3 poin kesimpulan dari praktikum ini.
-
----
-
-### Tugas
-1. Buat program simulasi deteksi deadlock.  
-2. Jalankan program dengan dataset uji.  
-3. Sajikan hasil analisis dalam tabel dan narasi. 
 
 
 ---
