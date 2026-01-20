@@ -90,24 +90,82 @@ Sertakan screenshot hasil percobaan atau diagram:
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
+Tabel hasil deteksi :
+| Proses | Resource Dialokasikan | Resource Diminta | Status   |
+| ------ | --------------------- | ---------------- | -------- |
+| P1     | R1                    | R2               | Deadlock |
+| P2     | R2                    | R3               | Deadlock |
+| P3     | R3                    | R1               | Deadlock |
+
+Seluruh proses dalam status deadlock.
+Deadlock terjadi karena setiap proses saling menunggu resource yang sedang dipegang oleh proses lain, sehingga tidak ada satu pun proses yang dapat melanjutkan eksekusi.
+
+Secara rinci:
+
+a. Proses P1 memegang resource R1 dan menunggu R2 yang sedang dipegang oleh P2
+
+b. Proses P2 memegang resource R2 dan menunggu R3 yang sedang dipegang oleh P3
+
+c. Proses P3 memegang resource R3 dan menunggu R1 yang sedang dipegang oleh P1
+
+Kondisi ini membentuk circular wait, sehingga sistem mengalami kebuntuan permanen (deadlock).
+
+Berdasarkan teori sistem operasi, deadlock terjadi apabila keempat kondisi berikut terpenuhi secara bersamaan. Pada kasus ini, seluruh kondisi tersebut terpenuhi:
+
+1. Mutual Exclusion
+
+Resource bersifat eksklusif, artinya hanya dapat digunakan oleh satu proses pada satu waktu. Terpenuhi, karena R1, R2, dan R3 tidak dapat dibagi.
+
+2. Hold and Wait
+
+Proses memegang satu resource sambil menunggu resource lain. Terpenuhi, karena setiap proses memegang satu resource dan menunggu resource berikutnya.
+
+3. No Preemption
+
+Resource tidak dapat direbut secara paksa dari proses yang sedang menggunakannya. Terpenuhi, karena resource hanya dilepas setelah proses selesai.
+
+4. Circular Wait
+
+Terdapat siklus ketergantungan antar proses. Terpenuhi, karena P1 → P2 → P3 → P1.
+Karena keempat kondisi deadlock terpenuhi secara simultan dan tidak terdapat proses yang dapat dieksekusi hingga selesai, maka sistem berada dalam kondisi deadlock. Program deteksi deadlock berhasil mengidentifikasi proses-proses yang terlibat dalam deadlock secara tepat.
+
+Solusi pencegahan deadlock
+Deadlock dapat dicegah dengan menghilangkan salah satu dari empat kondisi deadlock. Pada kasus ini, penerapan resource ordering untuk mencegah circular wait merupakan solusi paling efektif. Alternatif lain adalah penggunaan algoritma penghindaran seperti Banker atau pendekatan deteksi dan pemulihan dengan menghentikan salah satu proses yang terlibat.
 
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+Praktikum ini berhasil mensimulasikan dan mendeteksi kondisi deadlock pada sistem operasi menggunakan pendekatan algoritmik berbasis alokasi dan permintaan resource.
+Hasil pengujian menunjukkan bahwa deadlock terjadi ketika seluruh proses saling menunggu resource yang sedang dipegang proses lain, sehingga tidak ada proses yang dapat diselesaikan.
+Deteksi deadlock dapat digunakan sebagai dasar analisis untuk memahami penyebab deadlock, meskipun solusi pencegahan atau penghindaran tidak diimplementasikan dalam praktikum ini.
 
 
 ---
 ## Quiz
 1. Apa perbedaan antara *deadlock prevention*, *avoidance*, dan *detection*?
-   **Jawaban:**  
+   **Jawaban:**
+
+* Deadlock prevention: Mencegah deadlock sejak awal dengan menghilangkan salah satu syarat deadlock. Deadlock dijamin tidak terjadi, tetapi penggunaan resource kurang efisien.
+
+* Deadlock avoidance: Menghindari deadlock dengan mengecek kondisi aman (*safe state*) sebelum memberi resource. Lebih fleksibel, tetapi membutuhkan perhitungan dan informasi kebutuhan proses.
+
+* Deadlock detection: Membiarkan deadlock terjadi lalu mendeteksinya dan melakukan pemulihan. Lebih sederhana dan efisien jika deadlock jarang terjadi, namun perlu mekanisme recovery.
+
 2. Mengapa deteksi deadlock tetap diperlukan dalam sistem operasi?  
-   **Jawaban:**  
+   **Jawaban:**
+
+   Deteksi deadlock tetap diperlukan dalam sistem operasi karena tidak semua deadlock bisa dicegah atau dihindari secara efisien. Pendekatan prevention dan avoidance sering membatasi penggunaan resource atau membutuhkan informasi lengkap yang tidak selalu tersedia. Oleh karena itu, sistem operasi membiarkan resource digunakan secara bebas, lalu mendeteksi deadlock jika benar-benar terjadi. Dengan deteksi deadlock, sistem dapat menjaga efisiensi dan fleksibilitas, serta memulihkan sistem melalui penghentian proses atau pengambilan kembali resource agar sistem tetap berjalan normal.
+
+   
 3.  Apa kelebihan dan kekurangan pendekatan deteksi deadlock?
-   **Jawaban:**  
+   **Jawaban:**
+
+   Kelebihan:
+Deteksi deadlock memungkinkan penggunaan resource lebih efisien karena sistem tidak membatasi proses secara ketat dan hanya menangani masalah saat deadlock benar-benar terjadi.
+
+   Kekurangan:
+Deadlock baru ditangani setelah terjadi, sehingga proses dapat berhenti sementara dan sistem memerlukan mekanisme pemulihan yang bisa mengganggu jalannya program.
+
 
 ---
 
