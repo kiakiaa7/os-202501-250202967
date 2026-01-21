@@ -22,7 +22,22 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 ---
 
 ## Dasar Teori
-Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
+
+1. Virtualisasi Sistem Operasi :
+Virtualisasi memungkinkan satu perangkat keras fisik menjalankan beberapa sistem operasi secara bersamaan melalui mesin virtual (Virtual Machine).
+
+2. Host OS dan Guest OS :
+Host OS adalah sistem operasi utama yang berjalan langsung pada perangkat keras, sedangkan guest OS berjalan di lingkungan virtual yang terisolasi.
+
+3. Hypervisor :
+Hypervisor merupakan perangkat lunak yang mengelola dan membagi resource perangkat keras kepada guest OS serta menjaga isolasi antar sistem.
+
+4. Konfigurasi Resource Virtual :
+Resource seperti CPU, RAM, dan storage dapat diatur sesuai kebutuhan, dan penggunaannya dibatasi oleh hypervisor.
+
+5. Isolasi dan Keamanan Sistem :
+Virtualisasi menyediakan isolasi antara host dan guest OS, sehingga meningkatkan keamanan dan stabilitas sistem.
+
 
 ---
 
@@ -45,7 +60,22 @@ dmesg | head
 ---
 
 ## Hasil Eksekusi
-Sertakan screenshot hasil percobaan atau diagram:
+
+1. Instalasi VirtualBox
+
+![Screenshot hasil](screenshots/ScreenshotInstall_Week_12.png)
+![Screenshot hasil](screenshots/ScreenshotWeek_12_1.png)
+VirtualBox diinstal pada sistem operasi host dengan menjalankan installer hingga proses instalasi selesai. Setelah instalasi berhasil, aplikasi VirtualBox dapat dijalankan dengan normal.
+
+
+
+
+
+
+
+
+
+
 ![Screenshot hasil](screenshots/example.png)
 
 ---
