@@ -67,28 +67,63 @@ dmesg | head
 ![Screenshot hasil](screenshots/ScreenshotWeek_12_1.png)
 VirtualBox diinstal pada sistem operasi host dengan menjalankan installer hingga proses instalasi selesai. Setelah instalasi berhasil, aplikasi VirtualBox dapat dijalankan dengan normal.
 
+2. Pembuatan Virtual Machine
+![Screenshot hasil](screenshots/ScreenshotWeek_12_2.png)
+VM baru dibuat dengan konfigurasi sebagai berikut:
 
+Nama VM: Ubuntu-Week12
 
+Tipe OS: Linux
 
+Versi: Ubuntu (64-bit)
 
+3. Konfigurasi Resource Awal
 
+![Screenshot hasil](screenshots/ScreenshotWeek_12_3.png)
 
+Resource awal yang diberikan pada VM:
 
+RAM: 2 GB
 
+CPU: 1 core
 
-![Screenshot hasil](screenshots/example.png)
+Storage: 20 GB (VDI, Dynamically Allocated)
+
+4. Instalasi Sistem Operasi Guest
+
+![Screenshot hasil](screenshots/ScreenshotEND.png)
+
+File ISO Ubuntu digunakan untuk menginstal sistem operasi guest. Proses instalasi dilakukan hingga selesai dan guest OS dapat melakukan login ke desktop Ubuntu.
+
+5. Perubahan Konfigurasi Resource
+
+Setelah VM berjalan, konfigurasi resource diubah menjadi:
+
+RAM: 4 GB
+
+CPU: 2 core
+
+Perubahan ini dilakukan untuk mengamati perbedaan performa sistem sebelum dan sesudah penambahan resource. Pada konfigurasi awal, VM dijalankan dengan 1 core CPU dan 2 GB RAM, sehingga performa sistem terasa lebih lambat terutama saat menjalankan beberapa aplikasi secara bersamaan. Setelah konfigurasi diubah menjadi 2 core CPU dan 4 GB RAM, performa guest OS meningkat, ditandai dengan proses booting yang lebih cepat dan respons aplikasi yang lebih lancar. Perubahan ini menunjukkan bahwa alokasi resource yang diberikan oleh hypervisor sangat memengaruhi kinerja VM, serta membuktikan bahwa guest OS hanya dapat menggunakan resource sesuai batas yang ditentukan.
 
 ---
 
 ## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
+Analisis dan Pembahasan (Proteksi OS)
 
----
+Virtual Machine menyediakan mekanisme proteksi sistem operasi melalui isolasi antara host OS dan guest OS. Guest OS berjalan dalam lingkungan terpisah dan tidak memiliki akses langsung ke file sistem, proses, maupun perangkat keras host.
+
+Hypervisor berperan sebagai lapisan pengaman yang mengatur penggunaan resource seperti CPU, RAM, dan storage. Guest OS hanya dapat menggunakan resource yang telah dialokasikan, sehingga tidak dapat mengganggu kestabilan host OS.
+
+Selain itu, VM berfungsi sebagai sandbox, yaitu lingkungan terisolasi yang aman untuk menjalankan sistem operasi atau aplikasi. Ketika guest OS mengalami error, crash, atau beban kerja tinggi, kondisi tersebut tidak memengaruhi host OS. Hal ini membuktikan bahwa virtualisasi meningkatkan keamanan dan stabilitas sistem secara keseluruhan.
+
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+
+- Efisiensi Resource Berbanding Lurus dengan Responsivitas Sistem Berdasarkan hasil eksperimen, alokasi resource memiliki ambang batas minimum untuk kenyamanan penggunaan. Meskipun sistem dapat berjalan dengan 1 CPU dan RAM 2 GB, kondisi tersebut menyebabkan beban kerja CPU mencapai 100% dan sistem terasa kaku. Peningkatan ke RAM 4 GB dan 2 CPU terbukti paling optimal, mampu memangkas waktu tunggu pembukaan aplikasi dari 16 detik menjadi 5 detik saja.
+
+- Keamanan Melalui Isolasi dan Sandboxing Penggunaan VM berhasil mendemonstrasikan konsep sandboxing, di mana Guest OS (Lubuntu) beroperasi dalam lingkungan yang sepenuhnya terisolasi dari Host (Windows). Segala beban kerja berat atau potensi kegagalan sistem di dalam Guest terbukti hanya berdampak di dalam lingkup virtualisasi tersebut tanpa mengganggu integritas dan stabilitas sistem operasi utama pada komputer fisik.
+
+- Penerapan Hardening OS pada Host Pembatasan sumber daya (RAM dan CPU) yang dilakukan selama percobaan merupakan bentuk nyata dari hardening OS. Dengan mengunci alokasi resource bagi VM, Host secara otomatis terlindungi dari risiko pemborosan sumber daya (resource exhaustion). Hal ini memastikan bahwa sistem Host tetap memiliki cadangan performa yang cukup untuk menjalankan fungsi kritis lainnya meskipun Guest OS sedang bekerja pada kapasitas maksimal
 
 ---
 
