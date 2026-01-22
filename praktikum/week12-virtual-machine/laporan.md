@@ -49,15 +49,6 @@ Virtualisasi menyediakan isolasi antara host dan guest OS, sehingga meningkatkan
 
 ---
 
-## Kode / Perintah
-Tuliskan potongan kode atau perintah utama:
-```bash
-uname -a
-lsmod | head
-dmesg | head
-```
-
----
 
 ## Hasil Eksekusi
 
