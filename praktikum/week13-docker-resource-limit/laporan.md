@@ -163,9 +163,11 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 Sementara itu, container melakukan isolasi pada level sistem operasi dengan berbagi kernel host. Pembatasan CPU dan memori pada container diatur menggunakan mekanisme kernel seperti cgroups dan namespace, sehingga lebih ringan dan efisien, tetapi tingkat isolasinya tidak sekuat VM.
 
 3.  Apa dampak limit memori terhadap aplikasi yang boros memori?
-   **Jawaban:**  
-
+   **Jawaban:**
+    
 Penerapan limit memori pada aplikasi yang boros memori dapat menyebabkan aplikasi tersebut tidak dapat berjalan secara optimal. Ketika penggunaan memori melebihi batas yang telah ditentukan, sistem akan menghentikan proses aplikasi secara otomatis (Out of Memory / OOM Kill). Akibatnya, aplikasi dapat berhenti secara tiba-tiba, menimbulkan error, atau kehilangan data yang belum tersimpan. Namun demikian, pembatasan ini penting untuk menjaga kestabilan sistem agar aplikasi lain tidak terdampak oleh penggunaan memori yang berlebihan.
+
+
 ---
 
 ## Refleksi Diri
