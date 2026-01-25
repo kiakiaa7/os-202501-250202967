@@ -21,8 +21,20 @@ Setelah menyelesaikan tugas ini, mahasiswa mampu:
 ---
 
 ## Dasar Teori
-Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
+- Arsitektur Docker :
+Docker menjalankan aplikasi dalam container yang terisolasi namun tetap menggunakan kernel sistem operasi host, sehingga penggunaan resource menjadi lebih efisien.
 
+- Tujuan Pembatasan Resource :
+Pembatasan CPU dan memori bertujuan untuk mencegah satu container menghabiskan seluruh resource sistem yang dapat mengganggu kinerja aplikasi lain.
+
+- Pengaturan CPU Container :
+Docker memungkinkan pengaturan batas penggunaan CPU sehingga container hanya dapat menggunakan sebagian kapasitas prosesor sesuai konfigurasi yang ditetapkan.
+
+- Pengaturan Memori Container :
+Batas memori pada container menentukan jumlah maksimum memori yang dapat digunakan. Jika melewati batas tersebut, container akan dihentikan oleh sistem.
+
+- Dampak dan Keuntungan :
+Dengan adanya resource limit, sistem menjadi lebih stabil, penggunaan resource lebih terkontrol, dan pengelolaan container dalam jumlah banyak menjadi lebih aman.
 ---
 
 ## Langkah Praktikum
@@ -139,12 +151,21 @@ Tuliskan 2–3 poin kesimpulan dari praktikum ini.
 
 ## Quiz
 1. Mengapa container perlu dibatasi CPU dan memori?
-   **Jawaban:**  
+   **Jawaban:**
+
+   Container perlu dibatasi CPU dan memori agar penggunaan resource sistem tetap terkendali dan tidak mengganggu container atau aplikasi lain yang berjalan pada host yang sama. Tanpa pembatasan, sebuah container dapat menggunakan seluruh CPU atau memori yang tersedia, sehingga menyebabkan penurunan performa sistem atau bahkan membuat sistem menjadi tidak responsif. Dengan adanya pembatasan resource, setiap container hanya menggunakan jatah yang telah ditentukan sehingga sistem menjadi lebih stabil, adil, dan aman terutama pada lingkungan server atau produksi.
+   
 2. Apa perbedaan VM dan container dalam konteks isolasi resource?
-   **Jawaban:**  
+   **Jawaban:**
+
+   Virtual Machine (VM) melakukan isolasi resource dengan cara memvirtualisasikan seluruh hardware melalui hypervisor, sehingga setiap VM memiliki sistem operasi sendiri dan alokasi CPU, memori, serta storage yang benar-benar terpisah. Isolasi pada VM bersifat kuat namun membutuhkan resource yang lebih besar.
+
+Sementara itu, container melakukan isolasi pada level sistem operasi dengan berbagi kernel host. Pembatasan CPU dan memori pada container diatur menggunakan mekanisme kernel seperti cgroups dan namespace, sehingga lebih ringan dan efisien, tetapi tingkat isolasinya tidak sekuat VM.
+
 3.  Apa dampak limit memori terhadap aplikasi yang boros memori?
    **Jawaban:**  
 
+Penerapan limit memori pada aplikasi yang boros memori dapat menyebabkan aplikasi tersebut tidak dapat berjalan secara optimal. Ketika penggunaan memori melebihi batas yang telah ditentukan, sistem akan menghentikan proses aplikasi secara otomatis (Out of Memory / OOM Kill). Akibatnya, aplikasi dapat berhenti secara tiba-tiba, menimbulkan error, atau kehilangan data yang belum tersimpan. Namun demikian, pembatasan ini penting untuk menjaga kestabilan sistem agar aplikasi lain tidak terdampak oleh penggunaan memori yang berlebihan.
 ---
 
 ## Refleksi Diri
