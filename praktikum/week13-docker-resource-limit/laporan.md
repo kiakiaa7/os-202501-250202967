@@ -83,13 +83,39 @@ Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
 
 ---
 
-## Kode / Perintah
-Tuliskan potongan kode atau perintah utama:
+## Kode app.py
 ```bash
-uname -a
-lsmod | head
-dmesg | head
+import time
+import sys
+
+storage = []
+counter = 0
+
+print("Aplikasi uji resource berjalan...")
+sys.stdout.flush()
+
+try:
+    while True:
+        # Beban CPU (perhitungan sederhana berulang)
+        total = 0
+        for n in range(3_000_000):
+            total += n % 5
+
+        # Alokasi memori bertahap (~3 MB per siklus)
+        block = "#" * 3_000_000
+        storage.append(block)
+
+        counter += 1
+        print(f"Siklus {counter} selesai | blok memori tersimpan: {len(storage)}")
+        sys.stdout.flush()
+
+        time.sleep(0.8)
+
+except MemoryError:
+    print("ERROR: Batas memori container telah tercapai")
+
 ```
+Program ini dirancang sebagai aplikasi uji untuk mengamati pengaruh pembatasan resource pada Docker container. Penggunaan CPU disimulasikan melalui proses perhitungan berulang dalam jumlah besar, sedangkan penggunaan memori dilakukan dengan menambahkan data berukuran tertentu ke dalam sebuah list secara terus-menerus. Proses ini berjalan secara berulang hingga container mencapai batas resource yang ditetapkan atau dihentikan secara manual.
 
 ---
 
