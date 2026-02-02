@@ -132,8 +132,7 @@ Program ini dirancang sebagai aplikasi uji untuk mengamati pengaruh pembatasan r
 ---
 
 ## Hasil Eksekusi
-Sertakan screenshot hasil percobaan atau diagram:
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/docker.png)
 
 ---
 
