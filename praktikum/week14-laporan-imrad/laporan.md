@@ -174,13 +174,15 @@ Program dijalankan menggunakan dataset proses dan resource yang telah disiapkan.
 Output program menunjukkan bahwa tidak ada proses yang dapat diselesaikan karena setiap proses menunggu resource yang tidak tersedia.
 
 2. Tabel hasil deteksi
+
+   
    | Proses | Resource Dialokasikan | Resource Diminta | Status   |
 | ------ | --------------------- | ---------------- | -------- |
 | P1     | R1                    | R2               | Deadlock |
 | P2     | R2                    | R3               | Deadlock |
 | P3     | R3                    | R1               | Deadlock |
 
-3. Ringkasan Temuan
+4. Ringkasan Temuan
 
 Berdasarkan hasil eksekusi:
 
