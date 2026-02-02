@@ -53,6 +53,8 @@ Tujuan dari praktikum ini adalah:
 
 1. Dataset Uji
 Pada praktikum ini digunakan dataset sederhana yang merepresentasikan hubungan antara proses dan resource dalam sistem dengan satu instance untuk setiap resource.
+
+
 | Proses | Resource Dialokasikan | Resource Diminta |
 | ------ | --------------------- | ---------------- |
 | P1     | R1                    | R2               |
