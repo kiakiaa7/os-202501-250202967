@@ -159,8 +159,6 @@ Siklus 2 selesai | blok memori tersimpan: 2
 ...
 ```
 
----
-
 ## 2. Implementasi Docker
 
 2.1 Struktur Proyek
@@ -170,7 +168,6 @@ Folder proyek berisi:
 * `app.py` → Program utama simulasi resource
 * `Dockerfile` → Konfigurasi pembuatan image Docker
 
----
 
 2.2 Isi Dockerfile
 
@@ -190,7 +187,6 @@ Penjelasan:
 | `COPY . .`                 | Menyalin semua file proyek ke dalam container |
 | `CMD ["python", "app.py"]` | Menjalankan program saat container dijalankan |
 
----
 
 ## 3. Proses Build Image
 
@@ -207,7 +203,6 @@ Keterangan:
 
 Hasilnya, image berhasil dibuat tanpa error.
 
----
 
 ## 4. Proses Menjalankan Container
 
@@ -223,8 +218,6 @@ Keterangan:
 * `--rm` → Container otomatis dihapus setelah berhenti
 * `week13` → Nama image
 
----
-
 ## 5. Hasil Pengujian
 
 Saat container dijalankan, program menghasilkan output:
@@ -238,7 +231,6 @@ Hal ini menunjukkan bahwa:
 * Aplikasi berhasil dijalankan dalam container
 * Docker environment berjalan dengan benar
 * Proses simulasi resource dapat diamati secara real-time
-
 
 ---
 
