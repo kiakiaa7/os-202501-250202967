@@ -10,75 +10,186 @@ Topik: Penyusunan Laporan Praktikum Format IMRAD
 - **Kelas** : 1 IKRA
 
 ---
+# DEADLOCK DETECTION
+
+---
+## Pendahuluan
+
+Sistem operasi memiliki peran penting dalam mengatur penggunaan sumber daya komputer seperti CPU, memori, dan perangkat input/output agar dapat digunakan oleh banyak proses secara bersamaan. Dalam pengelolaan sumber daya tersebut, dapat terjadi kondisi di mana beberapa proses saling menunggu sumber daya yang sedang digunakan oleh proses lain. Akibatnya, tidak ada proses yang dapat melanjutkan eksekusi. Kondisi ini dikenal sebagai deadlock.
+
+Deadlock merupakan salah satu permasalahan klasik dalam sistem operasi karena dapat menyebabkan sistem menjadi tidak responsif dan proses tidak dapat diselesaikan. Oleh sebab itu, diperlukan mekanisme untuk mengenali atau mendeteksi kondisi deadlock agar sistem dapat melakukan tindakan pemulihan, seperti menghentikan proses tertentu atau merebut kembali sumber daya.
+
+Pada praktikum minggu ke-11 ini dilakukan simulasi sederhana untuk memahami bagaimana deadlock terjadi dan bagaimana cara mendeteksinya menggunakan pendekatan algoritmik. Simulasi dilakukan dengan data proses dan alokasi resource tertentu untuk melihat apakah sistem berada dalam kondisi aman atau mengalami deadlock.
+
+---
+## Rumusan Masalah
+
+ Berdasarkan latar belakang di atas, rumusan masalah pada praktikum ini adalah:
+
+1. Bagaimana cara mensimulasikan kondisi deadlock pada sistem operasi?
+
+2. Bagaimana mekanisme pendeteksian deadlock menggunakan data alokasi dan permintaan resource?
+
+3. Proses mana saja yang terlibat dalam kondisi deadlock pada dataset uji?
+
+4. Mengapa deadlock dapat terjadi berdasarkan empat kondisi deadlock?
 
 ## Tujuan
-Setelah menyelesaikan tugas ini, mahasiswa mampu:
-1. Menyusun laporan praktikum dengan struktur ilmiah (Pendahuluan–Metode–Hasil–Pembahasan–Kesimpulan).
-2. Menyajikan hasil uji dalam bentuk tabel dan/atau grafik yang jelas.
-3. Menuliskan analisis hasil dengan argumentasi yang logis.
-4. Menyusun sitasi dan daftar pustaka dengan format yang konsisten.
-5. Mengunggah draft laporan ke repositori dengan rapi dan tepat waktu.
 
+Tujuan dari praktikum ini adalah:
+
+1. Memahami konsep deadlock dalam sistem operasi.
+
+2. Membuat program atau simulasi sederhana untuk mendeteksi kondisi deadlock.
+
+3. Menjalankan pengujian menggunakan dataset proses dan resource.
+
+4. Mengidentifikasi proses yang terlibat dalam kondisi deadlock.
+
+5. Menganalisis hasil deteksi deadlock berdasarkan teori sistem operasi.
 
 ---
+## Metode
 
-## Dasar Teori
-Tuliskan ringkasan teori (3–5 poin) yang mendasari percobaan.
+1. Dataset Uji
+Pada praktikum ini digunakan dataset sederhana yang merepresentasikan hubungan antara proses dan resource dalam sistem dengan satu instance untuk setiap resource.
+| Proses | Resource Dialokasikan | Resource Diminta |
+| ------ | --------------------- | ---------------- |
+| P1     | R1                    | R2               |
+| P2     | R2                    | R3               |
+| P3     | R3                    | R1               |
 
----
+Dataset ini menunjukkan bahwa setiap proses sedang memegang satu resource dan meminta resource lain yang sedang digunakan proses berbeda.
 
-## Langkah Praktikum
-1. **Menentukan Topik Laporan**
+## 2. Langkah Eksperimen
 
-   Pilih 1 topik dari praktikum sebelumnya (mis. Minggu 9/10/11/13) dan tetapkan tujuan eksperimen yang ingin disampaikan.
+Langkah-langkah yang dilakukan dalam praktikum ini adalah:
 
-2. **Menyiapkan Bahan**
+1. Menentukan daftar proses dan resource yang digunakan.
+2. Memasukkan data alokasi dan permintaan resource ke dalam program/simulasi.
+3. Merepresentasikan kondisi tersebut dalam bentuk **Resource Allocation Graph (RAG)**.
+4. Menganalisis graf untuk mendeteksi adanya **siklus (cycle)**.
+5. Menentukan apakah sistem berada dalam kondisi deadlock.
+6. Mencatat proses yang terlibat dalam deadlock.
+   
+## 3. Metode Deteksi Deadlock
 
-   - Kode/program yang digunakan.
-   - Dataset/parameter uji (jika ada).
-   - Bukti hasil eksekusi (screenshot) dan/atau grafik.
+Metode yang digunakan adalah pendekatan pendeteksian siklus pada Resource Allocation Graph (RAG).
 
-3. **Menulis Laporan dengan Struktur IMRAD**
+Pada sistem dengan satu instance resource, deadlock terjadi jika:
 
-   Tulis `praktikum/week14-laporan-imrad/laporan.md` dengan struktur minimal berikut:
-   - **Pendahuluan (Introduction):** latar belakang, rumusan masalah/tujuan.
-   - **Metode (Methods):** lingkungan uji, langkah eksperimen, parameter/dataset, cara pengukuran.
-   - **Hasil (Results):** tabel/grafik hasil uji, ringkasan temuan.
-   - **Pembahasan (Discussion):** interpretasi hasil, keterbatasan, perbandingan teori/ekspektasi.
-   - **Kesimpulan:** 2–4 poin ringkas menjawab tujuan.
+* Terdapat siklus dalam graf, dan
+* Tidak ada proses yang dapat menyelesaikan eksekusi.
 
-4. **Menyajikan Tabel/Grafik**
+Siklus menunjukkan bahwa setiap proses menunggu resource yang sedang dipegang proses lain.
 
-   - Tabel harus diberi judul/keterangan singkat.
-   - Jika menggunakan grafik: jelaskan sumbu dan arti grafik.
+## 4. Parameter Pengamatan
 
-5. **Sitasi dan Daftar Pustaka**
+Parameter yang diamati selama eksperimen:
 
-   - Cantumkan referensi minimal 2 sumber.
-   - Gunakan format konsisten (mis. daftar bernomor).
+* Status setiap proses (deadlock / tidak)
+* Pola hubungan antar proses dan resource
+* Keberadaan siklus pada graf
 
-6. **Commit & Push Draft**
+## 5. Implementasi Program
 
-   ```bash
-   git add .
-   git commit -m "Minggu 14 - Draft Laporan IMRAD"
-   git push origin main
-   ```
----
+Program deteksi deadlock dibuat menggunakan bahasa Python dengan membaca dataset berbentuk file CSV yang berisi informasi proses, resource yang dialokasikan, dan resource yang diminta.
 
-## Kode / Perintah
-Tuliskan potongan kode atau perintah utama:
+Program bekerja dengan pendekatan berikut:
+
+* Membaca data proses dari file dataset_deadlock.csv.
+
+* Menyimpan informasi alokasi dan permintaan resource tiap proses.
+
+* Melakukan simulasi penyelesaian proses:
+
+Jika resource yang diminta tersedia, proses dianggap selesai.
+
+Resource yang sebelumnya dipegang proses tersebut menjadi tersedia.
+
+Proses yang tidak pernah bisa selesai dianggap mengalami deadlock.
+
+Berikut potongan kode utama yang digunakan:
+
 ```bash
-uname -a
-lsmod | head
-dmesg | head
+import csv
+import os
+
+base_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(base_dir, "dataset_deadlock.csv")
+
+processes = []
+allocation = {}
+request = {}
+
+with open(file_path, "r") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        p = row["Process"]
+        processes.append(p)
+        allocation[p] = row["Allocation"]
+        request[p] = row["Request"]
+
+finished = {}
+for p in processes:
+    finished[p] = False
+
+available = set()
+
+progress = True
+while progress:
+    progress = False
+    for p in processes:
+        if not finished[p]:
+            if request[p] in available:
+                finished[p] = True
+                available.add(allocation[p])
+                progress = True
+
+deadlock = []
+for p in processes:
+    if not finished[p]:
+        deadlock.append(p)
+
+print("HASIL DETEKSI DEADLOCK")
+if deadlock:
+    print("Deadlock terdeteksi!")
+    print("Proses yang terlibat deadlock:")
+    for p in deadlock:
+        print("-", p)
+else:
+    print("Tidak terjadi deadlock.")
 ```
 
 ---
 
-## Hasil Eksekusi
-Sertakan screenshot hasil percobaan atau diagram:
+## Hasil 
+1. Hasil Eksekusi Program
 ![Screenshot hasil](screenshots/example.png)
+
+Program dijalankan menggunakan dataset proses dan resource yang telah disiapkan. Berdasarkan hasil eksekusi, program menampilkan bahwa sistem mengalami kondisi deadlock.
+
+Output program menunjukkan bahwa tidak ada proses yang dapat diselesaikan karena setiap proses menunggu resource yang tidak tersedia.
+
+2. Tabel hasil deteksi
+   | Proses | Resource Dialokasikan | Resource Diminta | Status   |
+| ------ | --------------------- | ---------------- | -------- |
+| P1     | R1                    | R2               | Deadlock |
+| P2     | R2                    | R3               | Deadlock |
+| P3     | R3                    | R1               | Deadlock |
+
+3. Ringkasan Temuan
+
+Berdasarkan hasil eksekusi:
+
+Tidak ada proses yang berhasil menyelesaikan eksekusi.
+
+Resource yang dibutuhkan tiap proses selalu dipegang oleh proses lain.
+
+Program mengidentifikasi seluruh proses sebagai bagian dari deadlock.
+
+Dengan demikian, sistem berada dalam kondisi deadlock total.
+
 
 ---
 
