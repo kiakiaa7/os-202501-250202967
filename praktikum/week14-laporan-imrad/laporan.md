@@ -165,7 +165,7 @@ else:
 
 ## Hasil 
 1. Hasil Eksekusi Program
-![Screenshot hasil](screenshots/example.png)
+![Screenshot hasil](screenshots/week14.png)
 
 Program dijalankan menggunakan dataset proses dan resource yang telah disiapkan. Berdasarkan hasil eksekusi, program menampilkan bahwa sistem mengalami kondisi deadlock.
 
@@ -193,25 +193,90 @@ Dengan demikian, sistem berada dalam kondisi deadlock total.
 
 ---
 
-## Analisis
-- Jelaskan makna hasil percobaan.  
-- Hubungkan hasil dengan teori (fungsi kernel, system call, arsitektur OS).  
-- Apa perbedaan hasil di lingkungan OS berbeda (Linux vs Windows)?  
+## Pembahasan
+
+Berdasarkan hasil eksekusi program, seluruh proses (P1, P2, dan P3) teridentifikasi berada dalam kondisi deadlock. Hal ini terjadi karena terdapat ketergantungan siklik antar proses dalam penggunaan resource.
+
+Secara rinci:
+
+* **P1** memegang resource **R1** dan menunggu **R2**
+* **P2** memegang resource **R2** dan menunggu **R3**
+* **P3** memegang resource **R3** dan menunggu **R1**
+
+Hubungan ini membentuk pola siklus:
+
+**P1 → P2 → P3 → P1**
+
+Siklus ini menyebabkan tidak ada proses yang dapat melanjutkan eksekusi, karena setiap proses menunggu resource yang sedang digunakan proses lain.
+
+## Kesesuaian dengan Teori Deadlock
+
+Hasil praktikum sesuai dengan teori sistem operasi bahwa deadlock terjadi jika empat kondisi berikut terpenuhi secara bersamaan.
+
+1. Mutual Exclusion
+   Resource R1, R2, dan R3 hanya dapat digunakan satu proses dalam satu waktu.
+
+2. Hold and Wait
+   Setiap proses memegang satu resource sambil menunggu resource lain.
+
+3. No Preemption
+   Resource tidak dapat diambil paksa dari proses yang sedang menggunakannya.
+
+4. Circular Wait
+   Terdapat siklus ketergantungan antar proses.
+
+Karena keempat kondisi ini terjadi secara simultan, sistem mengalami kebuntuan permanen.
+
+## Keterbatasan Praktikum
+
+Simulasi hanya menggunakan contoh kecil dengan jumlah proses dan resource terbatas. Pada sistem nyata, jumlah resource lebih banyak dan deteksi deadlock lebih kompleks karena melibatkan matriks alokasi, permintaan, serta ketersediaan resource.
+
+## Upaya Penanganan Deadlock
+
+Deadlock dapat ditangani dengan beberapa pendekatan:
+
+Prevention: Menghilangkan salah satu kondisi deadlock, misalnya dengan resource ordering.
+
+Avoidance: Menggunakan algoritma seperti Banker untuk memastikan sistem tetap dalam keadaan aman.
+
+Detection & Recovery: Mendeteksi deadlock lalu menghentikan salah satu proses atau melakukan resource preemption.
 
 ---
 
 ## Kesimpulan
-Tuliskan 2–3 poin kesimpulan dari praktikum ini.
+
+Berdasarkan hasil praktikum simulasi dan deteksi deadlock, dapat disimpulkan bahwa sistem mengalami kondisi deadlock ketika seluruh proses saling menunggu resource yang sedang digunakan oleh proses lain. Pada dataset uji, proses P1, P2, dan P3 membentuk siklus ketergantungan resource sehingga tidak ada proses yang dapat menyelesaikan eksekusi.
+
+Program yang dibuat berhasil mendeteksi kondisi deadlock dengan mengidentifikasi proses-proses yang tidak dapat diselesaikan dalam simulasi alokasi resource. Hasil ini sesuai dengan teori sistem operasi yang menyatakan bahwa deadlock terjadi apabila empat kondisi, yaitu mutual exclusion, hold and wait, no preemption, dan circular wait, terpenuhi secara bersamaan.
+
+Praktikum ini membantu memahami bagaimana deadlock dapat terjadi, bagaimana cara mendeteksinya, serta pentingnya mekanisme pengelolaan resource dalam sistem operasi untuk mencegah kebuntuan sistem.
 
 ---
+## Daftar Pustaka
+
+Silberschatz, A., Galvin, P. B., & Gagne, G. (2018). Operating System Concepts (10th ed.). Wiley.
+
+Tanenbaum, A. S., & Bos, H. (2015). Modern Operating Systems (4th ed.). Pearson.
+
+Stallings, W. (2018). Operating Systems: Internals and Design Principles (9th ed.). Pearson.
 
 ## Quiz
 1. Mengapa format IMRAD membantu membuat laporan praktikum lebih ilmiah dan mudah dievaluasi?
-   **Jawaban:**  
+   **Jawaban:**
+   
+Format IMRAD membuat laporan lebih ilmiah karena menyusun isi secara sistematis seperti penelitian. Pendahuluan menjelaskan tujuan, Metode menjelaskan cara kerja sehingga bisa direplikasi, Hasil menampilkan data secara objektif, dan Pembahasan menghubungkan hasil dengan teori. Struktur ini memudahkan dosen mengevaluasi pemahaman, proses, dan hasil secara terpisah dan jelas.
+
 2. Apa perbedaan antara bagian **Hasil** dan **Pembahasan**? 
-   **Jawaban:**  
+   **Jawaban:**
+   
+   Hasil (Results) berisi data atau output percobaan secara objektif tanpa penjelasan panjang. Isinya fakta, seperti tabel, angka, atau hasil program.
+
+Pembahasan (Discussion) berisi analisis dan penjelasan dari hasil tersebut. Di bagian ini dijelaskan mengapa hasil itu terjadi dan dikaitkan dengan teori.
+
 3. Mengapa sitasi dan daftar pustaka penting, bahkan untuk laporan praktikum?
    **Jawaban:**  
+
+Sitasi dan daftar pustaka penting karena menunjukkan bahwa laporan didasarkan pada sumber ilmiah yang terpercaya, bukan pendapat pribadi. Sitasi juga menghindari plagiarisme dengan memberi penghargaan kepada penulis asli. Selain itu, dosen dapat menilai bahwa konsep yang digunakan (seperti deadlock, algoritma deteksi, dll.) sesuai teori, serta memudahkan pembaca menelusuri referensi untuk mempelajari materi lebih lanjut.
 
 ---
 
